@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Рустам Сарин](https://up.htmlacademy.ru/react/4/user/41568).
-* Наставник: `Неизвестно`.
+* Наставник: [Илья Кибардин](https://htmlacademy.ru/profile/id1353753).
 
 ---
 
