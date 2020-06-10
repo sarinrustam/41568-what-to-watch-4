@@ -1,4 +1,6 @@
 const path = require(`path`);
+const portFinderSync = require(`portfinder-sync`);
+const port = portFinderSync.getPort(1337);
 
 module.exports = {
   entry: `./src/index.js`,
@@ -8,8 +10,9 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, `public`),
+    watchContentBase: true,
     open: true,
-    port: 1338,
+    port: port,
   },
   module: {
     rules: [
