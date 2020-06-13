@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 
 const Main = (props) => {
-  const {headerFilmTitle, headerFilmGenre, headerFilmYear, films} = props;
+  const {headerMovieTitle, headerMovieGenre, headerMovieYear, movies} = props;
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -37,10 +37,10 @@ const Main = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{headerFilmTitle}</h2>
+              <h2 className="movie-card__title">{headerMovieTitle}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{headerFilmGenre}</span>
-                <span className="movie-card__year">{headerFilmYear}</span>
+                <span className="movie-card__genre">{headerMovieGenre}</span>
+                <span className="movie-card__year">{headerMovieYear}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -100,14 +100,14 @@ const Main = (props) => {
           </ul>
 
           <div className="catalog__movies-list">
-            {films.map((it, index) => {
+            {movies.map((movie, index) => {
               return (
-                <article key={index + it} className="small-movie-card catalog__movies-card">
+                <article key={index} className="small-movie-card catalog__movies-card">
                   <div className="small-movie-card__image">
-                    <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt={it} width="280" height="175" />
+                    <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt={movie} width="280" height="175" />
                   </div>
                   <h3 className="small-movie-card__title">
-                    <a className="small-movie-card__link" href="movie-page.html">{it}</a>
+                    <a className="small-movie-card__link" href="movie-page.html">{movie}</a>
                   </h3>
                 </article>
               );
@@ -138,10 +138,10 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  headerFilmTitle: PropTypes.string.isRequired,
-  headerFilmGenre: PropTypes.string.isRequired,
-  headerFilmYear: PropTypes.number.isRequired,
-  films: PropTypes.arrayOf(PropTypes.string).isRequired
+  headerMovieTitle: PropTypes.string.isRequired,
+  headerMovieGenre: PropTypes.string.isRequired,
+  headerMovieYear: PropTypes.number.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default Main;

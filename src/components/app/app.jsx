@@ -4,13 +4,13 @@ import Main from "@components/main/main.jsx";
 import PropTypes from "prop-types";
 
 const App = (props) => {
-  const {title, genre, year, films} = props;
+  const {title, genre, year, movies} = props;
   return (
     <Main
-      headerFilmTitle={title}
-      headerFilmGenre={genre}
-      headerFilmYear={year}
-      films={films}
+      headerMovieTitle={title}
+      headerMovieGenre={genre}
+      headerMovieYear={year}
+      movies={movies}
     />
   );
 };
@@ -19,7 +19,7 @@ App.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
-  films: PropTypes.arrayOf(PropTypes.string).isRequired
+  movies: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default App;
