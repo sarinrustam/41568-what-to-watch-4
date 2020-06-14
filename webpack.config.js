@@ -12,6 +12,7 @@ module.exports = {
     contentBase: path.join(__dirname, `public`),
     watchContentBase: true,
     open: true,
+    hot: true,
     port,
   },
   resolve: {
