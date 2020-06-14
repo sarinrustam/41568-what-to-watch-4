@@ -3,6 +3,8 @@ import React from "react";
 import Main from "@components/main/main.jsx";
 import PropTypes from "prop-types";
 
+const titleMovieLinkHandler = () => {};
+
 const App = (props) => {
   const {title, genre, year, movies} = props;
   return (
@@ -11,6 +13,7 @@ const App = (props) => {
       headerMovieGenre={genre}
       headerMovieYear={year}
       movies={movies}
+      onTitleMovieLinkClick={titleMovieLinkHandler}
     />
   );
 };
