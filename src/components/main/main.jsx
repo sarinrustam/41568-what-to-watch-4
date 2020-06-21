@@ -134,7 +134,9 @@ Main.propTypes = {
   headerMovieYear: PropTypes.number.isRequired,
   movies: PropTypes.arrayOf(
       PropTypes.shape({
-        title: PropTypes.string.isRequired
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        img: PropTypes.string.isRequired,
       })
   ).isRequired,
   onTitleMovieLinkClick: PropTypes.func.isRequired
