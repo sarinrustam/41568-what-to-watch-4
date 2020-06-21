@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import App from "@components/app/app.jsx";
+import movies from "./mocks/films.js";
 
 const MovieData = {
   TITLE: `The Grand Budapest Hotel`,
@@ -9,14 +10,12 @@ const MovieData = {
   YEAR: 2014,
 };
 
-const MOVIES = [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`, `Avatar`, `Aviator`, `Pulp fiction`];
-
 ReactDOM.render(
     <App
       title={MovieData.TITLE}
       genre={MovieData.GENRE}
       year={MovieData.YEAR}
-      movies={MOVIES}
+      movies={movies}
     />,
     document.querySelector(`#root`)
 );

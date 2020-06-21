@@ -17,7 +17,7 @@ export default [
   {
     id: 3,
     title: `No country for old men`,
-    img: `no-country-for-old-men.jpg`
+    img: `img/no-country-for-old-men.jpg`
   },
   {
     id: 4,
@@ -37,6 +37,6 @@ export default [
   {
     id: 7,
     title: `Seven years in Tibet`,
-    img: `img/seven-years-in-tibet`
+    img: `img/seven-years-in-tibet.jpg`
   },
 ];
