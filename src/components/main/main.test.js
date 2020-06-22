@@ -9,7 +9,18 @@ const HeaderMovieData = {
   year: 2020
 };
 
-const MOVIES = [`Aviator`, `Avatar`, `Kill Bill`];
+const movies = [
+  {
+    id: 0,
+    title: `Pulp Fuction`,
+    img: `img/pulp-fiction.jpg`
+  },
+  {
+    id: 1,
+    title: `Orlando`,
+    img: `img/orlando.jpg`
+  }
+];
 
 describe(`Render component`, () => {
   it(`Should Main component render correctly`, () => {
@@ -18,7 +29,7 @@ describe(`Render component`, () => {
         headerMovieTitle={HeaderMovieData.title}
         headerMovieGenre={HeaderMovieData.genre}
         headerMovieYear={HeaderMovieData.year}
-        movies={MOVIES}
+        movies={movies}
         onTitleMovieLinkClick={() => {}}
       />)
       .toJSON();
