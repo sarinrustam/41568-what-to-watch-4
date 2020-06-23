@@ -43,7 +43,7 @@ describe(`Render SMCL`, () => {
     const tree = rerender
       .create(<SmallMovieCardList
         movies={movies}
-        onMovieTitleClick={onMovieTitleClickHandler}
+        onMovieClick={onMovieTitleClickHandler}
       />).toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -23,7 +23,7 @@ describe(`Mouse hover`, () => {
         <SmallMovieCard
           movie={movie}
           onMouseOver={hoverHandler}
-          onMovieTitleClick={clickHandler}
+          onMovieClick={clickHandler}
         />
     );
 

@@ -7,6 +7,7 @@ exports[`Render SMC SMC should render movie 1`] = `
 >
   <div
     className="small-movie-card__image"
+    onClick={[Function]}
   >
     <img
       alt="No country for old men"

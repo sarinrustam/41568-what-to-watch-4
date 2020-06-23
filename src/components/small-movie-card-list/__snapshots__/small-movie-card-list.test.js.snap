@@ -10,6 +10,7 @@ exports[`Render SMCL SMCL should render SMC correctly 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Pulp Fuction"
@@ -36,6 +37,7 @@ exports[`Render SMCL SMCL should render SMC correctly 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Orlando"
@@ -62,6 +64,7 @@ exports[`Render SMCL SMCL should render SMC correctly 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Avatar"
@@ -88,6 +91,7 @@ exports[`Render SMCL SMCL should render SMC correctly 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="No country for old men"
@@ -114,6 +118,7 @@ exports[`Render SMCL SMCL should render SMC correctly 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Aviator"
@@ -140,6 +145,7 @@ exports[`Render SMCL SMCL should render SMC correctly 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Macbeth"
