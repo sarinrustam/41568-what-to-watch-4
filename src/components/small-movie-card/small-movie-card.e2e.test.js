@@ -14,7 +14,8 @@ const movie = {
   title: `No country for old men`,
   img: `img/no-country-for-old-men.jpg`
 };
-describe(`Mouse hover`, () => {
+
+describe(`SMC hover and click`, () => {
   it(`Should SMC be hovered`, () => {
     const hoverHandler = jest.fn();
     const clickHandler = jest.fn();
@@ -32,5 +33,22 @@ describe(`Mouse hover`, () => {
     expect(hoverHandler).toHaveBeenCalledTimes(1);
 
     expect(hoverHandler.mock.calls[0][0]).toBe(movie.id);
+  });
+
+  it(`Should SMC title be clicked`, () => {
+    const hoverHandler = jest.fn();
+    const clickHandler = jest.fn();
+
+    const smallMovieCard = mount(
+        <SmallMovieCard
+          movie={movie}
+          onMouseOver={hoverHandler}
+          onMovieClick={clickHandler}
+        />
+    );
+
+    smallMovieCard.find(`a.small-movie-card__link`).simulate(`click`);
+
+    expect(clickHandler).toHaveBeenCalledTimes(1);
   });
 });
