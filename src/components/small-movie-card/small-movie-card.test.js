@@ -18,7 +18,7 @@ describe(`Render SMC`, () => {
     .create(<SmallMovieCard
       movie={movie}
       onMouseOver={onMouseOverHandler}
-      onMovieTitleClick={onMovieTitleClickHandler}
+      onMovieClick={onMovieTitleClickHandler}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();

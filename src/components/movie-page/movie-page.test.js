@@ -1,4 +1,9 @@
-export default [
+import React from "react";
+import rerender from "react-test-renderer";
+
+import MoviePage from "./movie-page.jsx";
+
+const MOVIES = [
   {
     id: 0,
     title: `Pulp Fuction`,
@@ -152,3 +157,20 @@ export default [
     }
   },
 ];
+
+const handlerMovieClick = () => {};
+
+describe(`Render MoviePage`, () => {
+  it(`Should MoviePage render correctly`, () => {
+    const tree = rerender
+    .create(
+        <MoviePage
+          movie={MOVIES[0]}
+          onMovieClick={handlerMovieClick}
+          movies={MOVIES}
+        />
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+});

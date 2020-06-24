@@ -8,10 +8,11 @@ class SmallMovieCardList extends PureComponent {
     super(props);
 
     this.state = {
-      activeCard: null
+      activeCard: this.props.movies[0]
     };
 
     this.handlerCardMouseOver = this.handlerCardMouseOver.bind(this);
+    this.handlerMovieClick = this.handlerMovieClick.bind(this);
   }
 
   handlerCardMouseOver(id) {
@@ -20,8 +21,12 @@ class SmallMovieCardList extends PureComponent {
     });
   }
 
+  handlerMovieClick(movie) {
+    this.props.onMovieClick(movie);
+  }
+
   render() {
-    const {movies, onMovieTitleClick} = this.props;
+    const {movies} = this.props;
 
     return (
       <div
@@ -31,7 +36,7 @@ class SmallMovieCardList extends PureComponent {
             key={movie.id}
             movie={movie}
             onMouseOver={this.handlerCardMouseOver}
-            onMovieTitleClick={onMovieTitleClick}
+            onMovieClick={this.handlerMovieClick}
           />
         ))}
       </div>
@@ -47,7 +52,7 @@ SmallMovieCardList.propTypes = {
         img: PropTypes.string.isRequired,
       })
   ).isRequired,
-  onMovieTitleClick: PropTypes.func.isRequired
+  onMovieClick: PropTypes.func.isRequired
 };
 
 export default SmallMovieCardList;

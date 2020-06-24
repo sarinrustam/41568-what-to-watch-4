@@ -31,7 +31,7 @@ const movies = [
 
 describe(`Click button`, () => {
   it(`Should title link be pressed`, () => {
-    const onTitleMovieLinkClick = jest.fn();
+    const onMovieClick = jest.fn();
 
     const main = shallow(
         <Main
@@ -39,7 +39,7 @@ describe(`Click button`, () => {
           headerMovieGenre={HeaderMovieData.genre}
           headerMovieYear={HeaderMovieData.year}
           movies={movies}
-          onTitleMovieLinkClick={onTitleMovieLinkClick}
+          onMovieClick={onMovieClick}
         />
     );
 
@@ -49,6 +49,6 @@ describe(`Click button`, () => {
       titleLink.props().onClick();
     });
 
-    expect(onTitleMovieLinkClick.mock.calls.length).toBe(movieTitleLinks.length);
+    expect(onMovieClick.mock.calls.length).toBe(movieTitleLinks.length);
   });
 });

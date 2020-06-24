@@ -5,7 +5,12 @@ import PropTypes from "prop-types";
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
 
 const Main = (props) => {
-  const {headerMovieTitle, headerMovieGenre, headerMovieYear, movies, onTitleMovieLinkClick} = props;
+  const {headerMovieTitle, headerMovieGenre, headerMovieYear, movies, onMovieClick} = props;
+
+  const handlerMovieClick = (movie) => {
+    onMovieClick(movie);
+  };
+
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -102,7 +107,7 @@ const Main = (props) => {
 
           <SmallMovieCardList
             movies={movies}
-            onMovieTitleClick={onTitleMovieLinkClick}
+            onMovieClick={handlerMovieClick}
           />
 
           <div className="catalog__more">
@@ -139,7 +144,7 @@ Main.propTypes = {
         img: PropTypes.string.isRequired,
       })
   ).isRequired,
-  onTitleMovieLinkClick: PropTypes.func.isRequired
+  onMovieClick: PropTypes.func.isRequired
 };
 
 export default Main;
