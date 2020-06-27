@@ -16,7 +16,8 @@ export default [
     crew: {
       director: `Quentin Tarantino`,
       actors: `Tim Roth, Amanda Plummer, Laura Lovelace, John Travolta, Samuel L. Jackson`
-    }
+    },
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 1,
@@ -35,7 +36,8 @@ export default [
     crew: {
       director: `Sally Potter`,
       actors: `Tilda Swinton, Quentin Crisps, John Bott`
-    }
+    },
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 2,
@@ -54,7 +56,8 @@ export default [
     crew: {
       director: `James Cameron`,
       actors: `Sam Worthington, Zoe Saldana, Sigourney Weaver`
-    }
+    },
+    preview: `https://www.imdb.com/video/vi531039513?`
   },
   {
     id: 3,
@@ -73,7 +76,8 @@ export default [
     crew: {
       director: `Ethan Coen, Joel Coen`,
       actors: `Tommy Lee Jones, Javier Bardem, Josh Brolin`
-    }
+    },
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 4,
@@ -92,7 +96,8 @@ export default [
     crew: {
       director: `Martin Scorsese`,
       actors: ` Leonardo DiCaprio, Cate Blanchett, Kate Beckinsale`
-    }
+    },
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 5,
@@ -111,7 +116,8 @@ export default [
     crew: {
       director: `Justin Kurzel`,
       actors: `Michael Fassbender, Marion Cotillard, Jack Madigan`
-    }
+    },
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 6,
@@ -130,7 +136,8 @@ export default [
     crew: {
       director: `David Kerrl`,
       actors: `Rowan Atkinson, Ben Miller, Olga Kurylenko`
-    }
+    },
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 7,
@@ -149,6 +156,7 @@ export default [
     crew: {
       director: `Jean-Jacques Annaud`,
       actors: `Brad Pitt, David Thewlis, BD Wong`
-    }
+    },
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
 ];
