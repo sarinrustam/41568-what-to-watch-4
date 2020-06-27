@@ -27,7 +27,8 @@ const movies = [
     crew: {
       director: `Quentin Tarantino`,
       actors: `Tim Roth, Amanda Plummer, Laura Lovelace, John Travolta, Samuel L. Jackson`
-    }
+    },
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 1,
@@ -46,7 +47,8 @@ const movies = [
     crew: {
       director: `Sally Potter`,
       actors: `Tilda Swinton, Quentin Crisps, John Bott`
-    }
+    },
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 2,
@@ -65,7 +67,8 @@ const movies = [
     crew: {
       director: `James Cameron`,
       actors: `Sam Worthington, Zoe Saldana, Sigourney Weaver`
-    }
+    },
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
 ];
 
@@ -77,8 +80,11 @@ describe(`Render component`, () => {
         genre={HeaderMovieData.genre}
         year={HeaderMovieData.year}
         movies={movies}
-      />)
-      .toJSON();
+      />, {
+        createNodeMock: () => {
+          return {};
+        }}
+      ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

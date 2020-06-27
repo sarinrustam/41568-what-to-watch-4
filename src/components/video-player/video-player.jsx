@@ -31,25 +31,24 @@ class VideoPlayer extends PureComponent {
     if (isPlaying) {
       video.play();
     } else {
-      video.pause();
+      video.load();
     }
   }
 
   componentWillUnmount() {
     const video = this.videoRef.current;
 
-    video.onplay = null;
-    video.onpause = null;
     video.src = null;
-
-    video.ontimeupdate = null;
-    video.oncanplaythrough = null;
+    video.poster = null;
   }
 
   render() {
     return (
       <video
-        ref={this.videoRef} width="280" height="175"
+        ref={this.videoRef}
+        width="280"
+        height="175"
+        crossOrigin="anonymous"
       />
     );
   }

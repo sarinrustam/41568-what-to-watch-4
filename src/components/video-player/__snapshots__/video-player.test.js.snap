@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Correctly VP render Should VideoPlayer render correctly 1`] = `
+<video
+  crossOrigin="anonymous"
+  height="175"
+  width="280"
+/>
+`;

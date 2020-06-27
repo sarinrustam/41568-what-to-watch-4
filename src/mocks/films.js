@@ -17,7 +17,7 @@ export default [
       director: `Quentin Tarantino`,
       actors: `Tim Roth, Amanda Plummer, Laura Lovelace, John Travolta, Samuel L. Jackson`
     },
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 1,
@@ -37,7 +37,7 @@ export default [
       director: `Sally Potter`,
       actors: `Tilda Swinton, Quentin Crisps, John Bott`
     },
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 2,
@@ -57,7 +57,7 @@ export default [
       director: `James Cameron`,
       actors: `Sam Worthington, Zoe Saldana, Sigourney Weaver`
     },
-    preview: `https://www.imdb.com/video/vi531039513?`
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 3,
@@ -77,7 +77,7 @@ export default [
       director: `Ethan Coen, Joel Coen`,
       actors: `Tommy Lee Jones, Javier Bardem, Josh Brolin`
     },
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 4,
