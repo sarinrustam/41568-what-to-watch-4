@@ -24,23 +24,25 @@ class SmallMovieCard extends PureComponent {
       onMovieClick(movie);
     };
 
+    const handlerMouseEnter = () => {
+      this.timerId = setTimeout(() =>
+        this.setState({
+          isPlaying: true
+        }), 1000);
+    };
+
+    const handlerMouseLeave = () => {
+      clearTimeout(this.timerId);
+      this.setState({
+        isPlaying: false
+      });
+    };
+
     return (
       <article className="small-movie-card catalog__movies-card"
         onMouseOver={onArticleMouseOver}
-
-        onMouseEnter={() => {
-          this.timerId = setTimeout(() =>
-            this.setState({
-              isPlaying: true
-            }), 1000);
-        }}
-
-        onMouseLeave={() => {
-          clearTimeout(this.timerId);
-          this.setState({
-            isPlaying: false
-          });
-        }}
+        onMouseEnter={handlerMouseEnter}
+        onMouseLeave={handlerMouseLeave}
       >
         <div
           className="small-movie-card__image"
