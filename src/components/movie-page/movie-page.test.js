@@ -75,7 +75,7 @@ describe(`Render MoviePage`, () => {
         <MoviePage
           movie={MOVIES[0]}
           onMovieClick={handlerMovieClick}
-          movies={MOVIES}
+          relativeMovies={MOVIES}
         />, {
           createNodeMock: () => {
             return {};

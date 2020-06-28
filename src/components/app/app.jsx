@@ -5,6 +5,7 @@ import Main from "@components/main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import PropTypes from "prop-types";
 
+const SHOWING_MOVIES_COUNT = 4;
 
 class App extends PureComponent {
   constructor(props) {
@@ -26,11 +27,12 @@ class App extends PureComponent {
   renderApp() {
     const {title, genre, year, movies} = this.props;
     const {activeMovie} = this.state;
+    const relativeMovies = movies.slice(0, SHOWING_MOVIES_COUNT);
 
     if (activeMovie) {
       return <MoviePage
         movie={activeMovie}
-        movies={movies}
+        relativeMovies={relativeMovies}
         onMovieClick={this.handlerMovieClick}
       />;
     }
