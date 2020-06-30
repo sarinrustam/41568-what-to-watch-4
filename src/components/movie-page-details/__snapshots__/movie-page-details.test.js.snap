@@ -17,7 +17,9 @@ exports[`MPD render should MPD render correctly 1`] = `
       </strong>
       <span
         className="movie-card__details-value"
-      />
+      >
+        Justin Kurzel
+      </span>
     </p>
     <p
       className="movie-card__details-item"
@@ -29,7 +31,9 @@ exports[`MPD render should MPD render correctly 1`] = `
       </strong>
       <span
         className="movie-card__details-value"
-      />
+      >
+        Michael Fassbender, Marion Cotillard, Jack Madigan
+      </span>
     </p>
   </div>
   <div

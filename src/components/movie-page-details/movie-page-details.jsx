@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 
 const MoviePageDetails = (props) => {
   const {movie} = props;
-  const {director, actors, duration, genre, release} = movie;
+  const {crew, duration, genre, release} = movie;
+  const {director, actors} = crew;
 
   return (
     <>
@@ -40,8 +41,10 @@ const MoviePageDetails = (props) => {
 
 MoviePageDetails.propTypes = {
   movie: PropTypes.shape({
-    director: PropTypes.string.isRequired,
-    actors: PropTypes.string.isRequired,
+    crew: PropTypes.shape({
+      director: PropTypes.string.isRequired,
+      actors: PropTypes.string.isRequired,
+    }).isRequired,
     duration: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     release: PropTypes.number.isRequired

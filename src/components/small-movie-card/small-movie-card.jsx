@@ -7,9 +7,17 @@ class SmallMovieCard extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.timerId = null;
+
     this.state = {
       isPlaying: false,
     };
+  }
+
+  componentWillUnmount() {
+    if (this.timerId) {
+      clearTimeout(this.timerId);
+    }
   }
 
   render() {

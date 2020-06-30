@@ -6,7 +6,7 @@ import MoviePageOverview from "../movie-page-overview/movie-page-overview.jsx";
 import MoviePageDetails from "../movie-page-details/movie-page-details.jsx";
 
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
-import PAGE_FILTERS from "../../utils/utils.jsx";
+import {PAGE_FILTERS} from "../../utils/utils.js";
 
 class MoviePage extends PureComponent {
   constructor(props) {
@@ -30,14 +30,25 @@ class MoviePage extends PureComponent {
   }
 
   renderActiveMovieSection() {
-    
+    switch (this.state.activeFilter) {
+      case `Details`:
+        return <MoviePageDetails
+          movie={this.props.movie}
+        />;
+      case `Reviews`:
+        return <MoviePageReviews
+          movie={this.props.movie}
+        />;
+      default:
+        return <MoviePageOverview
+          movie={this.props.movie}
+        />;
+    }
   }
 
   render() {
     const {movie, relativeMovies} = this.props;
-    const {title, genre, img, coverBackground, poster, release, rating, description, crew} = movie;
-    const {score, scoreDesc, amount} = rating;
-    const {director, actors} = crew;
+    const {title, genre, coverBackground, poster, release} = movie;
     const {activeFilter} = this.state;
 
     return (
@@ -113,22 +124,7 @@ class MoviePage extends PureComponent {
                     ))}
                   </ul>
                 </nav>
-                {}
-                {/* <div className="movie-rating">
-                  <div className="movie-rating__score">{score}</div>
-                  <p className="movie-rating__meta">
-                    <span className="movie-rating__level">{scoreDesc}</span>
-                    <span className="movie-rating__count">{amount} ratings</span>
-                  </p>
-                </div>
-
-                <div className="movie-card__text">
-                  <p>{description}</p>
-
-                  <p className="movie-card__director"><strong>Director: {director}</strong></p>
-
-                  <p className="movie-card__starring"><strong>Starring: {actors} and other</strong></p>
-                </div> */}
+                {this.renderActiveMovieSection()}
               </div>
             </div>
           </div>
@@ -167,7 +163,7 @@ MoviePage.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
+    // img: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     coverBackground: PropTypes.string.isRequired,
     release: PropTypes.number.isRequired,
@@ -177,7 +173,6 @@ MoviePage.propTypes = {
       scoreDesc: PropTypes.string.isRequired,
       amount: PropTypes.number.isRequired,
     }).isRequired,
-    description: PropTypes.string.isRequired,
     crew: PropTypes.shape({
       director: PropTypes.string.isRequired,
       actors: PropTypes.string.isRequired
