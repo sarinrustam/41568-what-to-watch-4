@@ -10,7 +10,7 @@ export default [
     poster: `https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,686,1000_AL_.jpg`,
     coverBackground: `https://m.media-amazon.com/images/M/MV5BNTY1MzgzOTYxNV5BMl5BanBnXkFtZTgwMDI4OTEwMjE@._V1_SY1000_CR0,0,1463,1000_AL_.jpg`,
     rating: {
-      score: getRandomRating(),
+      score: 2.5,
       scoreDesc: `Very good`,
       amount: 2323
     },
@@ -24,7 +24,8 @@ export default [
       text: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
       author: `Kate Moss`,
       rating: getRandomRating()
-    }
+    },
+    duration: `1h 2m`
   },
   {
     id: 1,
@@ -49,7 +50,8 @@ export default [
       text: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
       author: `Kate Moss`,
       rating: getRandomRating()
-    }
+    },
+    duration: `1h 2m`
   },
   {
     id: 2,
@@ -57,6 +59,7 @@ export default [
     img: `img/avatar.jpg`,
     release: 2009,
     genre: `SCI-FI`,
+    duration: `1h 2m`,
     poster: `https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_.jpg`,
     coverBackground: `https://m.media-amazon.com/images/M/MV5BMTUxMDI1MDI5MV5BMl5BanBnXkFtZTcwOTY3MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg`,
     rating: {
@@ -82,6 +85,7 @@ export default [
     img: `img/no-country-for-old-men.jpg`,
     release: 2007,
     genre: `Fantasy`,
+    duration: `1h 2m`,
     poster: `https://m.media-amazon.com/images/M/MV5BMjA5Njk3MjM4OV5BMl5BanBnXkFtZTcwMTc5MTE1MQ@@._V1_.jpg`,
     coverBackground: `https://m.media-amazon.com/images/M/MV5BODRmM2U0OGYtNmZhOC00N2U0LTlkODktODk5MjM2YmJiYjYxXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SX1777_CR0,0,1777,755_AL_.jpg`,
     rating: {
@@ -107,6 +111,7 @@ export default [
     img: `img/aviator.jpg`,
     release: 2004,
     genre: `Thriller`,
+    duration: `1h 2m`,
     poster: `https://m.media-amazon.com/images/M/MV5BZTYzMjA2M2EtYmY1OC00ZWMxLThlY2YtZGI3MTQzOWM4YjE3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg`,
     coverBackground: `https://m.media-amazon.com/images/M/MV5BMTcwMDczNDY5N15BMl5BanBnXkFtZTcwNjU0NzcxNw@@._V1_SY1000_CR0,0,1503,1000_AL_.jpg`,
     rating: {
@@ -132,6 +137,7 @@ export default [
     img: `img/macbeth.jpg`,
     release: 2015,
     genre: `Action`,
+    duration: `1h 2m`,
     poster: `https://m.media-amazon.com/images/M/MV5BNzgyNDczMjU4NV5BMl5BanBnXkFtZTgwMTUwMDI3NjE@._V1_SY1000_SX675_AL_.jpg`,
     coverBackground: `https://m.media-amazon.com/images/M/MV5BMTkwOTA2YTQtNDNkNi00YWZiLTg2ZGEtODAwOGFjMmZlYTUyXkEyXkFqcGdeQXVyNDAxOTExNTM@._V1_.jpg`,
     rating: {
@@ -157,6 +163,7 @@ export default [
     img: `img/johnny-english.jpg`,
     release: 2018,
     genre: `Melodrama`,
+    duration: `1h 2m`,
     poster: `https://m.media-amazon.com/images/M/MV5BMjI4MjQ3MjI5MV5BMl5BanBnXkFtZTgwNjczMDE4NTM@._V1_SY1000_CR0,0,674,1000_AL_.jpg`,
     coverBackground: `https://m.media-amazon.com/images/M/MV5BYTgwOGQ0ZWMtYTZlNS00YzliLTkzMmYtNzQ1ZmJkNDRhMDk1XkEyXkFqcGdeQXVyNDE5MTU2MDE@._V1_.jpg`,
     rating: {
@@ -189,6 +196,7 @@ export default [
       scoreDesc: `Very awesome`,
       amount: 435435
     },
+    duration: `1h 2m`,
     description: `True story of Heinrich Harrer, an Austrian mountain climber who became friends with the Dalai Lama at the time of China's takeover of Tibet.`,
     crew: {
       director: `Jean-Jacques Annaud`,

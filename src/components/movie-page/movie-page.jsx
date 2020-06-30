@@ -1,17 +1,36 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
+import MoviePageReviews from "../movie-page-review/movie-page-reviews.jsx";
+import MoviePageOverview from "../movie-page-overview/movie-page-overview.jsx";
+import MoviePageDetails from "../movie-page-details/movie-page-details.jsx";
+
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
+import PAGE_FILTERS from "../../utils/utils.jsx";
 
 class MoviePage extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.state = {
+      activeFilter: PAGE_FILTERS[0]
+    };
+
     this.handlerMovieClick = this.handlerMovieClick.bind(this);
+  }
+
+  setActiveFilter(filter) {
+    this.setState({
+      activeFilter: filter
+    });
   }
 
   handlerMovieClick(movie) {
     this.props.onMovieClick(movie);
+  }
+
+  renderActiveMovieSection() {
+    
   }
 
   render() {
@@ -19,6 +38,7 @@ class MoviePage extends PureComponent {
     const {title, genre, img, coverBackground, poster, release, rating, description, crew} = movie;
     const {score, scoreDesc, amount} = rating;
     const {director, actors} = crew;
+    const {activeFilter} = this.state;
 
     return (
       <React.Fragment>
@@ -82,19 +102,19 @@ class MoviePage extends PureComponent {
               <div className="movie-card__desc">
                 <nav className="movie-nav movie-card__nav">
                   <ul className="movie-nav__list">
-                    <li className="movie-nav__item movie-nav__item--active">
-                      <a href="#" className="movie-nav__link">Overview</a>
-                    </li>
-                    <li className="movie-nav__item">
-                      <a href="#" className="movie-nav__link">Details</a>
-                    </li>
-                    <li className="movie-nav__item">
-                      <a href="#" className="movie-nav__link">Reviews</a>
-                    </li>
+                    {PAGE_FILTERS.map((filter) => (
+                      <li
+                        key={filter}
+                        onClick={() => this.setActiveFilter(filter)}
+                        className={activeFilter === filter ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}
+                      >
+                        <a href="#" className="movie-nav__link">{filter}</a>
+                      </li>
+                    ))}
                   </ul>
                 </nav>
-
-                <div className="movie-rating">
+                {}
+                {/* <div className="movie-rating">
                   <div className="movie-rating__score">{score}</div>
                   <p className="movie-rating__meta">
                     <span className="movie-rating__level">{scoreDesc}</span>
@@ -108,7 +128,7 @@ class MoviePage extends PureComponent {
                   <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
                   <p className="movie-card__starring"><strong>Starring: {actors} and other</strong></p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
