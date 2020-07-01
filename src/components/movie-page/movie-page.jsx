@@ -1,24 +1,55 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
+import MoviePageReviews from "../movie-page-review/movie-page-reviews.jsx";
+import MoviePageOverview from "../movie-page-overview/movie-page-overview.jsx";
+import MoviePageDetails from "../movie-page-details/movie-page-details.jsx";
+
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
+import {PAGE_FILTERS} from "../../utils/utils.js";
 
 class MoviePage extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.state = {
+      activeFilter: PAGE_FILTERS[0]
+    };
+
     this.handlerMovieClick = this.handlerMovieClick.bind(this);
+  }
+
+  setActiveFilter(filter) {
+    this.setState({
+      activeFilter: filter
+    });
   }
 
   handlerMovieClick(movie) {
     this.props.onMovieClick(movie);
   }
 
+  renderActiveMovieSection() {
+    switch (this.state.activeFilter) {
+      case `Details`:
+        return <MoviePageDetails
+          movie={this.props.movie}
+        />;
+      case `Reviews`:
+        return <MoviePageReviews
+          movie={this.props.movie}
+        />;
+      default:
+        return <MoviePageOverview
+          movie={this.props.movie}
+        />;
+    }
+  }
+
   render() {
     const {movie, relativeMovies} = this.props;
-    const {title, genre, img, coverBackground, poster, release, rating, description, crew} = movie;
-    const {score, scoreDesc, amount} = rating;
-    const {director, actors} = crew;
+    const {title, genre, coverBackground, poster, release} = movie;
+    const {activeFilter} = this.state;
 
     return (
       <React.Fragment>
@@ -82,33 +113,18 @@ class MoviePage extends PureComponent {
               <div className="movie-card__desc">
                 <nav className="movie-nav movie-card__nav">
                   <ul className="movie-nav__list">
-                    <li className="movie-nav__item movie-nav__item--active">
-                      <a href="#" className="movie-nav__link">Overview</a>
-                    </li>
-                    <li className="movie-nav__item">
-                      <a href="#" className="movie-nav__link">Details</a>
-                    </li>
-                    <li className="movie-nav__item">
-                      <a href="#" className="movie-nav__link">Reviews</a>
-                    </li>
+                    {PAGE_FILTERS.map((filter) => (
+                      <li
+                        key={filter}
+                        onClick={() => this.setActiveFilter(filter)}
+                        className={activeFilter === filter ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}
+                      >
+                        <a href="#" className="movie-nav__link">{filter}</a>
+                      </li>
+                    ))}
                   </ul>
                 </nav>
-
-                <div className="movie-rating">
-                  <div className="movie-rating__score">{score}</div>
-                  <p className="movie-rating__meta">
-                    <span className="movie-rating__level">{scoreDesc}</span>
-                    <span className="movie-rating__count">{amount} ratings</span>
-                  </p>
-                </div>
-
-                <div className="movie-card__text">
-                  <p>{description}</p>
-
-                  <p className="movie-card__director"><strong>Director: {director}</strong></p>
-
-                  <p className="movie-card__starring"><strong>Starring: {actors} and other</strong></p>
-                </div>
+                {this.renderActiveMovieSection()}
               </div>
             </div>
           </div>
@@ -147,7 +163,7 @@ MoviePage.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
+    // img: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     coverBackground: PropTypes.string.isRequired,
     release: PropTypes.number.isRequired,
@@ -157,7 +173,6 @@ MoviePage.propTypes = {
       scoreDesc: PropTypes.string.isRequired,
       amount: PropTypes.number.isRequired,
     }).isRequired,
-    description: PropTypes.string.isRequired,
     crew: PropTypes.shape({
       director: PropTypes.string.isRequired,
       actors: PropTypes.string.isRequired

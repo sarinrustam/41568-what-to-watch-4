@@ -39,7 +39,6 @@ describe(`VideoPlayer tests`, () => {
           isPlaying={true}
         />
     );
-    // console.log(pleer.state(`isPlaying`), `1`);
 
     expect(pleer.props().isPlaying).toEqual(true);
   });
@@ -53,7 +52,6 @@ describe(`VideoPlayer tests`, () => {
           isPlaying={false}
         />
     );
-    // console.log(pleer.state(`isPlaying`), `2`);
 
     expect(pleer.props().isPlaying).toEqual(false);
   });

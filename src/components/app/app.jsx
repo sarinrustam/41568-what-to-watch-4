@@ -58,7 +58,7 @@ class App extends PureComponent {
           <Route exact path="/dev-movie">
             <MoviePage
               movie={this.props.movies[0]}
-              movies={this.props.movies}
+              relativeMovies={this.props.movies}
               onMovieClick={this.handlerMovieClick}
             />
           </Route>
