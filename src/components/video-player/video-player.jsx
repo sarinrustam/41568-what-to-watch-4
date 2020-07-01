@@ -6,10 +6,6 @@ class VideoPlayer extends PureComponent {
     super(props);
 
     this.videoRef = createRef();
-
-    this.state = {
-      isPlaying: props.isPlaying
-    };
   }
 
   componentDidMount() {
