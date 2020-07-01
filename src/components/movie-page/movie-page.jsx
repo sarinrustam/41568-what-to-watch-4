@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
 
-const SHOWING_MOVIES_COUNT = 4;
-
 class MoviePage extends PureComponent {
   constructor(props) {
     super(props);
@@ -17,7 +15,7 @@ class MoviePage extends PureComponent {
   }
 
   render() {
-    const {movie, movies} = this.props;
+    const {movie, relativeMovies} = this.props;
     const {title, genre, img, coverBackground, poster, release, rating, description, crew} = movie;
     const {score, scoreDesc, amount} = rating;
     const {director, actors} = crew;
@@ -121,7 +119,7 @@ class MoviePage extends PureComponent {
             <h2 className="catalog__title">More like this</h2>
 
             <SmallMovieCardList
-              movies={movies.slice(0, SHOWING_MOVIES_COUNT)}
+              movies={relativeMovies}
               onMovieClick={this.handlerMovieClick}
             />
           </section>
@@ -166,7 +164,7 @@ MoviePage.propTypes = {
     }).isRequired,
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired,
-  movies: PropTypes.array.isRequired
+  relativeMovies: PropTypes.array.isRequired
 };
 
 export default MoviePage;

@@ -21,7 +21,8 @@ const MOVIES = [
     crew: {
       director: `Quentin Tarantino`,
       actors: `Tim Roth, Amanda Plummer, Laura Lovelace, John Travolta, Samuel L. Jackson`
-    }
+    },
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 1,
@@ -40,7 +41,8 @@ const MOVIES = [
     crew: {
       director: `Sally Potter`,
       actors: `Tilda Swinton, Quentin Crisps, John Bott`
-    }
+    },
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 2,
@@ -59,103 +61,9 @@ const MOVIES = [
     crew: {
       director: `James Cameron`,
       actors: `Sam Worthington, Zoe Saldana, Sigourney Weaver`
-    }
-  },
-  {
-    id: 3,
-    title: `No country for old men`,
-    img: `img/no-country-for-old-men.jpg`,
-    release: 2007,
-    genre: `Fantasy`,
-    poster: `https://m.media-amazon.com/images/M/MV5BMjA5Njk3MjM4OV5BMl5BanBnXkFtZTcwMTc5MTE1MQ@@._V1_.jpg`,
-    coverBackground: `https://m.media-amazon.com/images/M/MV5BODRmM2U0OGYtNmZhOC00N2U0LTlkODktODk5MjM2YmJiYjYxXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SX1777_CR0,0,1777,755_AL_.jpg`,
-    rating: {
-      score: 9.1,
-      scoreDesc: `Very well`,
-      amount: 3451
     },
-    description: `Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande.`,
-    crew: {
-      director: `Ethan Coen, Joel Coen`,
-      actors: `Tommy Lee Jones, Javier Bardem, Josh Brolin`
-    }
-  },
-  {
-    id: 4,
-    title: `Aviator`,
-    img: `img/aviator.jpg`,
-    release: 2004,
-    genre: `Thriller`,
-    poster: `https://m.media-amazon.com/images/M/MV5BZTYzMjA2M2EtYmY1OC00ZWMxLThlY2YtZGI3MTQzOWM4YjE3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg`,
-    coverBackground: `https://m.media-amazon.com/images/M/MV5BMTcwMDczNDY5N15BMl5BanBnXkFtZTcwNjU0NzcxNw@@._V1_SY1000_CR0,0,1503,1000_AL_.jpg`,
-    rating: {
-      score: 8.5,
-      scoreDesc: `Very well`,
-      amount: 9883
-    },
-    description: `A biopic depicting the early years of legendary Director and aviator Howard Hughes' career from the late 1920s to the mid 1940s.`,
-    crew: {
-      director: `Martin Scorsese`,
-      actors: ` Leonardo DiCaprio, Cate Blanchett, Kate Beckinsale`
-    }
-  },
-  {
-    id: 5,
-    title: `Macbeth`,
-    img: `img/macbeth.jpg`,
-    release: 2015,
-    genre: `Action`,
-    poster: `https://m.media-amazon.com/images/M/MV5BNzgyNDczMjU4NV5BMl5BanBnXkFtZTgwMTUwMDI3NjE@._V1_SY1000_SX675_AL_.jpg`,
-    coverBackground: `https://m.media-amazon.com/images/M/MV5BMTkwOTA2YTQtNDNkNi00YWZiLTg2ZGEtODAwOGFjMmZlYTUyXkEyXkFqcGdeQXVyNDAxOTExNTM@._V1_.jpg`,
-    rating: {
-      score: 8.3,
-      scoreDesc: `Very good`,
-      amount: 383
-    },
-    description: `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.`,
-    crew: {
-      director: `Justin Kurzel`,
-      actors: `Michael Fassbender, Marion Cotillard, Jack Madigan`
-    }
-  },
-  {
-    id: 6,
-    title: `Johnny English`,
-    img: `img/johnny-english.jpg`,
-    release: 2018,
-    genre: `Melodrama`,
-    poster: `https://m.media-amazon.com/images/M/MV5BMjI4MjQ3MjI5MV5BMl5BanBnXkFtZTgwNjczMDE4NTM@._V1_SY1000_CR0,0,674,1000_AL_.jpg`,
-    coverBackground: `https://m.media-amazon.com/images/M/MV5BYTgwOGQ0ZWMtYTZlNS00YzliLTkzMmYtNzQ1ZmJkNDRhMDk1XkEyXkFqcGdeQXVyNDE5MTU2MDE@._V1_.jpg`,
-    rating: {
-      score: 3.0,
-      scoreDesc: `Bad`,
-      amount: 3123
-    },
-    description: `After a cyber-attack reveals the identity of all of the active undercover agents in Britain, Johnny English (Rowan Atkinson) is forced to come out of retirement to find the mastermind hacker.`,
-    crew: {
-      director: `David Kerrl`,
-      actors: `Rowan Atkinson, Ben Miller, Olga Kurylenko`
-    }
-  },
-  {
-    id: 7,
-    title: `Seven years in Tibet`,
-    img: `img/seven-years-in-tibet.jpg`,
-    release: 1997,
-    genre: `PSY`,
-    poster: `https://m.media-amazon.com/images/M/MV5BYmM4ZDhhNmItMDEyZi00NDUyLTk3MzUtMzE5NTE1ZWM0N2UyXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_.jpg`,
-    coverBackground: `https://m.media-amazon.com/images/M/MV5BMTUwMTc5NzMyOF5BMl5BanBnXkFtZTcwMTk2NDAzNA@@._V1_SY1000_CR0,0,1501,1000_AL_.jpg`,
-    rating: {
-      score: 8.4,
-      scoreDesc: `Very awesome`,
-      amount: 435435
-    },
-    description: `True story of Heinrich Harrer, an Austrian mountain climber who became friends with the Dalai Lama at the time of China's takeover of Tibet.`,
-    crew: {
-      director: `Jean-Jacques Annaud`,
-      actors: `Brad Pitt, David Thewlis, BD Wong`
-    }
-  },
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  }
 ];
 
 const handlerMovieClick = () => {};
@@ -167,8 +75,11 @@ describe(`Render MoviePage`, () => {
         <MoviePage
           movie={MOVIES[0]}
           onMovieClick={handlerMovieClick}
-          movies={MOVIES}
-        />
+          relativeMovies={MOVIES}
+        />, {
+          createNodeMock: () => {
+            return {};
+          }}
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

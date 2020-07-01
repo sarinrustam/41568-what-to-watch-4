@@ -259,16 +259,17 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
             onClick={[Function]}
           >
-            <img
-              alt="Pulp Fuction"
+            <video
+              crossOrigin="anonymous"
               height="175"
-              src="img/pulp-fiction.jpg"
               width="280"
             />
           </div>
@@ -286,16 +287,17 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
             onClick={[Function]}
           >
-            <img
-              alt="Orlando"
+            <video
+              crossOrigin="anonymous"
               height="175"
-              src="img/orlando.jpg"
               width="280"
             />
           </div>
@@ -313,16 +315,17 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
             onClick={[Function]}
           >
-            <img
-              alt="Avatar"
+            <video
+              crossOrigin="anonymous"
               height="175"
-              src="img/avatar.jpg"
               width="280"
             />
           </div>

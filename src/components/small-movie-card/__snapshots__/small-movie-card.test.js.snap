@@ -3,16 +3,17 @@
 exports[`Render SMC SMC should render movie 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
   onMouseOver={[Function]}
 >
   <div
     className="small-movie-card__image"
     onClick={[Function]}
   >
-    <img
-      alt="No country for old men"
+    <video
+      crossOrigin="anonymous"
       height="175"
-      src="img/no-country-for-old-men.jpg"
       width="280"
     />
   </div>
@@ -24,7 +25,7 @@ exports[`Render SMC SMC should render movie 1`] = `
       href="movie-page.html"
       onClick={[Function]}
     >
-      No country for old men
+      Pulp Fuction
     </a>
   </h3>
 </article>
