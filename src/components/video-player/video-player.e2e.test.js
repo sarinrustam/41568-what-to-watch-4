@@ -41,7 +41,7 @@ describe(`VideoPlayer tests`, () => {
     );
     // console.log(pleer.state(`isPlaying`), `1`);
 
-    expect(pleer.state(`isPlaying`)).toEqual(true);
+    expect(pleer.props().isPlaying).toEqual(true);
   });
 
   it(`Can VideoPlayer component play a video`, () => {
@@ -55,6 +55,6 @@ describe(`VideoPlayer tests`, () => {
     );
     // console.log(pleer.state(`isPlaying`), `2`);
 
-    expect(pleer.state(`isPlaying`)).toEqual(false);
+    expect(pleer.props().isPlaying).toEqual(false);
   });
 });
