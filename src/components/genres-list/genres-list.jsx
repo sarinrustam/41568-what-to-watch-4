@@ -10,12 +10,17 @@ const GenreList = (props) => {
         <li
           key={genre}
           className={currentGenre === genre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`}
-          onClick={(event) => {
-            event.preventDefault();
-            setCurrentGenre(genre);
-          }}
         >
-          <a href="#" className="catalog__genres-link">{genre}</a>
+          <a
+            href="#"
+            className="catalog__genres-link"
+            onClick={(event) => {
+              event.preventDefault();
+              setCurrentGenre(genre);
+            }}
+          >
+            {genre}
+          </a>
         </li>
       ))}
     </ul>
@@ -27,3 +32,5 @@ GenreList.propTypes = {
   currentGenre: PropTypes.string.isRequired,
   setCurrentGenre: PropTypes.func.isRequired,
 };
+
+export default GenreList;

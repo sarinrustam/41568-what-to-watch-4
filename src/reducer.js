@@ -1,26 +1,25 @@
-import moviesMock from "./mocks/films.js";
 import {extend, FILTER_ALL_GENRES} from "./utils/utils.js";
 
 const initialState = {
   currentGenre: FILTER_ALL_GENRES,
-  moviesMock,
+  movies: [],
 };
 
 const ActionType = {
   SET_CURRENT_GENRE: `SET_CURRENT_GENRE`,
-  GET_MOVIES: `GET_MOVIES`,
+  SET_MOVIES: `SET_MOVIES`,
 };
 
 const setCurrentGenre = (genre) => {
   return {
-    type: ActionType.GET_CURRENT_GENRE,
+    type: ActionType.SET_CURRENT_GENRE,
     payload: genre,
   };
 };
 
-const getMovies = (movies) => {
+const setMovies = (movies) => {
   return {
-    type: ActionType.GET_MOVIES,
+    type: ActionType.SET_MOVIES,
     payload: movies,
   };
 };
@@ -33,7 +32,7 @@ const reducer = (state = initialState, action) => {
             currentGenre: action.payload
           });
 
-    case ActionType.GET_MOVIES:
+    case ActionType.SET_MOVIES:
       return extend(
           state, {
             movies: action.payload
@@ -44,4 +43,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {reducer, ActionType, setCurrentGenre, getMovies};
+export {reducer, ActionType, setCurrentGenre, setMovies};
