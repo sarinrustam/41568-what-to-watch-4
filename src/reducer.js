@@ -2,44 +2,33 @@ import movies from "./mocks/films.js";
 
 const initialState = {
   currentGenre: `all`,
-  genres: [...(new Set(movies.map((movie) => {
-    return movie.genre;
-  })))],
+  movies,
 };
 
 const ActionType = {
-  GET_CURRENT_GENRE: `GET_CURRENT_GENRE`,
-  GET_ALL_GENRES: `GET_ALL_GENRES`,
+  SET_CURRENT_GENRE: `SET_CURRENT_GENRE`,
+  GET_MOVIES_BY_GENRE: `GET_MOVIES_BY_GENRE`,
 };
 
 const setCurrentGenre = (genre) => {
   return {
     type: ActionType.GET_CURRENT_GENRE,
-    currentGenre: genre,
-  };
-};
-
-const getAllGenres = () => {
-  return {
-    type: ActionType.GET_ALL_GENRES,
-    genres: [...(new Set(movies.map((movie) => {
-      return movie.genre;
-    })))],
+    payload: genre,
   };
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.GET_CURRENT_GENRE:
+    case ActionType.SET_CURRENT_GENRE:
       return {
-        ...state,
-        currentGenre: action.currentGenre
+        currentGenre: action.payload,
+        movies: state.movies,
       };
 
-    case ActionType.GET_ALL_GENRES:
+    case ActionType.GET_MOVIES_BY_GENRE:
       return {
-        ...state,
-        genres: action.genres
+        currentGenre: state.currentGenre,
+        movies: action.payload,
       };
 
     default:
@@ -47,4 +36,14 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {reducer, ActionType, setCurrentGenre, getAllGenres};
+export {reducer, ActionType, setCurrentGenre};
+
+
+// const getAllGenres = () => {
+//   return {
+//     type: ActionType.GET_ALL_GENRES,
+//     genres: [...(new Set(movies.map((movie) => {
+//       return movie.genre;
+//     })))],
+//   };
+// };
