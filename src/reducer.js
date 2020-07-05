@@ -1,19 +1,26 @@
-import movies from "./mocks/films.js";
+import moviesMock from "./mocks/films.js";
 
 const initialState = {
   currentGenre: `all`,
-  movies,
+  moviesMock,
 };
 
 const ActionType = {
   SET_CURRENT_GENRE: `SET_CURRENT_GENRE`,
-  GET_MOVIES_BY_GENRE: `GET_MOVIES_BY_GENRE`,
+  GET_MOVIES: `GET_MOVIES`,
 };
 
 const setCurrentGenre = (genre) => {
   return {
     type: ActionType.GET_CURRENT_GENRE,
     payload: genre,
+  };
+};
+
+const getMovies = (movies) => {
+  return {
+    type: ActionType.GET_MOVIES,
+    payload: movies,
   };
 };
 
@@ -25,7 +32,7 @@ const reducer = (state = initialState, action) => {
         movies: state.movies,
       };
 
-    case ActionType.GET_MOVIES_BY_GENRE:
+    case ActionType.GET_MOVIES:
       return {
         currentGenre: state.currentGenre,
         movies: action.payload,
@@ -36,14 +43,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {reducer, ActionType, setCurrentGenre};
-
-
-// const getAllGenres = () => {
-//   return {
-//     type: ActionType.GET_ALL_GENRES,
-//     genres: [...(new Set(movies.map((movie) => {
-//       return movie.genre;
-//     })))],
-//   };
-// };
+export {reducer, ActionType, setCurrentGenre, getMovies};
