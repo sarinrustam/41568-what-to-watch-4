@@ -13,10 +13,9 @@ class Main extends PureComponent {
     super(props);
 
     this.handlerMovieClick = this.handlerMovieClick.bind(this);
-    this.handlerChangeGenre = this.handlerChangeGenre.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.onSetMovies(this.props.movies);
   }
 
@@ -24,22 +23,8 @@ class Main extends PureComponent {
     this.props.onMovieClick(movie);
   }
 
-  getGenresList() {
-    return [FILTER_ALL_GENRES, ...new Set(this.props.movies.map((movie) => movie.genre))];
-  }
-
-  handlerChangeGenre(genre) {
-    this.props.onSetCurrentGenre(genre);
-    this.props.onSetMovies(this.props.movies.filter((movie) => {
-      if (genre === FILTER_ALL_GENRES) {
-        return true;
-      }
-      return movie.genre === genre;
-    }));
-  }
-
   render() {
-    const {headerMovieTitle, headerMovieGenre, headerMovieYear, currentGenre, moviesList} = this.props;
+    const {headerMovieTitle, headerMovieGenre, headerMovieYear, currentGenre, moviesList, onSetCurrentGenre, genres} = this.props;
 
     return (
       <React.Fragment>
@@ -103,9 +88,9 @@ class Main extends PureComponent {
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
             <GenreList
-              genresList={this.getGenresList()}
+              genresList={genres}
               currentGenre={currentGenre}
-              setCurrentGenre={this.handlerChangeGenre}
+              setCurrentGenre={onSetCurrentGenre}
             />
 
             <SmallMovieCardList
@@ -153,21 +138,33 @@ Main.propTypes = {
   onSetCurrentGenre: PropTypes.func.isRequired,
   onSetMovies: PropTypes.func.isRequired,
   moviesList: PropTypes.array.isRequired,
+  genres: PropTypes.arrayOf(
+      PropTypes.string.isRequired
+  ).isRequired
 };
 
-const mapStateToProps = (state) => ({
-  currentGenre: state.currentGenre,
-  moviesList: state.movies,
-});
+const mapStateToProps = (state) => {
+  const moviesByGenre = state.movies.filter((movie) => {
+    if (state.currentGenre === FILTER_ALL_GENRES) {
+      return true;
+    }
+    return movie.genre === state.currentGenre;
+  });
 
-const mapDispatchToProps = (dispatch) => ({
-  onSetCurrentGenre(genre) {
-    dispatch(setCurrentGenre(genre));
-  },
-  onSetMovies(movies) {
-    dispatch(setMovies(movies));
-  },
-});
+  const genres = state.movies.map((movie) => movie.genre);
+  const uniqueGenres = [FILTER_ALL_GENRES].concat(Array.from(new Set(genres)));
+
+  return {
+    currentGenre: state.currentGenre,
+    moviesList: moviesByGenre,
+    genres: uniqueGenres
+  };
+};
+
+const mapDispatchToProps = {
+  onSetCurrentGenre: setCurrentGenre,
+  onSetMovies: setMovies
+};
 
 export {Main};
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
