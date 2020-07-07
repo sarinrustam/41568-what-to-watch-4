@@ -1,7 +1,12 @@
 import React from "react";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
 
 import rerender from "react-test-renderer";
 import App from "./app.jsx";
+import {FILTER_ALL_GENRES} from '../../utils/utils.js';
+
+const mockStore = configureStore([]);
 
 const HeaderMovieData = {
   title: `TENET`,
@@ -74,16 +79,24 @@ const movies = [
 
 describe(`Render component`, () => {
   it(`Should App render correctly`, () => {
+    const store = mockStore({
+      currentGenre: FILTER_ALL_GENRES,
+      movies,
+    });
+
     const tree = rerender
-      .create(<App
-        title={HeaderMovieData.title}
-        genre={HeaderMovieData.genre}
-        year={HeaderMovieData.year}
-        movies={movies}
-      />, {
-        createNodeMock: () => {
-          return {};
-        }}
+      .create(
+          <Provider store={store}>
+            <App
+              title={HeaderMovieData.title}
+              genre={HeaderMovieData.genre}
+              year={HeaderMovieData.year}
+              movies={movies}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }}
       ).toJSON();
 
     expect(tree).toMatchSnapshot();
