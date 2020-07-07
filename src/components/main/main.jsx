@@ -1,10 +1,11 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {setCurrentGenre, setMovies} from "../../reducer.js";
+import {setCurrentGenre, setMovies, incrementCountMoviesRender, resetCountMoviesRender} from "../../reducer.js";
 
 import PropTypes from "prop-types";
 
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
+import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import GenreList from "../genres-list/genres-list.jsx";
 import {FILTER_ALL_GENRES} from "../../utils/utils.js";
 
@@ -13,18 +14,37 @@ class Main extends PureComponent {
     super(props);
 
     this.handlerMovieClick = this.handlerMovieClick.bind(this);
+    this.handlerShowMoreButtonClick = this.handlerShowMoreButtonClick.bind(this);
+    this.handlerSetCurrentGenre = this.handlerSetCurrentGenre.bind(this);
   }
 
   componentDidMount() {
-    this.props.onSetMovies(this.props.movies);
+    const {onSetMovies, movies} = this.props;
+    onSetMovies(movies);
   }
 
   handlerMovieClick(movie) {
     this.props.onMovieClick(movie);
   }
 
+  handlerShowMoreButtonClick() {
+    const {moviesList, onIncrementCountMoviesRender, countMoviesRender} = this.props;
+
+    if (moviesList.length > countMoviesRender) {
+      onIncrementCountMoviesRender();
+    }
+  }
+
+  handlerSetCurrentGenre(genre) {
+    const {onSetCurrentGenre, onResetCountMoviesRender} = this.props;
+
+    onSetCurrentGenre(genre);
+    onResetCountMoviesRender();
+  }
+
   render() {
-    const {headerMovieTitle, headerMovieGenre, headerMovieYear, currentGenre, moviesList, onSetCurrentGenre, genres} = this.props;
+    const {headerMovieTitle, headerMovieGenre, headerMovieYear, currentGenre, moviesList, countMoviesRender, genres} = this.props;
+    const slicedMoviesByGenre = moviesList.slice(0, countMoviesRender);
 
     return (
       <React.Fragment>
@@ -90,17 +110,18 @@ class Main extends PureComponent {
             <GenreList
               genresList={genres}
               currentGenre={currentGenre}
-              setCurrentGenre={onSetCurrentGenre}
+              setCurrentGenre={this.handlerSetCurrentGenre}
             />
 
             <SmallMovieCardList
-              movies={moviesList}
+              movies={slicedMoviesByGenre}
               onMovieClick={this.handlerMovieClick}
             />
 
-            <div className="catalog__more">
-              <button className="catalog__button" type="button">Show more</button>
-            </div>
+            {moviesList.length > countMoviesRender ?
+              <ShowMoreButton
+                onButtonClick={this.handlerShowMoreButtonClick}
+              /> : ``}
           </section>
 
           <footer className="page-footer">
@@ -140,7 +161,10 @@ Main.propTypes = {
   moviesList: PropTypes.array.isRequired,
   genres: PropTypes.arrayOf(
       PropTypes.string.isRequired
-  ).isRequired
+  ).isRequired,
+  onIncrementCountMoviesRender: PropTypes.func.isRequired,
+  onResetCountMoviesRender: PropTypes.func.isRequired,
+  countMoviesRender: PropTypes.number.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -157,13 +181,16 @@ const mapStateToProps = (state) => {
   return {
     currentGenre: state.currentGenre,
     moviesList: moviesByGenre,
-    genres: uniqueGenres
+    genres: uniqueGenres,
+    countMoviesRender: state.countMoviesRender
   };
 };
 
 const mapDispatchToProps = {
   onSetCurrentGenre: setCurrentGenre,
-  onSetMovies: setMovies
+  onSetMovies: setMovies,
+  onResetCountMoviesRender: resetCountMoviesRender,
+  onIncrementCountMoviesRender: incrementCountMoviesRender
 };
 
 export {Main};

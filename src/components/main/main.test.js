@@ -4,7 +4,7 @@ import configureStore from "redux-mock-store";
 
 import rerender from "react-test-renderer";
 import Main from "./main.jsx";
-import {FILTER_ALL_GENRES} from '../../utils/utils.js';
+import {FILTER_ALL_GENRES, COUNT_LIMIT_MOVIES} from '../../utils/utils.js';
 
 const mockStore = configureStore([]);
 
@@ -62,6 +62,7 @@ describe(`Render component`, () => {
     const store = mockStore({
       currentGenre: FILTER_ALL_GENRES,
       movies,
+      countMoviesRender: COUNT_LIMIT_MOVIES
     });
 
     const tree = rerender
