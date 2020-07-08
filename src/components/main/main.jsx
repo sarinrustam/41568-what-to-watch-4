@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {setCurrentGenre, setMovies, incrementCountMoviesRender, resetCountMoviesRender} from "../../reducer.js";
+import {setCurrentGenre, setMovies, incrementCountMoviesShow, resetCountMoviesShow} from "../../reducer.js";
 
 import PropTypes from "prop-types";
 
@@ -28,23 +28,23 @@ class Main extends PureComponent {
   }
 
   handlerShowMoreButtonClick() {
-    const {moviesList, onIncrementCountMoviesRender, countMoviesRender} = this.props;
+    const {moviesList, onincrementCountMoviesShow, countMoviesShow} = this.props;
 
-    if (moviesList.length > countMoviesRender) {
-      onIncrementCountMoviesRender();
+    if (moviesList.length > countMoviesShow) {
+      onincrementCountMoviesShow();
     }
   }
 
   handlerSetCurrentGenre(genre) {
-    const {onSetCurrentGenre, onResetCountMoviesRender} = this.props;
+    const {onSetCurrentGenre, onresetCountMoviesShow} = this.props;
 
     onSetCurrentGenre(genre);
-    onResetCountMoviesRender();
+    onresetCountMoviesShow();
   }
 
   render() {
-    const {headerMovieTitle, headerMovieGenre, headerMovieYear, currentGenre, moviesList, countMoviesRender, genres} = this.props;
-    const slicedMoviesByGenre = moviesList.slice(0, countMoviesRender);
+    const {headerMovieTitle, headerMovieGenre, headerMovieYear, currentGenre, moviesList, countMoviesShow, genres} = this.props;
+    const slicedMoviesByGenre = moviesList.slice(0, countMoviesShow);
 
     return (
       <React.Fragment>
@@ -118,7 +118,7 @@ class Main extends PureComponent {
               onMovieClick={this.handlerMovieClick}
             />
 
-            {moviesList.length > countMoviesRender ?
+            {moviesList.length > countMoviesShow ?
               <ShowMoreButton
                 onButtonClick={this.handlerShowMoreButtonClick}
               /> : ``}
@@ -162,9 +162,9 @@ Main.propTypes = {
   genres: PropTypes.arrayOf(
       PropTypes.string.isRequired
   ).isRequired,
-  onIncrementCountMoviesRender: PropTypes.func.isRequired,
-  onResetCountMoviesRender: PropTypes.func.isRequired,
-  countMoviesRender: PropTypes.number.isRequired
+  onincrementCountMoviesShow: PropTypes.func.isRequired,
+  onresetCountMoviesShow: PropTypes.func.isRequired,
+  countMoviesShow: PropTypes.number.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -182,15 +182,15 @@ const mapStateToProps = (state) => {
     currentGenre: state.currentGenre,
     moviesList: moviesByGenre,
     genres: uniqueGenres,
-    countMoviesRender: state.countMoviesRender
+    countMoviesShow: state.countMoviesShow
   };
 };
 
 const mapDispatchToProps = {
   onSetCurrentGenre: setCurrentGenre,
   onSetMovies: setMovies,
-  onResetCountMoviesRender: resetCountMoviesRender,
-  onIncrementCountMoviesRender: incrementCountMoviesRender
+  onresetCountMoviesShow: resetCountMoviesShow,
+  onincrementCountMoviesShow: incrementCountMoviesShow
 };
 
 export {Main};

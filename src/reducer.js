@@ -3,14 +3,14 @@ import {extend, FILTER_ALL_GENRES, COUNT_LIMIT_MOVIES} from "./utils/utils.js";
 const initialState = {
   currentGenre: FILTER_ALL_GENRES,
   movies: [],
-  countMoviesRender: COUNT_LIMIT_MOVIES,
+  countMoviesShow: COUNT_LIMIT_MOVIES,
 };
 
 const ActionType = {
   SET_CURRENT_GENRE: `SET_CURRENT_GENRE`,
   SET_MOVIES: `SET_MOVIES`,
-  INCREMENT_COUNT_MOVIES_RENDER: `INCREMENT_COUNT_MOVIES_RENDER`,
-  RESET_COUNT_MOVIES_RENDER: `RESET_COUNT_MOVIES_RENDER`
+  INCREMENT_COUNT_MOVIES_SHOW: `INCREMENT_COUNT_MOVIES_SHOW`,
+  RESET_COUNT_MOVIES_SHOW: `RESET_COUNT_MOVIES_SHOW`
 };
 
 const setCurrentGenre = (genre) => {
@@ -27,15 +27,15 @@ const setMovies = (movies) => {
   };
 };
 
-const incrementCountMoviesRender = () => {
+const incrementCountMoviesShow = () => {
   return {
-    type: ActionType.INCREMENT_COUNT_MOVIES_RENDER
+    type: ActionType.INCREMENT_COUNT_MOVIES_SHOW
   };
 };
 
-const resetCountMoviesRender = () => {
+const resetCountMoviesShow = () => {
   return {
-    type: ActionType.RESET_COUNT_MOVIES_RENDER
+    type: ActionType.RESET_COUNT_MOVIES_SHOW
   };
 };
 
@@ -52,16 +52,16 @@ const reducer = (state = initialState, action) => {
           state, {
             movies: action.payload
           });
-    case ActionType.INCREMENT_COUNT_MOVIES_RENDER:
+    case ActionType.INCREMENT_COUNT_MOVIES_SHOW:
       return extend(
           state, {
-            countMoviesRender: state.countMoviesRender + COUNT_LIMIT_MOVIES
+            countMoviesShow: state.countMoviesShow + COUNT_LIMIT_MOVIES
           }
       );
-    case ActionType.RESET_COUNT_MOVIES_RENDER:
+    case ActionType.RESET_COUNT_MOVIES_SHOW:
       return extend(
           state, {
-            countMoviesRender: COUNT_LIMIT_MOVIES
+            countMoviesShow: COUNT_LIMIT_MOVIES
           }
       );
     default:
@@ -69,4 +69,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {reducer, ActionType, setCurrentGenre, setMovies, incrementCountMoviesRender, resetCountMoviesRender};
+export {reducer, ActionType, setCurrentGenre, setMovies, incrementCountMoviesShow, resetCountMoviesShow};

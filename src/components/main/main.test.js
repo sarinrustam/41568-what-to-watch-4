@@ -62,7 +62,7 @@ describe(`Render component`, () => {
     const store = mockStore({
       currentGenre: FILTER_ALL_GENRES,
       movies,
-      countMoviesRender: COUNT_LIMIT_MOVIES
+      countMoviesShow: COUNT_LIMIT_MOVIES
     });
 
     const tree = rerender
