@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {setCurrentGenre, setMovies, incrementCountMoviesShow, resetCountMoviesShow} from "../../reducer.js";
+import {setCurrentGenre, incrementCountMoviesShow, resetCountMoviesShow} from "../../reducer.js";
 
 import PropTypes from "prop-types";
 
@@ -18,21 +18,12 @@ class Main extends PureComponent {
     this.handlerSetCurrentGenre = this.handlerSetCurrentGenre.bind(this);
   }
 
-  componentDidMount() {
-    const {onSetMovies, movies} = this.props;
-    onSetMovies(movies);
-  }
-
   handlerMovieClick(movie) {
     this.props.onMovieClick(movie);
   }
 
   handlerShowMoreButtonClick() {
-    const {moviesList, onincrementCountMoviesShow, countMoviesShow} = this.props;
-
-    if (moviesList.length > countMoviesShow) {
-      onincrementCountMoviesShow();
-    }
+    this.props.onIncrementCountMoviesShow();
   }
 
   handlerSetCurrentGenre(genre) {
@@ -43,8 +34,7 @@ class Main extends PureComponent {
   }
 
   render() {
-    const {headerMovieTitle, headerMovieGenre, headerMovieYear, currentGenre, moviesList, countMoviesShow, genres} = this.props;
-    const slicedMoviesByGenre = moviesList.slice(0, countMoviesShow);
+    const {headerMovieTitle, headerMovieGenre, headerMovieYear, currentGenre, genres, slicedMoviesByGenre, showMoreButton} = this.props;
 
     return (
       <React.Fragment>
@@ -118,7 +108,7 @@ class Main extends PureComponent {
               onMovieClick={this.handlerMovieClick}
             />
 
-            {moviesList.length > countMoviesShow ?
+            {showMoreButton ?
               <ShowMoreButton
                 onButtonClick={this.handlerShowMoreButtonClick}
               /> : ``}
@@ -147,24 +137,16 @@ Main.propTypes = {
   headerMovieTitle: PropTypes.string.isRequired,
   headerMovieGenre: PropTypes.string.isRequired,
   headerMovieYear: PropTypes.number.isRequired,
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired,
-      })
-  ).isRequired,
   onMovieClick: PropTypes.func.isRequired,
   currentGenre: PropTypes.string.isRequired,
   onSetCurrentGenre: PropTypes.func.isRequired,
-  onSetMovies: PropTypes.func.isRequired,
-  moviesList: PropTypes.array.isRequired,
   genres: PropTypes.arrayOf(
       PropTypes.string.isRequired
   ).isRequired,
-  onincrementCountMoviesShow: PropTypes.func.isRequired,
+  onIncrementCountMoviesShow: PropTypes.func.isRequired,
   onresetCountMoviesShow: PropTypes.func.isRequired,
-  countMoviesShow: PropTypes.number.isRequired
+  slicedMoviesByGenre: PropTypes.array.isRequired,
+  showMoreButton: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -177,20 +159,21 @@ const mapStateToProps = (state) => {
 
   const genres = state.movies.map((movie) => movie.genre);
   const uniqueGenres = [FILTER_ALL_GENRES].concat(Array.from(new Set(genres)));
+  const slicedMoviesByGenre = moviesByGenre.slice(0, state.countMoviesShow);
+  const showMoreButton = moviesByGenre.length > state.countMoviesShow;
 
   return {
     currentGenre: state.currentGenre,
-    moviesList: moviesByGenre,
     genres: uniqueGenres,
-    countMoviesShow: state.countMoviesShow
+    slicedMoviesByGenre,
+    showMoreButton,
   };
 };
 
 const mapDispatchToProps = {
   onSetCurrentGenre: setCurrentGenre,
-  onSetMovies: setMovies,
   onresetCountMoviesShow: resetCountMoviesShow,
-  onincrementCountMoviesShow: incrementCountMoviesShow
+  onIncrementCountMoviesShow: incrementCountMoviesShow
 };
 
 export {Main};
