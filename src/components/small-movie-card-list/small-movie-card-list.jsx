@@ -2,6 +2,9 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
+import withSmallMovieCard from "../hocs/with-small-movie-card/with-small-movie-card.js";
+
+const SmallMovieCardWrapped = withSmallMovieCard(SmallMovieCard);
 
 class SmallMovieCardList extends PureComponent {
   constructor(props) {
@@ -32,7 +35,7 @@ class SmallMovieCardList extends PureComponent {
       <div
         className="catalog__movies-list">
         {movies.map((movie) => (
-          <SmallMovieCard
+          <SmallMovieCardWrapped
             key={movie.id}
             movie={movie}
             onMouseOver={this.handlerCardMouseOver}
