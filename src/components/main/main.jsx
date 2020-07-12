@@ -107,9 +107,9 @@ class Main extends PureComponent {
             />
 
             <SmallMovieCardListWrapped
-              movies={moviesList}
-              changeActiveItem={this.handlerMovieClick}
-
+              movies={slicedMoviesByGenre}
+              changeActiveItem={this.handlerMovieClick}>
+            </SmallMovieCardListWrapped>
 
             {showMoreButton ?
               <ShowMoreButton
