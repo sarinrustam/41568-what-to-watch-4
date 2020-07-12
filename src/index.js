@@ -5,12 +5,14 @@ import App from "@components/app/app.jsx";
 import movies from "./mocks/films.js";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
-import {reducer} from "./reducer.js";
+import {reducer, setMovies} from "./reducer.js";
 
 const store = createStore(
     reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 );
+
+store.dispatch(setMovies(movies));
 
 const MovieData = {
   TITLE: `The Grand Budapest Hotel`,

@@ -1,10 +1,11 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {setCurrentGenre, setMovies} from "../../reducer.js";
+import {setCurrentGenre, incrementCountMoviesShow, resetCountMoviesShow} from "../../reducer.js";
 
 import PropTypes from "prop-types";
 
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
+import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import GenreList from "../genres-list/genres-list.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {FILTER_ALL_GENRES} from "../../utils/utils.js";
@@ -16,18 +17,27 @@ class Main extends PureComponent {
     super(props);
 
     this.handlerMovieClick = this.handlerMovieClick.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.onSetMovies(this.props.movies);
+    this.handlerShowMoreButtonClick = this.handlerShowMoreButtonClick.bind(this);
+    this.handlerSetCurrentGenre = this.handlerSetCurrentGenre.bind(this);
   }
 
   handlerMovieClick(movie) {
     this.props.onMovieClick(movie);
   }
 
+  handlerShowMoreButtonClick() {
+    this.props.onIncrementCountMoviesShow();
+  }
+
+  handlerSetCurrentGenre(genre) {
+    const {onSetCurrentGenre, onresetCountMoviesShow} = this.props;
+
+    onSetCurrentGenre(genre);
+    onresetCountMoviesShow();
+  }
+
   render() {
-    const {headerMovieTitle, headerMovieGenre, headerMovieYear, currentGenre, moviesList, onSetCurrentGenre, genres} = this.props;
+    const {headerMovieTitle, headerMovieGenre, headerMovieYear, currentGenre, genres, slicedMoviesByGenre, showMoreButton} = this.props;
 
     return (
       <React.Fragment>
@@ -93,17 +103,18 @@ class Main extends PureComponent {
             <GenreList
               genresList={genres}
               currentGenre={currentGenre}
-              setCurrentGenre={onSetCurrentGenre}
+              setCurrentGenre={this.handlerSetCurrentGenre}
             />
 
             <SmallMovieCardListWrapped
               movies={moviesList}
               changeActiveItem={this.handlerMovieClick}
-            />
 
-            <div className="catalog__more">
-              <button className="catalog__button" type="button">Show more</button>
-            </div>
+
+            {showMoreButton ?
+              <ShowMoreButton
+                onButtonClick={this.handlerShowMoreButtonClick}
+              /> : ``}
           </section>
 
           <footer className="page-footer">
@@ -129,21 +140,16 @@ Main.propTypes = {
   headerMovieTitle: PropTypes.string.isRequired,
   headerMovieGenre: PropTypes.string.isRequired,
   headerMovieYear: PropTypes.number.isRequired,
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired,
-      })
-  ).isRequired,
   onMovieClick: PropTypes.func.isRequired,
   currentGenre: PropTypes.string.isRequired,
   onSetCurrentGenre: PropTypes.func.isRequired,
-  onSetMovies: PropTypes.func.isRequired,
-  moviesList: PropTypes.array.isRequired,
   genres: PropTypes.arrayOf(
       PropTypes.string.isRequired
-  ).isRequired
+  ).isRequired,
+  onIncrementCountMoviesShow: PropTypes.func.isRequired,
+  onresetCountMoviesShow: PropTypes.func.isRequired,
+  slicedMoviesByGenre: PropTypes.array.isRequired,
+  showMoreButton: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -156,17 +162,21 @@ const mapStateToProps = (state) => {
 
   const genres = state.movies.map((movie) => movie.genre);
   const uniqueGenres = [FILTER_ALL_GENRES].concat(Array.from(new Set(genres)));
+  const slicedMoviesByGenre = moviesByGenre.slice(0, state.countMoviesShow);
+  const showMoreButton = moviesByGenre.length > state.countMoviesShow;
 
   return {
     currentGenre: state.currentGenre,
-    moviesList: moviesByGenre,
-    genres: uniqueGenres
+    genres: uniqueGenres,
+    slicedMoviesByGenre,
+    showMoreButton,
   };
 };
 
 const mapDispatchToProps = {
   onSetCurrentGenre: setCurrentGenre,
-  onSetMovies: setMovies
+  onresetCountMoviesShow: resetCountMoviesShow,
+  onIncrementCountMoviesShow: incrementCountMoviesShow
 };
 
 export {Main};

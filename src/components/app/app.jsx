@@ -42,7 +42,6 @@ class App extends PureComponent {
         headerMovieTitle={title}
         headerMovieGenre={genre}
         headerMovieYear={year}
-        movies={movies}
         onMovieClick={this.handlerMovieClick}
       />
     );
