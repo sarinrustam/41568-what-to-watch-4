@@ -54,6 +54,7 @@ describe(`Render SMCL`, () => {
       .create(<SmallMovieCardList
         movies={movies}
         onMovieClick={onMovieTitleClickHandler}
+        setActiveItem={() => {}}
       />, {
         createNodeMock: () => {
           return {};

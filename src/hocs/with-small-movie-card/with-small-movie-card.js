@@ -23,9 +23,9 @@ const withSmallMovieCard = (Component) => {
       }
     }
 
-    handlerMovieClick(event) {
-      const {onMovieClick, movie} = this.props;
-      event.preventDefault();
+    handlerMovieClick(movie) {
+      const {onMovieClick} = this.props;
+
       onMovieClick(movie);
     }
 
@@ -38,6 +38,7 @@ const withSmallMovieCard = (Component) => {
 
     handlerMouseLeave() {
       clearTimeout(this.timerId);
+
       this.setState({
         isPlaying: false
       });
