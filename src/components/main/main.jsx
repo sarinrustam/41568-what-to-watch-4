@@ -6,7 +6,10 @@ import PropTypes from "prop-types";
 
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
 import GenreList from "../genres-list/genres-list.jsx";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {FILTER_ALL_GENRES} from "../../utils/utils.js";
+
+const SmallMovieCardListWrapped = withActiveItem(SmallMovieCardList);
 
 class Main extends PureComponent {
   constructor(props) {
@@ -93,9 +96,9 @@ class Main extends PureComponent {
               setCurrentGenre={onSetCurrentGenre}
             />
 
-            <SmallMovieCardList
+            <SmallMovieCardListWrapped
               movies={moviesList}
-              onMovieClick={this.handlerMovieClick}
+              changeActiveItem={this.handlerMovieClick}
             />
 
             <div className="catalog__more">

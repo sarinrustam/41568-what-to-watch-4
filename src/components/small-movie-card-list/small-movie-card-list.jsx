@@ -2,34 +2,13 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
-import withSmallMovieCard from "../hocs/with-small-movie-card/with-small-movie-card.js";
+import withSmallMovieCard from "../../hocs/with-small-movie-card/with-small-movie-card.js";
 
 const SmallMovieCardWrapped = withSmallMovieCard(SmallMovieCard);
 
 class SmallMovieCardList extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeCard: this.props.movies[0]
-    };
-
-    this.handlerCardMouseOver = this.handlerCardMouseOver.bind(this);
-    this.handlerMovieClick = this.handlerMovieClick.bind(this);
-  }
-
-  handlerCardMouseOver(id) {
-    this.setState({
-      activeCard: id
-    });
-  }
-
-  handlerMovieClick(movie) {
-    this.props.onMovieClick(movie);
-  }
-
   render() {
-    const {movies} = this.props;
+    const {movies, setActiveItem} = this.props;
 
     return (
       <div
@@ -38,8 +17,7 @@ class SmallMovieCardList extends PureComponent {
           <SmallMovieCardWrapped
             key={movie.id}
             movie={movie}
-            onMouseOver={this.handlerCardMouseOver}
-            onMovieClick={this.handlerMovieClick}
+            onMovieClick={setActiveItem}
           />
         ))}
       </div>
@@ -55,7 +33,7 @@ SmallMovieCardList.propTypes = {
         img: PropTypes.string.isRequired,
       })
   ).isRequired,
-  onMovieClick: PropTypes.func.isRequired
+  setActiveItem: PropTypes.func.isRequired,
 };
 
 export default SmallMovieCardList;

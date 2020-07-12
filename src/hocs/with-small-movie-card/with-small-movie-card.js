@@ -12,7 +12,6 @@ const withSmallMovieCard = (Component) => {
         isPlaying: false,
       };
 
-      this.onArticleMouseOver = this.onArticleMouseOver.bind(this);
       this.handlerMovieClick = this.handlerMovieClick.bind(this);
       this.handlerMouseEnter = this.handlerMouseEnter.bind(this);
       this.handlerMouseLeave = this.handlerMouseLeave.bind(this);
@@ -22,11 +21,6 @@ const withSmallMovieCard = (Component) => {
       if (this.timerId) {
         clearTimeout(this.timerId);
       }
-    }
-
-    onArticleMouseOver() {
-      const {movie, onMouseOver} = this.props;
-      onMouseOver(movie.id);
     }
 
     handlerMovieClick(event) {
@@ -57,7 +51,6 @@ const withSmallMovieCard = (Component) => {
           handlerMovieClick={this.handlerMovieClick}
           handlerMouseEnter={this.handlerMouseEnter}
           handlerMouseLeave={this.handlerMouseLeave}
-          onArticleMouseOver={this.onArticleMouseOver}
         />
       );
     }
@@ -70,7 +63,6 @@ const withSmallMovieCard = (Component) => {
       poster: PropTypes.string.isRequired,
       preview: PropTypes.string.isRequired
     }).isRequired,
-    onMouseOver: PropTypes.func.isRequired,
     onMovieClick: PropTypes.func.isRequired,
   };
 

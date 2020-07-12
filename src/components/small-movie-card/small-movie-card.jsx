@@ -5,11 +5,10 @@ import VideoPlayer from "../video-player/video-player.jsx";
 
 class SmallMovieCard extends PureComponent {
   render() {
-    const {movie, handlerMovieClick, handlerMouseEnter, handlerMouseLeave, onArticleMouseOver, isPlaying} = this.props;
+    const {movie, handlerMovieClick, handlerMouseEnter, handlerMouseLeave, isPlaying} = this.props;
 
     return (
       <article className="small-movie-card catalog__movies-card"
-        onMouseOver={onArticleMouseOver}
         onMouseEnter={handlerMouseEnter}
         onMouseLeave={handlerMouseLeave}
       >
@@ -45,7 +44,6 @@ SmallMovieCard.propTypes = {
     poster: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired
   }).isRequired,
-  onArticleMouseOver: PropTypes.func.isRequired,
   handlerMovieClick: PropTypes.func.isRequired,
   handlerMouseEnter: PropTypes.func.isRequired,
   handlerMouseLeave: PropTypes.func.isRequired,
