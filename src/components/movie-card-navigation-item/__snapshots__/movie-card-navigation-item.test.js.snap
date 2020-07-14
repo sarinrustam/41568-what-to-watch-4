@@ -2,7 +2,7 @@
 
 exports[`MovieCardDescriptionItem render MovieCardDescriptionItem render correctly 1`] = `
 <li
-  className="movie-nav__item"
+  className="movie-nav__item movie-nav__item--active"
   onClick={[Function]}
 >
   <a

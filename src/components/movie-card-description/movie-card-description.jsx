@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {PAGE_FILTERS} from "../../utils/utils.js";
 
@@ -7,44 +7,52 @@ import MoviePageOverview from "../movie-page-overview/movie-page-overview.jsx";
 import MoviePageDetails from "../movie-page-details/movie-page-details.jsx";
 import MovieCardNavigationItem from "../movie-card-navigation-item/movie-card-navigation-item.jsx";
 
-const MovieCardDescription = (props) => {
-  const {activeFilter, setActiveFilter, movie} = props;
+class MovieCardDescription extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  const renderActiveMovieSection = () => {
-    switch (activeFilter) {
+    this.props.setActiveItem(PAGE_FILTERS[0]);
+  }
+
+  renderActiveMovieSection() {
+    switch (this.props.activeItem) {
       case `Details`:
         return <MoviePageDetails
-          movie={movie}
+          movie={this.props.movie}
         />;
       case `Reviews`:
         return <MoviePageReviews
-          movie={movie}
+          movie={this.props.movie}
         />;
       default:
         return <MoviePageOverview
-          movie={movie}
+          movie={this.props.movie}
         />;
     }
-  };
+  }
 
-  return (
-    <div className="movie-card__desc">
-      <nav className="movie-nav movie-card__nav">
-        <ul className="movie-nav__list">
-          {PAGE_FILTERS.map((filter) => (
-            <MovieCardNavigationItem
-              key={filter}
-              filter={filter}
-              activeFilter={activeFilter}
-              setActiveFilter={setActiveFilter}
-            />
-          ))}
-        </ul>
-      </nav>
-      {renderActiveMovieSection()}
-    </div>
-  );
-};
+  render() {
+    const {activeItem, setActiveItem} = this.props;
+
+    return (
+      <div className="movie-card__desc">
+        <nav className="movie-nav movie-card__nav">
+          <ul className="movie-nav__list">
+            {PAGE_FILTERS.map((filter) => (
+              <MovieCardNavigationItem
+                key={filter}
+                filter={filter}
+                isActive={activeItem === filter}
+                setActiveFilter={setActiveItem}
+              />
+            ))}
+          </ul>
+        </nav>
+        {this.renderActiveMovieSection()}
+      </div>
+    );
+  }
+}
 
 MovieCardDescription.propTypes = {
   movie: PropTypes.shape({
@@ -64,8 +72,8 @@ MovieCardDescription.propTypes = {
       actors: PropTypes.string.isRequired
     }).isRequired,
   }).isRequired,
-  activeFilter: PropTypes.string.isRequired,
-  setActiveFilter: PropTypes.func.isRequired,
+  activeItem: PropTypes.string,
+  setActiveItem: PropTypes.func.isRequired,
 };
 
 export default MovieCardDescription;

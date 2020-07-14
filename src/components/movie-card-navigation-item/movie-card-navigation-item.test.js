@@ -10,7 +10,7 @@ describe(`MovieCardDescriptionItem render`, () => {
     const tree = renderer.create(
         <MovieCardNavigationItem
           filter={`Default`}
-          activeFilter={`Overview`}
+          isActive={true}
           setActiveFilter={handlerSetActive}
         />
     ).toJSON();

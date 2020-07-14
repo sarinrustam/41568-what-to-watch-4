@@ -33,12 +33,11 @@ const movie = {
 describe(`SMC hover and click`, () => {
   it(`Should SMC be hovered`, () => {
     const hoverHandler = jest.fn();
-    // const clickHandler = jest.fn();
 
     const smallMovieCard = mount(
         <SmallMovieCard
           movie={movie}
-          handlerMovieClick={() => {}}
+          onMovieClick={() => {}}
           handlerMouseEnter={hoverHandler}
           handlerMouseLeave={() => {}}
           isPlaying={true}
@@ -51,13 +50,12 @@ describe(`SMC hover and click`, () => {
   });
 
   it(`Should SMC title be clicked`, () => {
-    // const hoverHandler = jest.fn();
     const clickHandler = jest.fn();
 
     const smallMovieCard = mount(
         <SmallMovieCard
           movie={movie}
-          handlerMovieClick={clickHandler}
+          onMovieClick={clickHandler}
           handlerMouseEnter={() => {}}
           handlerMouseLeave={() => {}}
           isPlaying={true}

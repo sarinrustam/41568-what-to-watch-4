@@ -18,7 +18,9 @@ const withActiveItem = (Component) => {
         activeItem: item,
       });
 
-      this.props.changeActiveItem(item);
+      if (this.props.changeActiveItem) {
+        this.props.changeActiveItem(item);
+      }
     }
 
     render() {
@@ -33,7 +35,7 @@ const withActiveItem = (Component) => {
   }
 
   WithActiveItem.propTypes = {
-    changeActiveItem: PropTypes.func.isRequired,
+    changeActiveItem: PropTypes.func,
   };
 
   return WithActiveItem;

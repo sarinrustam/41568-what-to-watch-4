@@ -29,7 +29,7 @@ describe(`Render SMC`, () => {
     const tree = rerender
     .create(<SmallMovieCard
       movie={movie}
-      handlerMovieClick={() => {}}
+      onMovieClick={() => {}}
       handlerMouseEnter={() => {}}
       handlerMouseLeave={() => {}}
       isPlaying={true}

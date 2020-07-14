@@ -11,8 +11,8 @@ describe(`MovieCardDescription render`, () => {
     const tree = renderer.create(
         <MovieCardDescription
           movie={movies[0]}
-          activeFilter={`Overview`}
-          setActiveFilter={handlerSetActive}
+          activeItem={`Overview`}
+          setActiveItem={handlerSetActive}
         />
     ).toJSON();
 

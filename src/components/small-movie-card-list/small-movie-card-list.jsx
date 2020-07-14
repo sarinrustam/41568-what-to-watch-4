@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
-import withSmallMovieCard from "../../hocs/with-small-movie-card/with-small-movie-card.js";
+import withSmallMovieCard from "../../hocs/with-video-play/with-video-play.js";
 
 const SmallMovieCardWrapped = withSmallMovieCard(SmallMovieCard);
 
