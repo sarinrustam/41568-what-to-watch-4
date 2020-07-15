@@ -4,8 +4,12 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Main from "@components/main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import PropTypes from "prop-types";
+import VideoPlayerFull from "../video-player-full/video-player-full.jsx";
+import withFullVideoPlayer from "../../hocs/with-full-video-player/with-full-video-player.js";
 
 const SHOWING_MOVIES_COUNT = 4;
+
+const VideoPlayerFullWrapped = withFullVideoPlayer(VideoPlayerFull);
 
 class App extends PureComponent {
   constructor(props) {
@@ -59,6 +63,11 @@ class App extends PureComponent {
               movie={this.props.movies[0]}
               relativeMovies={this.props.movies}
               onMovieClick={this.handlerMovieClick}
+            />
+          </Route>
+          <Route exact path="/player">
+            <VideoPlayerFullWrapped
+              movie={this.props.movies[4]}
             />
           </Route>
         </Switch>

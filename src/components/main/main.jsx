@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 import {setCurrentGenre, incrementCountMoviesShow, resetCountMoviesShow} from "../../reducer.js";
+// import {useHistory} from "react-router";
 
 import PropTypes from "prop-types";
 
@@ -19,6 +20,7 @@ class Main extends PureComponent {
     this.handlerMovieClick = this.handlerMovieClick.bind(this);
     this.handlerShowMoreButtonClick = this.handlerShowMoreButtonClick.bind(this);
     this.handlerSetCurrentGenre = this.handlerSetCurrentGenre.bind(this);
+    this.handlePlay = this.handlePlay.bind(this);
   }
 
   handlerMovieClick(movie) {
@@ -34,6 +36,10 @@ class Main extends PureComponent {
 
     onSetCurrentGenre(genre);
     onresetCountMoviesShow();
+  }
+
+  handlePlay() {
+    //
   }
 
   render() {
@@ -78,7 +84,11 @@ class Main extends PureComponent {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button">
+                  <button
+                    className="btn btn--play movie-card__button"
+                    type="button"
+                    onClick={this.handlePlay}
+                  >
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"></use>
                     </svg>
