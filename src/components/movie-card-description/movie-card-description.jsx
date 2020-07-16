@@ -10,8 +10,6 @@ import MovieCardNavigationItem from "../movie-card-navigation-item/movie-card-na
 class MovieCardDescription extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.props.setActiveItem(PAGE_FILTERS[0]);
   }
 
   renderActiveMovieSection() {
