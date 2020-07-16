@@ -29,7 +29,7 @@ class App extends PureComponent {
   }
 
   renderApp() {
-    const {title, genre, year, movies} = this.props;
+    const {title, genre, year, id, movies} = this.props;
     const {activeMovie} = this.state;
     const relativeMovies = movies.slice(0, SHOWING_MOVIES_COUNT);
 
@@ -47,6 +47,7 @@ class App extends PureComponent {
         headerMovieGenre={genre}
         headerMovieYear={year}
         onMovieClick={this.handlerMovieClick}
+        id={id}
       />
     );
   }
@@ -65,11 +66,7 @@ class App extends PureComponent {
               onMovieClick={this.handlerMovieClick}
             />
           </Route>
-          <Route exact path="/player">
-            <VideoPlayerFullWrapped
-              movie={this.props.movies[4]}
-            />
-          </Route>
+          <Route exact path="/player/:id" component={VideoPlayerFullWrapped} />
         </Switch>
       </BrowserRouter>
     );
@@ -80,6 +77,7 @@ App.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   movies: PropTypes.array.isRequired
 };
 

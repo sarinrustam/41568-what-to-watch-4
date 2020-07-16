@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const VideoPlayerFull = (props) => {
-  const {movie, onExitVideo, onTogglePlay, onFullScreen, children} = props;
+  const {movie, onExitVideo, onTogglePlay, onFullScreen, children, percentProgress, timeLeft} = props;
 
   return (
     <div className="player">
@@ -17,15 +17,15 @@ const VideoPlayerFull = (props) => {
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
-            <progress className="player__progress" value="30" max="100"></progress>
+            <progress className="player__progress" value={percentProgress} max="100"></progress>
             <div
               className="player__toggler"
-              style={{left: `30%`}}
+              style={{left: `${percentProgress}%`}}
             >
               Toggler
             </div>
           </div>
-          <div className="player__time-value">1:30:29</div>
+          <div className="player__time-value">{timeLeft}</div>
         </div>
 
         <div className="player__controls-row">
@@ -82,6 +82,8 @@ VideoPlayerFull.propTypes = {
   onTogglePlay: PropTypes.func.isRequired,
   onFullScreen: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
+  percentProgress: PropTypes.number.isRequired,
+  timeLeft: PropTypes.number.isRequired,
 };
 
 export default VideoPlayerFull;

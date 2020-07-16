@@ -1,5 +1,7 @@
 import React, {createRef} from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {Buttons} from "../../utils/utils.js";
 
 
 const withFullVideoPlayer = (Component) => {
@@ -8,22 +10,34 @@ const withFullVideoPlayer = (Component) => {
       super(props);
 
       this.videoRef = createRef();
+      this.movie = this.props.movies.find((item) => item.id === Number(this.props.match.params.id));
 
       this.state = {
-        isPlaying: false
+        isPlaying: false,
+        progress: 0,
       };
+
 
       this.handleTogglePlay = this.handleTogglePlay.bind(this);
       this.handleEnterFullScreen = this.handleEnterFullScreen.bind(this);
+      this.handleExitVideo = this.handleExitVideo.bind(this);
     }
 
     componentDidMount() {
-      const {videoLink, poster} = this.props.movie;
+      const {videoLink, poster} = this.movie;
       const video = this.videoRef.current;
 
 
       video.src = videoLink;
       video.poster = poster;
+
+      video.ontimeupdate = () => {
+        this.setState({
+          progress: video.currentTime
+        });
+      };
+
+      document.addEventListener(`keydown`, this.handleExitVideo);
     }
 
     componentDidUpdate() {
@@ -41,6 +55,10 @@ const withFullVideoPlayer = (Component) => {
 
       video.src = null;
       video.poster = null;
+      video.ontimeupdate = null;
+      video.onplay = null;
+      video.onpause = null;
+      document.removeEventListener(`keydown`, this.handleExitVideo);
     }
 
     handleTogglePlay() {
@@ -54,12 +72,25 @@ const withFullVideoPlayer = (Component) => {
       video.requestFullscreen();
     }
 
+    handleExitVideo(event) {
+      if (event.type === `keydown` && event.key === Buttons.ESC || event.type === `click`) {
+        this.props.history.goBack();
+      }
+    }
+
     render() {
+      const video = this.videoRef.current;
+      const duration = video ? video.duration : null;
+      const timeLeft = duration ? duration - this.state.progress : 0;
+      const percentProgress = timeLeft ? Math.round(this.state.progress / duration * 100) : 0;
+
       return (
         <Component
-          {...this.props}
+          movie={this.movie}
+          timeLeft={timeLeft}
+          percentProgress={percentProgress}
           onTogglePlay={this.handleTogglePlay}
-          onExitVideo={() => {}}
+          onExitVideo={this.handleExitVideo}
           onFullScreen={this.handleEnterFullScreen}
         >
           <video
@@ -73,27 +104,26 @@ const withFullVideoPlayer = (Component) => {
   }
 
   WithFullVideoPlayer.propTypes = {
-    movie: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      genre: PropTypes.string.isRequired,
-      coverBackground: PropTypes.string.isRequired,
-      release: PropTypes.number.isRequired,
-      poster: PropTypes.string.isRequired,
-      videoLink: PropTypes.string.isRequired,
-      rating: PropTypes.shape({
-        score: PropTypes.number.isRequired,
-        scoreDesc: PropTypes.string.isRequired,
-        amount: PropTypes.number.isRequired,
-      }).isRequired,
-      crew: PropTypes.shape({
-        director: PropTypes.string.isRequired,
-        actors: PropTypes.string.isRequired
-      }).isRequired,
+    history: PropTypes.shape({
+      goBack: PropTypes.func.isRequired,
     }).isRequired,
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+      }).isRequired
+    }).isRequired,
+    movies: PropTypes.array.isRequired,
   };
 
-  return WithFullVideoPlayer;
+  const mapStateToProps = (state) => {
+    return {
+      movies: state.movies
+    };
+  };
+
+  return connect(mapStateToProps)(WithFullVideoPlayer);
 };
 
+
 export default withFullVideoPlayer;
+

@@ -3,6 +3,7 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 
 import rerender from "react-test-renderer";
+import {MemoryRouter} from 'react-router';
 import Main from "./main.jsx";
 import {FILTER_ALL_GENRES, COUNT_LIMIT_MOVIES} from '../../utils/utils.js';
 
@@ -11,7 +12,8 @@ const mockStore = configureStore([]);
 const HeaderMovieData = {
   title: `TENET`,
   genre: `Drama`,
-  year: 2020
+  year: 2020,
+  id: 1
 };
 
 const movies = [
@@ -68,13 +70,16 @@ describe(`Render component`, () => {
     const tree = rerender
       .create(
           <Provider store={store}>
-            <Main
-              headerMovieTitle={HeaderMovieData.title}
-              headerMovieGenre={HeaderMovieData.genre}
-              headerMovieYear={HeaderMovieData.year}
-              movies={movies}
-              onMovieClick={() => {}}
-            />
+            <MemoryRouter>
+              <Main
+                headerMovieTitle={HeaderMovieData.title}
+                headerMovieGenre={HeaderMovieData.genre}
+                headerMovieYear={HeaderMovieData.year}
+                movies={movies}
+                onMovieClick={() => {}}
+                id={HeaderMovieData.id}
+              />
+            </MemoryRouter>
           </Provider>, {
             createNodeMock: () => {
               return {};

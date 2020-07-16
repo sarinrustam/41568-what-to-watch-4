@@ -11,7 +11,8 @@ const mockStore = configureStore([]);
 const HeaderMovieData = {
   title: `TENET`,
   genre: `Drama`,
-  year: 2020
+  year: 2020,
+  id: 1,
 };
 
 const movies = [
@@ -93,6 +94,7 @@ describe(`Render component`, () => {
               genre={HeaderMovieData.genre}
               year={HeaderMovieData.year}
               movies={movies}
+              id={HeaderMovieData.id}
             />
           </Provider>, {
             createNodeMock: () => {

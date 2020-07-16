@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 import {setCurrentGenre, incrementCountMoviesShow, resetCountMoviesShow} from "../../reducer.js";
-// import {useHistory} from "react-router";
+import {withRouter} from "react-router-dom";
 
 import PropTypes from "prop-types";
 
@@ -39,7 +39,7 @@ class Main extends PureComponent {
   }
 
   handlePlay() {
-    //
+    this.props.history.push(`/player/${this.props.id}`);
   }
 
   render() {
@@ -147,6 +147,7 @@ class Main extends PureComponent {
 }
 
 Main.propTypes = {
+  id: PropTypes.number.isRequired,
   headerMovieTitle: PropTypes.string.isRequired,
   headerMovieGenre: PropTypes.string.isRequired,
   headerMovieYear: PropTypes.number.isRequired,
@@ -160,6 +161,9 @@ Main.propTypes = {
   onresetCountMoviesShow: PropTypes.func.isRequired,
   slicedMoviesByGenre: PropTypes.array.isRequired,
   showMoreButton: PropTypes.bool.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -190,4 +194,4 @@ const mapDispatchToProps = {
 };
 
 export {Main};
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Main));
