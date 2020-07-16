@@ -8,7 +8,6 @@ exports[`Render SMCL SMCL should render SMC correctly 1`] = `
     className="small-movie-card catalog__movies-card"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
-    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -36,7 +35,6 @@ exports[`Render SMCL SMCL should render SMC correctly 1`] = `
     className="small-movie-card catalog__movies-card"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
-    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"

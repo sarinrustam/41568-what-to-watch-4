@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCardDescription render MovieCardDescription render 1`] = `
+<div
+  className="movie-card__desc"
+>
+  <nav
+    className="movie-nav movie-card__nav"
+  >
+    <ul
+      className="movie-nav__list"
+    >
+      <li
+        className="movie-nav__item movie-nav__item--active"
+        onClick={[Function]}
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+        >
+          Overview
+        </a>
+      </li>
+      <li
+        className="movie-nav__item"
+        onClick={[Function]}
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+        >
+          Details
+        </a>
+      </li>
+      <li
+        className="movie-nav__item"
+        onClick={[Function]}
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+        >
+          Reviews
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div
+    className="movie-rating"
+  >
+    <div
+      className="movie-rating__score"
+    >
+      2.5
+    </div>
+    <p
+      className="movie-rating__meta"
+    >
+      <span
+        className="movie-rating__level"
+      >
+        Very good
+      </span>
+      <span
+        className="movie-rating__count"
+      >
+        2323
+         ratings
+      </span>
+    </p>
+  </div>
+  <div
+    className="movie-card__text"
+  >
+    <p>
+      The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.
+    </p>
+    <p
+      className="movie-card__director"
+    >
+      <strong>
+        Director: 
+        Quentin Tarantino
+      </strong>
+    </p>
+    <p
+      className="movie-card__starring"
+    >
+      <strong>
+        Starring: 
+        Tim Roth, Amanda Plummer, Laura Lovelace, John Travolta, Samuel L. Jackson
+         and other
+      </strong>
+    </p>
+  </div>
+</div>
+`;

@@ -1,55 +1,22 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-
-import MoviePageReviews from "../movie-page-review/movie-page-reviews.jsx";
-import MoviePageOverview from "../movie-page-overview/movie-page-overview.jsx";
-import MoviePageDetails from "../movie-page-details/movie-page-details.jsx";
+import {PAGE_FILTERS} from "../../utils/utils.js";
 
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
-import {PAGE_FILTERS} from "../../utils/utils.js";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
+import MovieCardDescription from "../movie-card-description/movie-card-description.jsx";
+
+const SmallMovieCardListWrapped = withActiveItem(SmallMovieCardList);
+const MovieCardDescriptionWrapped = withActiveItem(MovieCardDescription, PAGE_FILTERS[0]);
 
 class MoviePage extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      activeFilter: PAGE_FILTERS[0]
-    };
-
-    this.handlerMovieClick = this.handlerMovieClick.bind(this);
-  }
-
-  setActiveFilter(filter) {
-    this.setState({
-      activeFilter: filter
-    });
-  }
-
-  handlerMovieClick(movie) {
-    this.props.onMovieClick(movie);
-  }
-
-  renderActiveMovieSection() {
-    switch (this.state.activeFilter) {
-      case `Details`:
-        return <MoviePageDetails
-          movie={this.props.movie}
-        />;
-      case `Reviews`:
-        return <MoviePageReviews
-          movie={this.props.movie}
-        />;
-      default:
-        return <MoviePageOverview
-          movie={this.props.movie}
-        />;
-    }
   }
 
   render() {
-    const {movie, relativeMovies} = this.props;
+    const {movie, relativeMovies, onMovieClick} = this.props;
     const {title, genre, coverBackground, poster, release} = movie;
-    const {activeFilter} = this.state;
 
     return (
       <React.Fragment>
@@ -109,23 +76,9 @@ class MoviePage extends PureComponent {
               <div className="movie-card__poster movie-card__poster--big">
                 <img src={poster} alt={title} width="218" height="327" />
               </div>
-
-              <div className="movie-card__desc">
-                <nav className="movie-nav movie-card__nav">
-                  <ul className="movie-nav__list">
-                    {PAGE_FILTERS.map((filter) => (
-                      <li
-                        key={filter}
-                        onClick={() => this.setActiveFilter(filter)}
-                        className={activeFilter === filter ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}
-                      >
-                        <a href="#" className="movie-nav__link">{filter}</a>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-                {this.renderActiveMovieSection()}
-              </div>
+              <MovieCardDescriptionWrapped
+                movie={movie}
+              />
             </div>
           </div>
         </section>
@@ -134,9 +87,9 @@ class MoviePage extends PureComponent {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
 
-            <SmallMovieCardList
+            <SmallMovieCardListWrapped
               movies={relativeMovies}
-              onMovieClick={this.handlerMovieClick}
+              changeActiveItem={onMovieClick}
             />
           </section>
 
@@ -163,7 +116,6 @@ MoviePage.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    // img: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     coverBackground: PropTypes.string.isRequired,
     release: PropTypes.number.isRequired,

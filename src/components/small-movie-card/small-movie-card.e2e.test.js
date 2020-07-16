@@ -33,32 +33,32 @@ const movie = {
 describe(`SMC hover and click`, () => {
   it(`Should SMC be hovered`, () => {
     const hoverHandler = jest.fn();
-    const clickHandler = jest.fn();
 
     const smallMovieCard = mount(
         <SmallMovieCard
           movie={movie}
-          onMouseOver={hoverHandler}
-          onMovieClick={clickHandler}
+          onMovieClick={() => {}}
+          handlerMouseEnter={hoverHandler}
+          handlerMouseLeave={() => {}}
+          isPlaying={true}
         />
     );
 
-    smallMovieCard.find(`article.small-movie-card`).simulate(`mouseover`);
+    smallMovieCard.find(`article.small-movie-card`).simulate(`mouseenter`);
 
     expect(hoverHandler).toHaveBeenCalledTimes(1);
-
-    expect(hoverHandler.mock.calls[0][0]).toBe(movie.id);
   });
 
   it(`Should SMC title be clicked`, () => {
-    const hoverHandler = jest.fn();
     const clickHandler = jest.fn();
 
     const smallMovieCard = mount(
         <SmallMovieCard
           movie={movie}
-          onMouseOver={hoverHandler}
           onMovieClick={clickHandler}
+          handlerMouseEnter={() => {}}
+          handlerMouseLeave={() => {}}
+          isPlaying={true}
         />
     );
 
