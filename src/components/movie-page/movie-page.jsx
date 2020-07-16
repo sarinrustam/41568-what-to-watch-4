@@ -1,13 +1,13 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {PAGE_FILTERS} from "../../utils/utils.js";
 
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import MovieCardDescription from "../movie-card-description/movie-card-description.jsx";
-// import withMovieCardDescription from "../../hocs/with-movie-card-description/with-movie-card-description.js";
 
 const SmallMovieCardListWrapped = withActiveItem(SmallMovieCardList);
-const MovieCardDescriptionWrapped = withActiveItem(MovieCardDescription);
+const MovieCardDescriptionWrapped = withActiveItem(MovieCardDescription, PAGE_FILTERS[0]);
 
 class MoviePage extends PureComponent {
   constructor(props) {
