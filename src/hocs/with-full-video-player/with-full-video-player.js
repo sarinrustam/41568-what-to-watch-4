@@ -10,7 +10,6 @@ const withFullVideoPlayer = (Component) => {
       super(props);
 
       this.videoRef = createRef();
-      this.movie = this.props.movies.find((item) => item.id === Number(this.props.match.params.id));
 
       this.state = {
         isPlaying: false,
@@ -24,7 +23,7 @@ const withFullVideoPlayer = (Component) => {
     }
 
     componentDidMount() {
-      const {videoLink, poster} = this.movie;
+      const {videoLink, poster} = this.props.movie;
       const video = this.videoRef.current;
 
 
@@ -86,7 +85,7 @@ const withFullVideoPlayer = (Component) => {
 
       return (
         <Component
-          movie={this.movie}
+          movie={this.props.movie}
           timeLeft={timeLeft}
           percentProgress={percentProgress}
           onTogglePlay={this.handleTogglePlay}
@@ -112,12 +111,12 @@ const withFullVideoPlayer = (Component) => {
         id: PropTypes.string.isRequired,
       }).isRequired
     }).isRequired,
-    movies: PropTypes.array.isRequired,
+    movie: PropTypes.object.isRequired,
   };
 
-  const mapStateToProps = (state) => {
+  const mapStateToProps = (state, props) => {
     return {
-      movies: state.movies
+      movie: state.movies.find((item) => item.id === Number(props.match.params.id))
     };
   };
 
