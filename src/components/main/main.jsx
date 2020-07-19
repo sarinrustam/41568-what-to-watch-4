@@ -39,7 +39,7 @@ class Main extends PureComponent {
   }
 
   handlePlay() {
-    this.props.history.push(`/player/${this.props.id}`);
+    this.props.history.push(`/player/${this.props.headerMovieId}`);
   }
 
   render() {
@@ -147,7 +147,7 @@ class Main extends PureComponent {
 }
 
 Main.propTypes = {
-  id: PropTypes.number.isRequired,
+  headerMovieId: PropTypes.number.isRequired,
   headerMovieTitle: PropTypes.string.isRequired,
   headerMovieGenre: PropTypes.string.isRequired,
   headerMovieYear: PropTypes.number.isRequired,

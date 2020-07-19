@@ -47,7 +47,7 @@ class App extends PureComponent {
         headerMovieGenre={genre}
         headerMovieYear={year}
         onMovieClick={this.handlerMovieClick}
-        id={id}
+        headerMovieId={id}
       />
     );
   }
