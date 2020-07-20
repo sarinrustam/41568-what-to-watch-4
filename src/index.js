@@ -18,6 +18,7 @@ const MovieData = {
   TITLE: `The Grand Budapest Hotel`,
   GENRE: `Drama`,
   YEAR: 2014,
+  ID: 1,
 };
 
 ReactDOM.render(
@@ -27,6 +28,7 @@ ReactDOM.render(
         genre={MovieData.GENRE}
         year={MovieData.YEAR}
         movies={movies}
+        id={MovieData.ID}
       />
     </Provider>,
     document.querySelector(`#root`)

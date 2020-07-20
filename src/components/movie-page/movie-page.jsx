@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import {withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
 import {PAGE_FILTERS} from "../../utils/utils.js";
 
@@ -12,6 +13,12 @@ const MovieCardDescriptionWrapped = withActiveItem(MovieCardDescription, PAGE_FI
 class MoviePage extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.handlePlay = this.handlePlay.bind(this);
+  }
+
+  handlePlay() {
+    this.props.history.push(`/player/${this.props.movie.id}`);
   }
 
   render() {
@@ -53,7 +60,11 @@ class MoviePage extends PureComponent {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button">
+                  <button
+                    className="btn btn--play movie-card__button"
+                    type="button"
+                    onClick={this.handlePlay}
+                  >
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"></use>
                     </svg>
@@ -131,7 +142,10 @@ MoviePage.propTypes = {
     }).isRequired,
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired,
-  relativeMovies: PropTypes.array.isRequired
+  relativeMovies: PropTypes.array.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default MoviePage;
+export default withRouter(MoviePage);

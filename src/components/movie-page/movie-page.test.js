@@ -1,5 +1,6 @@
 import React from "react";
 import rerender from "react-test-renderer";
+import {MemoryRouter} from 'react-router';
 
 import MoviePage from "./movie-page.jsx";
 
@@ -72,11 +73,13 @@ describe(`Render MoviePage`, () => {
   it(`Should MoviePage render correctly`, () => {
     const tree = rerender
     .create(
-        <MoviePage
-          movie={MOVIES[0]}
-          onMovieClick={handlerMovieClick}
-          relativeMovies={MOVIES}
-        />, {
+        <MemoryRouter>
+          <MoviePage
+            movie={MOVIES[0]}
+            onMovieClick={handlerMovieClick}
+            relativeMovies={MOVIES}
+          />
+        </MemoryRouter>, {
           createNodeMock: () => {
             return {};
           }}
