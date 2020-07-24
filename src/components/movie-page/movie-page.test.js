@@ -1,8 +1,13 @@
 import React from "react";
 import rerender from "react-test-renderer";
 import {MemoryRouter} from 'react-router';
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+import NameSpace from "./../../reducer/name-space.js";
 
 import MoviePage from "./movie-page.jsx";
+
+const mockStore = configureStore([]);
 
 const MOVIES = [
   {
@@ -71,15 +76,28 @@ const handlerMovieClick = () => {};
 
 describe(`Render MoviePage`, () => {
   it(`Should MoviePage render correctly`, () => {
+    const store = mockStore({
+      [NameSpace.DATA]: {
+        movies: [],
+        promoMovie: {}
+      },
+      [NameSpace.APP]: {
+        currentGenre: ``,
+        countMoviesShow: ``,
+      },
+    });
+
     const tree = rerender
     .create(
-        <MemoryRouter>
-          <MoviePage
-            movie={MOVIES[0]}
-            onMovieClick={handlerMovieClick}
-            relativeMovies={MOVIES}
-          />
-        </MemoryRouter>, {
+        <Provider store={store}>
+          <MemoryRouter>
+            <MoviePage
+              movie={MOVIES[0]}
+              onMovieClick={handlerMovieClick}
+              relativeMovies={MOVIES}
+            />
+          </MemoryRouter>
+        </Provider>, {
           createNodeMock: () => {
             return {};
           }}
