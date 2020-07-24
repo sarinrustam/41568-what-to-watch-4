@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
 import {PAGE_FILTERS} from "../../utils/utils.js";
@@ -6,6 +7,9 @@ import {PAGE_FILTERS} from "../../utils/utils.js";
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import MovieCardDescription from "../movie-card-description/movie-card-description.jsx";
+import {getMovies} from "../../reducer/data/selectors.js";
+
+const SHOWING_MOVIES_COUNT = 4;
 
 const SmallMovieCardListWrapped = withActiveItem(SmallMovieCardList);
 const MovieCardDescriptionWrapped = withActiveItem(MovieCardDescription, PAGE_FILTERS[0]);
@@ -148,4 +152,13 @@ MoviePage.propTypes = {
   }).isRequired,
 };
 
-export default withRouter(MoviePage);
+const mapStateToProps = (state, props) => {
+  const movies = getMovies(state);
+
+  return {
+    relativeMovies: movies.slice(0, SHOWING_MOVIES_COUNT),
+    movie: props.movie || movies[0]
+  };
+};
+
+export default connect(mapStateToProps)(withRouter(MoviePage));
