@@ -7,6 +7,7 @@ const AuthorizationStatus = {
 
 const defaultAvatar = `img/avatar.jpg`;
 
+
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   avatar: defaultAvatar,
