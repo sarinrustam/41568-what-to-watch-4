@@ -12,6 +12,7 @@ import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {FILTER_ALL_GENRES} from "../../utils/utils.js";
 import {getMovies, getPromoMovie} from "../../reducer/data/selectors.js";
 import {getCurrentGenre, getCountMoviesShow} from "../../reducer/app/selectors.js";
+import UserBlock from "../user-block/user-block.jsx";
 
 const SmallMovieCardListWrapped = withActiveItem(SmallMovieCardList);
 
@@ -65,11 +66,7 @@ class Main extends PureComponent {
               </a>
             </div>
 
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </div>
+            <UserBlock/>
           </header>
 
           <div className="movie-card__wrap">

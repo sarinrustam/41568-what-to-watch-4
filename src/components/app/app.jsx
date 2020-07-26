@@ -5,6 +5,7 @@ import Main from "@components/main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import VideoPlayerFull from "../video-player-full/video-player-full.jsx";
 import withFullVideoPlayer from "../../hocs/with-full-video-player/with-full-video-player.js";
+import SignIn from "../../components/sign-in/sign-in.jsx";
 
 const VideoPlayerFullWrapped = withFullVideoPlayer(VideoPlayerFull);
 
@@ -55,6 +56,7 @@ class App extends PureComponent {
             />
           </Route>
           <Route exact path="/player/:id" component={VideoPlayerFullWrapped} />
+          <Route exact path="/login" component={SignIn}/>
         </Switch>
       </BrowserRouter>
     );
