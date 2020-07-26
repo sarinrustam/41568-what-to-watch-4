@@ -157,7 +157,7 @@ const mapStateToProps = (state, props) => {
 
   return {
     relativeMovies: movies.slice(0, SHOWING_MOVIES_COUNT),
-    movie: props.movie || movies[0]
+    movie: props.movie
   };
 };
 

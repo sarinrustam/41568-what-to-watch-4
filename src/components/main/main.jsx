@@ -10,7 +10,7 @@ import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import GenreList from "../genres-list/genres-list.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {FILTER_ALL_GENRES} from "../../utils/utils.js";
-import {getMovies, getPromoMovie} from "../../reducer/data/selectors.js";
+import {getPromoMovie, getMoviesByGenre, getGenres} from "../../reducer/data/selectors.js";
 import {getCurrentGenre, getCountMoviesShow} from "../../reducer/app/selectors.js";
 import UserBlock from "../user-block/user-block.jsx";
 
@@ -169,19 +169,11 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const movies = getMovies(state);
   const currentGenre = getCurrentGenre(state);
   const countMoviesShow = getCountMoviesShow(state);
   const promoMovie = getPromoMovie(state);
-
-  const moviesByGenre = movies.filter((movie) => {
-    if (currentGenre === FILTER_ALL_GENRES) {
-      return true;
-    }
-    return movie.genre === currentGenre;
-  });
-
-  const genres = movies.map((movie) => movie.genre);
+  const moviesByGenre = getMoviesByGenre(state);
+  const genres = getGenres(state);
   const uniqueGenres = [FILTER_ALL_GENRES].concat(Array.from(new Set(genres)));
   const slicedMoviesByGenre = moviesByGenre.slice(0, countMoviesShow);
   const showMoreButton = moviesByGenre.length > countMoviesShow;
