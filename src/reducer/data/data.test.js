@@ -1,7 +1,7 @@
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api/api.js";
 import {ActionType, Operation} from "./data.js";
-import {arrayAdapter, adapter} from "../../adapters/movies.js";
+import {moviesAdapter, movieAdapter} from "../../adapters/movies.js";
 
 const api = createAPI(() => {});
 
@@ -43,7 +43,7 @@ describe(`Operation of data loading work correctly`, () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_MOVIES,
-          payload: arrayAdapter(movies),
+          payload: moviesAdapter(movies),
         });
       });
   });
@@ -63,7 +63,7 @@ describe(`Operation of data loading work correctly`, () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_PROMO,
-          payload: adapter(movies[0]),
+          payload: movieAdapter(movies[0]),
         });
       });
   });

@@ -1,5 +1,5 @@
 import {extend} from "../../utils/utils.js";
-import {arrayAdapter, adapter} from "../../adapters/movies.js";
+import {moviesAdapter, movieAdapter} from "../../adapters/movies.js";
 
 const initialState = {
   movies: [],
@@ -30,7 +30,7 @@ const Operation = {
   loadMovies: () => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then((response) => {
-        const movies = arrayAdapter(response.data);
+        const movies = moviesAdapter(response.data);
         dispatch(ActionCreator.loadMovies(movies));
       })
       .catch((error) => {
@@ -40,7 +40,7 @@ const Operation = {
   loadPromo: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`)
       .then((response) => {
-        const promoMovie = adapter(response.data);
+        const promoMovie = movieAdapter(response.data);
         dispatch(ActionCreator.loadPromo(promoMovie));
       });
   }
