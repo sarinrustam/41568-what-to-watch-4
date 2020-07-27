@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {setCurrentGenre, incrementCountMoviesShow, resetCountMoviesShow} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/app/app.js";
 import {withRouter} from "react-router-dom";
 
 import PropTypes from "prop-types";
@@ -10,6 +10,8 @@ import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import GenreList from "../genres-list/genres-list.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {FILTER_ALL_GENRES} from "../../utils/utils.js";
+import {getPromoMovie, getMoviesByGenre, getGenres} from "../../reducer/data/selectors.js";
+import {getCurrentGenre, getCountMoviesShow} from "../../reducer/app/selectors.js";
 
 const SmallMovieCardListWrapped = withActiveItem(SmallMovieCardList);
 
@@ -39,11 +41,11 @@ class Main extends PureComponent {
   }
 
   handlePlay() {
-    this.props.history.push(`/player/${this.props.headerMovieId}`);
+    this.props.history.push(`/player/${this.props.promoMovie.id}`);
   }
 
   render() {
-    const {headerMovieTitle, headerMovieGenre, headerMovieYear, currentGenre, genres, slicedMoviesByGenre, showMoreButton} = this.props;
+    const {currentGenre, genres, slicedMoviesByGenre, showMoreButton, promoMovie} = this.props;
 
     return (
       <React.Fragment>
@@ -73,14 +75,14 @@ class Main extends PureComponent {
           <div className="movie-card__wrap">
             <div className="movie-card__info">
               <div className="movie-card__poster">
-                <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+                <img src={promoMovie.coverBackground} alt={promoMovie.title} width="218" height="327" />
               </div>
 
               <div className="movie-card__desc">
-                <h2 className="movie-card__title">{headerMovieTitle}</h2>
+                <h2 className="movie-card__title">{promoMovie.title}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">{headerMovieGenre}</span>
-                  <span className="movie-card__year">{headerMovieYear}</span>
+                  <span className="movie-card__genre">{promoMovie.genre}</span>
+                  <span className="movie-card__year">{promoMovie.release}</span>
                 </p>
 
                 <div className="movie-card__buttons">
@@ -147,10 +149,13 @@ class Main extends PureComponent {
 }
 
 Main.propTypes = {
-  headerMovieId: PropTypes.number.isRequired,
-  headerMovieTitle: PropTypes.string.isRequired,
-  headerMovieGenre: PropTypes.string.isRequired,
-  headerMovieYear: PropTypes.number.isRequired,
+  promoMovie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    release: PropTypes.number.isRequired,
+    coverBackground: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+  }).isRequired,
   onMovieClick: PropTypes.func.isRequired,
   currentGenre: PropTypes.string.isRequired,
   onSetCurrentGenre: PropTypes.func.isRequired,
@@ -167,30 +172,28 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const moviesByGenre = state.movies.filter((movie) => {
-    if (state.currentGenre === FILTER_ALL_GENRES) {
-      return true;
-    }
-    return movie.genre === state.currentGenre;
-  });
-
-  const genres = state.movies.map((movie) => movie.genre);
+  const currentGenre = getCurrentGenre(state);
+  const countMoviesShow = getCountMoviesShow(state);
+  const promoMovie = getPromoMovie(state);
+  const moviesByGenre = getMoviesByGenre(state);
+  const genres = getGenres(state);
   const uniqueGenres = [FILTER_ALL_GENRES].concat(Array.from(new Set(genres)));
-  const slicedMoviesByGenre = moviesByGenre.slice(0, state.countMoviesShow);
-  const showMoreButton = moviesByGenre.length > state.countMoviesShow;
+  const slicedMoviesByGenre = moviesByGenre.slice(0, countMoviesShow);
+  const showMoreButton = moviesByGenre.length > countMoviesShow;
 
   return {
-    currentGenre: state.currentGenre,
+    currentGenre,
     genres: uniqueGenres,
     slicedMoviesByGenre,
     showMoreButton,
+    promoMovie
   };
 };
 
 const mapDispatchToProps = {
-  onSetCurrentGenre: setCurrentGenre,
-  onresetCountMoviesShow: resetCountMoviesShow,
-  onIncrementCountMoviesShow: incrementCountMoviesShow
+  onSetCurrentGenre: ActionCreator.setCurrentGenre,
+  onresetCountMoviesShow: ActionCreator.resetCountMoviesShow,
+  onIncrementCountMoviesShow: ActionCreator.incrementCountMoviesShow
 };
 
 export {Main};
