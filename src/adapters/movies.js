@@ -23,7 +23,5 @@ export const movieAdapter = (movieData) => {
 };
 
 export const moviesAdapter = (dataFromBackend) => {
-  return dataFromBackend.map((movie) => {
-    return movieAdapter(movie);
-  });
+  return dataFromBackend.map(movieAdapter);
 };

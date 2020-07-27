@@ -22,7 +22,7 @@ describe(`Operation for user auth working correctly`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.REQUIRED_AUTHORIZATION,
+          type: ActionType.SET_AUTHORIZATION,
           payload: AuthorizationStatus.AUTH,
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
@@ -50,7 +50,7 @@ describe(`Operation for user auth working correctly`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.REQUIRED_AUTHORIZATION,
+          type: ActionType.SET_AUTHORIZATION,
           payload: AuthorizationStatus.AUTH,
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {

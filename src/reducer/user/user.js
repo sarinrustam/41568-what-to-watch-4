@@ -1,4 +1,5 @@
 import {extend} from "../../utils/utils.js";
+import {userAdapter} from "../../adapters/user.js";
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -15,15 +16,15 @@ const initialState = {
 };
 
 const ActionType = {
-  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  SET_AUTHORIZATION: `SET_AUTHORIZATION`,
   ADD_AVATAR: `ADD_AVATAR`,
   ADD_AUTH_ERROR: `ADD_AUTH_ERROR`,
 };
 
 const ActionCreator = {
-  requireAuthorizathion: (status) => {
+  setAuthorization: (status) => {
     return {
-      type: ActionType.REQUIRED_AUTHORIZATION,
+      type: ActionType.SET_AUTHORIZATION,
       payload: status,
     };
   },
@@ -45,8 +46,8 @@ const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
     return api.get(`/login`)
       .then(({data}) => {
-        dispatch(ActionCreator.requireAuthorizathion(AuthorizationStatus.AUTH));
-        dispatch(ActionCreator.addAvatar(data[`avatar_url`]));
+        dispatch(ActionCreator.setAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.addAvatar(userAdapter(data).avatarUrl));
       })
       .catch((error) => {
         throw error;
@@ -58,7 +59,7 @@ const Operation = {
       password
     })
       .then(({data}) => {
-        dispatch(ActionCreator.requireAuthorizathion(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.setAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.addAvatar(data[`avatar_url`]));
       })
       .catch(({response}) => {
@@ -69,7 +70,7 @@ const Operation = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.REQUIRED_AUTHORIZATION:
+    case ActionType.SET_AUTHORIZATION:
       return extend(state, {
         authorizationStatus: action.payload,
       });
