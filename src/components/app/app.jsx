@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
+import AddReview from "../add-review/add-review.jsx";
 import Main from "@components/main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import VideoPlayerFull from "../video-player-full/video-player-full.jsx";
@@ -55,8 +56,9 @@ class App extends PureComponent {
               onMovieClick={this.handlerMovieClick}
             />
           </Route>
-          <Route exact path="/player/:id" component={VideoPlayerFullWrapped} />
+          <Route exact path="/player/:id" component={VideoPlayerFullWrapped}/>
           <Route exact path="/login" component={SignIn}/>
+          <Route exact path="/dev-review/:id" component={AddReview}/>
         </Switch>
       </BrowserRouter>
     );

@@ -364,6 +364,19 @@ main {
   background: #E8C3C4;
   border-radius: 8px; }
 
+.add-review__text-error {
+  font-size: 22px;
+  line-height: 26px;
+  color: tomato;
+  position: absolute;
+  z-index: 1;
+  left: calc(100% + 16px);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 200px; }
+}
+
 .add-review__textarea {
   display: block;
   width: 100%;
