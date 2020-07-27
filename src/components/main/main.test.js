@@ -70,6 +70,11 @@ describe(`Render component`, () => {
         currentGenre: ``,
         countMoviesShow: ``,
       },
+      [NameSpace.USER]: {
+        authorizationStatus: `s`,
+        avatar: `defaultAvatar`,
+        authorizationError: ``,
+      }
     });
 
     const tree = rerender

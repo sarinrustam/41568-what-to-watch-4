@@ -9,9 +9,9 @@ import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.j
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import GenreList from "../genres-list/genres-list.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
-import {FILTER_ALL_GENRES} from "../../utils/utils.js";
-import {getPromoMovie, getMoviesByGenre, getGenres} from "../../reducer/data/selectors.js";
+import {getPromoMovie, getMoviesByGenre, uniqueGenres} from "../../reducer/data/selectors.js";
 import {getCurrentGenre, getCountMoviesShow} from "../../reducer/app/selectors.js";
+import UserBlock from "../user-block/user-block.jsx";
 
 const SmallMovieCardListWrapped = withActiveItem(SmallMovieCardList);
 
@@ -65,11 +65,7 @@ class Main extends PureComponent {
               </a>
             </div>
 
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </div>
+            <UserBlock/>
           </header>
 
           <div className="movie-card__wrap">
@@ -176,14 +172,13 @@ const mapStateToProps = (state) => {
   const countMoviesShow = getCountMoviesShow(state);
   const promoMovie = getPromoMovie(state);
   const moviesByGenre = getMoviesByGenre(state);
-  const genres = getGenres(state);
-  const uniqueGenres = [FILTER_ALL_GENRES].concat(Array.from(new Set(genres)));
+  const genres = uniqueGenres(state);
   const slicedMoviesByGenre = moviesByGenre.slice(0, countMoviesShow);
   const showMoreButton = moviesByGenre.length > countMoviesShow;
 
   return {
     currentGenre,
-    genres: uniqueGenres,
+    genres,
     slicedMoviesByGenre,
     showMoreButton,
     promoMovie

@@ -30,3 +30,11 @@ export const getGenres = createSelector(
       return resultOne.map((movie) => movie.genre);
     }
 );
+
+export const uniqueGenres = createSelector(
+    getGenres,
+    (resultOne) => {
+      return [FILTER_ALL_GENRES].concat(Array.from(new Set(resultOne)));
+    }
+);
+

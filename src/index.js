@@ -7,6 +7,7 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {Provider} from "react-redux";
 import reducer from "./reducer/reducer.js";
 import {Operation as DataOperation} from "./reducer/data/data.js";
+import {Operation as UserOperation} from "./reducer/user/user.js";
 import thunk from "redux-thunk";
 import {createAPI} from "./api/api.js";
 
@@ -20,6 +21,7 @@ const store = createStore(
 );
 store.dispatch(DataOperation.loadPromo());
 store.dispatch(DataOperation.loadMovies());
+store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(
     <Provider store={store}>
