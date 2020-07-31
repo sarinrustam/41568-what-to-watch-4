@@ -2,9 +2,7 @@ import rerender from "react-test-renderer";
 import React from "react";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import NameSpace from "../../reducer/name-space.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
-import {MemoryRouter} from 'react-router';
+import NameSpace from "./../../reducer/name-space.js";
 
 import AddReview from "./add-review.jsx";
 
@@ -14,16 +12,25 @@ describe(`AddReview snapshot test`, () => {
   it(``, () => {
     const store = mockStore({
       [NameSpace.USER]: {
-        authorizationStatus: AuthorizationStatus.NO_AUTH,
-        avatar: `s`,
+        authorizationStatus: ``,
+        avatar: `defaultAvatar`,
         authorizationError: ``,
       }
     });
     const tree = rerender.create(
-        <Provider store={store}>
-          <MemoryRouter>
-            <AddReview/>
-          </MemoryRouter>
+        <Provider
+          store={store}
+        >
+          <AddReview
+            onInputComment={() => {}}
+            onChangeRating={() => {}}
+            onSendComment={() => {}}
+            rating={3}
+            comment={`Hello world`}
+            isButtonDisabled={true}
+            readOnly={true}
+            errorText={`Error`}
+          />
         </Provider>
     ).toJSON();
 

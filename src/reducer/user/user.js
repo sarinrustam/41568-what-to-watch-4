@@ -60,7 +60,7 @@ const Operation = {
     })
       .then(({data}) => {
         dispatch(ActionCreator.setAuthorization(AuthorizationStatus.AUTH));
-        dispatch(ActionCreator.addAvatar(data[`avatar_url`]));
+        dispatch(ActionCreator.addAvatar(userAdapter(data).avatarUrl));
       })
       .catch(({response}) => {
         dispatch(ActionCreator.addAuthError(response.data.error));

@@ -2,6 +2,7 @@ import React, {PureComponent} from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import AddReview from "../add-review/add-review.jsx";
+import withAddReview from "../../hocs/with-add-review/with-add-review.js";
 import Main from "@components/main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import VideoPlayerFull from "../video-player-full/video-player-full.jsx";
@@ -9,6 +10,7 @@ import withFullVideoPlayer from "../../hocs/with-full-video-player/with-full-vid
 import SignIn from "../../components/sign-in/sign-in.jsx";
 
 const VideoPlayerFullWrapped = withFullVideoPlayer(VideoPlayerFull);
+const AddReviewWrapped = withAddReview(AddReview);
 
 class App extends PureComponent {
   constructor(props) {
@@ -58,7 +60,7 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/player/:id" component={VideoPlayerFullWrapped}/>
           <Route exact path="/login" component={SignIn}/>
-          <Route exact path="/dev-review/:id" component={AddReview}/>
+          <Route exact path="/dev-review/:id" component={AddReviewWrapped}/>
         </Switch>
       </BrowserRouter>
     );
