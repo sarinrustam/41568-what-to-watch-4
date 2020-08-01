@@ -8,6 +8,8 @@ import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.j
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import MovieCardDescription from "../movie-card-description/movie-card-description.jsx";
 import {getMovies} from "../../reducer/data/selectors.js";
+import MyListButton from "../my-list-button/my-list-button.jsx";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 
 const SHOWING_MOVIES_COUNT = 4;
 
@@ -19,15 +21,21 @@ class MoviePage extends PureComponent {
     super(props);
 
     this.handlePlay = this.handlePlay.bind(this);
+    this.handleToggleIsFavorite = this.handleToggleIsFavorite.bind(this);
   }
 
   handlePlay() {
     this.props.history.push(`/player/${this.props.movie.id}`);
   }
 
+  handleToggleIsFavorite(isFavorite) {
+    const {onSetFavoriteStatus, movie: {id}} = this.props;
+    onSetFavoriteStatus(id, Number(isFavorite));
+  }
+
   render() {
     const {movie, relativeMovies, onMovieClick} = this.props;
-    const {title, genre, coverBackground, poster, release} = movie;
+    const {title, genre, coverBackground, poster, release, isFavorite} = movie;
 
     return (
       <React.Fragment>
@@ -74,12 +82,10 @@ class MoviePage extends PureComponent {
                     </svg>
                     <span>Play</span>
                   </button>
-                  <button className="btn btn--list movie-card__button" type="button">
-                    <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"></use>
-                    </svg>
-                    <span>My list</span>
-                  </button>
+                  <MyListButton
+                    onToggleButton={this.handleToggleIsFavorite}
+                    isFavorite={isFavorite}
+                  />
                   <a href="add-review.html" className="btn movie-card__button">Add review</a>
                 </div>
               </div>
@@ -135,6 +141,7 @@ MoviePage.propTypes = {
     coverBackground: PropTypes.string.isRequired,
     release: PropTypes.number.isRequired,
     poster: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
     rating: PropTypes.shape({
       score: PropTypes.number.isRequired,
       scoreDesc: PropTypes.string.isRequired,
@@ -150,6 +157,7 @@ MoviePage.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  onSetFavoriteStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, props) => {
@@ -161,4 +169,8 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps)(withRouter(MoviePage));
+const mapDispatchToProps = {
+  onSetFavoriteStatus: DataOperation.setFavoriteStatus,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MoviePage));

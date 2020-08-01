@@ -5,6 +5,7 @@ export const movieAdapter = (movieData) => {
     poster: movieData[`poster_image`],
     release: movieData[`released`],
     genre: movieData[`genre`],
+    isFavorite: movieData[`is_favorite`],
     coverBackground: movieData[`background_image`],
     rating: {
       score: movieData[`rating`],
