@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {Router, Route, Switch} from "react-router-dom";
 
 import AddReview from "../add-review/add-review.jsx";
 import withAddReview from "../../hocs/with-add-review/with-add-review.js";
@@ -8,6 +8,8 @@ import MoviePage from "../movie-page/movie-page.jsx";
 import VideoPlayerFull from "../video-player-full/video-player-full.jsx";
 import withFullVideoPlayer from "../../hocs/with-full-video-player/with-full-video-player.js";
 import SignIn from "../../components/sign-in/sign-in.jsx";
+
+import history from "../../history.js";
 
 const VideoPlayerFullWrapped = withFullVideoPlayer(VideoPlayerFull);
 const AddReviewWrapped = withAddReview(AddReview);
@@ -48,7 +50,9 @@ class App extends PureComponent {
 
   render() {
     return (
-      <BrowserRouter>
+      <Router
+        history={history}
+      >
         <Switch>
           <Route exact path="/">
             {this.renderApp()}
@@ -62,7 +66,7 @@ class App extends PureComponent {
           <Route exact path="/login" component={SignIn}/>
           <Route exact path="/dev-review/:id" component={AddReviewWrapped}/>
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
