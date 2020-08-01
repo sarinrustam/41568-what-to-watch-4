@@ -16,7 +16,11 @@ class UserBlock extends React.PureComponent {
 
     return (
       <div className="user-block__avatar">
-        <img src={`https://4.react.pages.academy${avatar}`} alt="User avatar" width="63" height="63" />
+        <Link
+          to={AppRoute.MY_LIST}
+        >
+          <img src={`https://4.react.pages.academy${avatar}`} alt="User avatar" width="63" height="63" />
+        </Link>
       </div>
     );
   }
