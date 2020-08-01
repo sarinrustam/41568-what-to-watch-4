@@ -12,6 +12,7 @@ const mockStore = configureStore([]);
 const MOVIES = [
   {
     id: 0,
+    isFavorite: true,
     title: `Pulp Fuction`,
     img: `img/pulp-fiction.jpg`,
     release: 1994,
@@ -33,6 +34,7 @@ const MOVIES = [
   {
     id: 1,
     title: `Orlando`,
+    isFavorite: true,
     img: `img/orlando.jpg`,
     release: 1992,
     genre: `Drama`,
@@ -53,6 +55,7 @@ const MOVIES = [
   {
     id: 2,
     title: `Avatar`,
+    isFavorite: true,
     img: `img/avatar.jpg`,
     release: 2009,
     genre: `SCI-FI`,

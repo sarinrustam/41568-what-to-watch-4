@@ -3,6 +3,7 @@ import React from "react";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "./../../reducer/name-space.js";
+import {MemoryRouter} from 'react-router';
 
 import AddReview from "./add-review.jsx";
 
@@ -21,16 +22,18 @@ describe(`AddReview snapshot test`, () => {
         <Provider
           store={store}
         >
-          <AddReview
-            onInputComment={() => {}}
-            onChangeRating={() => {}}
-            onSendComment={() => {}}
-            rating={3}
-            comment={`Hello world`}
-            isButtonDisabled={true}
-            readOnly={true}
-            errorText={`Error`}
-          />
+          <MemoryRouter>
+            <AddReview
+              onInputComment={() => {}}
+              onChangeRating={() => {}}
+              onSendComment={() => {}}
+              rating={3}
+              comment={`Hello world`}
+              isButtonDisabled={true}
+              readOnly={true}
+              errorText={`Error`}
+            />
+          </MemoryRouter>
         </Provider>
     ).toJSON();
 

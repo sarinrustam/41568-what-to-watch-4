@@ -29,7 +29,7 @@ describe(`Render component`, () => {
     const tree = rerender
       .create(
           <Provider store={store}>
-            <App/>
+            <App init={() => {}}/>
           </Provider>, {
             createNodeMock: () => {
               return {};

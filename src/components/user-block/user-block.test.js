@@ -4,6 +4,7 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {MemoryRouter} from 'react-router';
 
 import UserBlock from "./user-block.jsx";
 
@@ -20,8 +21,9 @@ describe(`UserBlock test`, () => {
     });
     const tree = rerender.create(
         <Provider store={store}>
-          <UserBlock
-          />
+          <MemoryRouter>
+            <UserBlock />
+          </MemoryRouter>
         </Provider>
     ).toJSON();
 
