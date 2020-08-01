@@ -57,14 +57,14 @@ class App extends PureComponent {
           <Route exact path="/">
             {this.renderApp()}
           </Route>
-          <Route exact path="/dev-movie">
+          <Route exact path="/2">
             <MoviePage
               onMovieClick={this.handlerMovieClick}
             />
           </Route>
           <Route exact path="/player/:id" component={VideoPlayerFullWrapped}/>
           <Route exact path="/login" component={SignIn}/>
-          <Route exact path="/dev-review/:id" component={AddReviewWrapped}/>
+          <Route exact path="/" component={AddReviewWrapped}/>
         </Switch>
       </Router>
     );

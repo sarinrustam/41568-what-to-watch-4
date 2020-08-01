@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {getAuthStatus, getAvatar} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../utils/utils.js";
 
 class UserBlock extends React.PureComponent {
   constructor(props) {
@@ -21,7 +23,12 @@ class UserBlock extends React.PureComponent {
 
   renderUserSignInLink() {
     return (
-      <a href="/login" className="user-block__link">Sign in</a>
+      <Link
+        to={AppRoute.LOGIN}
+        className="user-block__link"
+      >
+        Sign in
+      </Link>
     );
   }
 

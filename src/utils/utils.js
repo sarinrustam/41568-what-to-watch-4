@@ -16,3 +16,8 @@ export const Buttons = {
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
+
+export const AppRoute = {
+  LOGIN: `/login`,
+  ROOT: `/`,
+};
