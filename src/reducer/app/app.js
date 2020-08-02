@@ -27,7 +27,7 @@ const ActionCreator = {
     return {
       type: ActionType.RESET_COUNT_MOVIES_SHOW
     };
-  },
+  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -53,6 +53,12 @@ const reducer = (state = initialState, action) => {
       return extend(
           state, {
             countMoviesShow: COUNT_LIMIT_MOVIES
+          }
+      );
+    case ActionType.SET_IS_LOADING:
+      return extend(
+          state, {
+            isLoading: action.payload
           }
       );
     default:

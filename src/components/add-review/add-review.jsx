@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import UserBlock from "../user-block/user-block.jsx";
+import {CommentLength} from "../../utils/utils.js";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../utils/utils.js";
 
 class AddReview extends React.PureComponent {
   constructor(props) {
@@ -16,13 +19,14 @@ class AddReview extends React.PureComponent {
   }
 
   render() {
-    const {onInputComment, onChangeRating, onSendComment, isButtonDisabled, readOnly, errorText} = this.props;
+    const {movie, onInputComment, onChangeRating, onSendComment, isLoading, errorText, comment, rating} = this.props;
+    const isButtonDisabled = isLoading && comment.length < CommentLength.MIN && comment.length >= CommentLength.MAX && rating === 0;
 
     return (
       <section className="movie-card movie-card--full">
         <div className="movie-card__header">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={movie.coverBackground} alt={movie.title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -39,7 +43,10 @@ class AddReview extends React.PureComponent {
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <a href="movie-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                  <Link
+                    className="breadcrumbs__link"
+                    to={`${AppRoute.FILMS}/${movie.id}`}
+                  >{movie.title}</Link>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>
@@ -51,7 +58,7 @@ class AddReview extends React.PureComponent {
           </header>
 
           <div className="movie-card__poster movie-card__poster--small">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+            <img src={movie.poster} alt={movie.title} width="218" height="327" />
           </div>
         </div>
 
@@ -72,7 +79,7 @@ class AddReview extends React.PureComponent {
                   id="star-1" type="radio"
                   name="rating"
                   value="1"
-                  disabled={readOnly}
+                  disabled={isLoading}
                 />
                 <label className="rating__label" htmlFor="star-1">Rating 1</label>
 
@@ -81,7 +88,7 @@ class AddReview extends React.PureComponent {
                   id="star-2" type="radio"
                   name="rating"
                   value="2"
-                  disabled={readOnly}
+                  disabled={isLoading}
                 />
                 <label className="rating__label" htmlFor="star-2">Rating 2</label>
 
@@ -90,7 +97,7 @@ class AddReview extends React.PureComponent {
                   id="star-3" type="radio"
                   name="rating"
                   value="3"
-                  disabled={readOnly}
+                  disabled={isLoading}
                 />
                 <label className="rating__label" htmlFor="star-3">Rating 3</label>
 
@@ -99,7 +106,7 @@ class AddReview extends React.PureComponent {
                   id="star-4" type="radio"
                   name="rating"
                   value="4"
-                  disabled={readOnly}
+                  disabled={isLoading}
                 />
                 <label className="rating__label" htmlFor="star-4">Rating 4</label>
 
@@ -108,7 +115,7 @@ class AddReview extends React.PureComponent {
                   id="star-5" type="radio"
                   name="rating"
                   value="5"
-                  disabled={readOnly}
+                  disabled={isLoading}
                 />
                 <label className="rating__label" htmlFor="star-5">Rating 5</label>
               </div>
@@ -121,7 +128,7 @@ class AddReview extends React.PureComponent {
                 name="review-text"
                 id="review-text"
                 placeholder="Review text"
-                readOnly={readOnly}
+                readOnly={isLoading}
               >
 
               </textarea>
@@ -144,13 +151,18 @@ class AddReview extends React.PureComponent {
 }
 
 AddReview.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    poster: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    coverBackground: PropTypes.string.isRequired,
+  }).isRequired,
   onSendComment: PropTypes.func.isRequired,
   onInputComment: PropTypes.func.isRequired,
   onChangeRating: PropTypes.func.isRequired,
   rating: PropTypes.number.isRequired,
   comment: PropTypes.string.isRequired,
-  isButtonDisabled: PropTypes.bool.isRequired,
-  readOnly: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   errorText: PropTypes.string.isRequired,
 };
 

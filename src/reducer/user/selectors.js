@@ -11,3 +11,7 @@ export const getAvatar = (state) => {
 export const getErrorMessage = (state) => {
   return state[NameSpace.USER].authorizationError;
 };
+
+export const getCheckAuthIsLoaded = (state) => {
+  return state[NameSpace.USER].checkAuthIsLoaded;
+};

@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import {Router, Route, Switch} from "react-router-dom";
-
+import {connect} from "react-redux";
 import AddReview from "../add-review/add-review.jsx";
 import withAddReview from "../../hocs/with-add-review/with-add-review.js";
 import Main from "@components/main/main.jsx";
@@ -8,6 +8,9 @@ import MoviePage from "../movie-page/movie-page.jsx";
 import VideoPlayerFull from "../video-player-full/video-player-full.jsx";
 import withFullVideoPlayer from "../../hocs/with-full-video-player/with-full-video-player.js";
 import SignIn from "../../components/sign-in/sign-in.jsx";
+import {getCheckAuthIsLoaded} from "../../reducer/user/selectors.js";
+import {getIsMoviesLoaded, getIsPromoMovieLoaded} from "../../reducer/data/selectors.js";
+import PropTypes from "prop-types";
 
 import history from "../../history.js";
 import PrivateRoute from "../private-route/private-route.jsx";
@@ -50,6 +53,10 @@ class App extends PureComponent {
   }
 
   render() {
+    if (!this.props.isLoaded) {
+      return <div>...Loading. Wait a few seconds</div>;
+    }
+
     return (
       <Router
         history={history}
@@ -65,15 +72,22 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/player/:id" component={VideoPlayerFullWrapped}/>
           <Route exact path="/login" component={SignIn}/>
-          <Route exact path="/" component={AddReviewWrapped}/>
-          <PrivateRoute
-          >
-
-          </PrivateRoute>
+          <PrivateRoute exact path="/films/:id/review" component={AddReviewWrapped}/>
         </Switch>
       </Router>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    isLoaded: getIsPromoMovieLoaded(state) && getIsMoviesLoaded(state) && getCheckAuthIsLoaded(state)
+  };
+};
+
+App.propTypes = {
+  isLoaded: PropTypes.bool.isRequired,
+};
+
+export {App};
+export default connect(mapStateToProps)(App);

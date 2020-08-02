@@ -7,26 +7,13 @@ import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {getAuthStatus} from "../../reducer/user/selectors.js";
 
 const PrivateRoute = (props) => {
-  const {path, exact, render, authorizationStatus} = props;
-
   return (
-    <Route
-      path={path}
-      exact={exact}
-      render={() => {
-        return (
-          authorizationStatus === AuthorizationStatus.AUTH ? render() : <Redirect to={AppRoute.LOGIN}/>
-        );
-      }}
-    />
+    props.authorizationStatus === AuthorizationStatus.AUTH ? <Route {...props}/> : <Redirect to={AppRoute.LOGIN}/>
   );
 };
 
 PrivateRoute.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
-  exact: PropTypes.bool.isRequired,
-  path: PropTypes.string.isRequired,
-  render: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {

@@ -8,17 +8,18 @@ const AuthorizationStatus = {
 
 const defaultAvatar = `img/avatar.jpg`;
 
-
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   avatar: defaultAvatar,
   authorizationError: ``,
+  checkAuthIsLoaded: false
 };
 
 const ActionType = {
   SET_AUTHORIZATION: `SET_AUTHORIZATION`,
   ADD_AVATAR: `ADD_AVATAR`,
   ADD_AUTH_ERROR: `ADD_AUTH_ERROR`,
+  SET_CHECK_AUTH_IS_LOADED: `SET_CHECK_AUTH_IS_LOADED`
 };
 
 const ActionCreator = {
@@ -39,6 +40,12 @@ const ActionCreator = {
       type: ActionType.ADD_AUTH_ERROR,
       payload: errorMessage,
     };
+  },
+  setCheckAuthIsLoaded: (value) => {
+    return {
+      type: ActionType.SET_CHECK_AUTH_IS_LOADED,
+      payload: value
+    };
   }
 };
 
@@ -48,6 +55,7 @@ const Operation = {
       .then(({data}) => {
         dispatch(ActionCreator.setAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.addAvatar(userAdapter(data).avatarUrl));
+        dispatch(ActionCreator.setCheckAuthIsLoaded(true));
       })
       .catch((error) => {
         throw error;
@@ -81,6 +89,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.ADD_AUTH_ERROR:
       return extend(state, {
         authorizationError: action.payload,
+      });
+    case ActionType.SET_CHECK_AUTH_IS_LOADED:
+      return extend(state, {
+        checkAuthIsLoaded: action.payload,
       });
     default:
       return state;

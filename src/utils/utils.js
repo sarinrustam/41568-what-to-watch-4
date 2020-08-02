@@ -21,4 +21,5 @@ export const AppRoute = {
   LOGIN: `/login`,
   ROOT: `/`,
   MY_LIST: `/mylist`,
+  FILMS: `/films`,
 };
