@@ -20,7 +20,7 @@ describe(`Render component`, () => {
         countMoviesShow: ``,
       },
       [NameSpace.USER]: {
-        authorizationStatus: `s`,
+        authorizationStatus: ``,
         avatar: `defaultAvatar`,
         authorizationError: ``,
       }

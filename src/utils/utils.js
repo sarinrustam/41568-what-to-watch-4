@@ -4,6 +4,11 @@ export const PAGE_FILTERS = [`Overview`, `Details`, `Reviews`];
 
 export const COUNT_LIMIT_MOVIES = 8;
 
+export const CommentLength = {
+  MIN: 50,
+  MAX: 400,
+};
+
 export const Buttons = {
   ESC: `ESC`,
 };
