@@ -29,10 +29,13 @@ const ActionCreator = {
       payload: promoMovie,
     };
   },
-  setFavoriteStatus: (movie) => {
+  setFavoriteStatus: (movieId, isFavorite) => {
     return {
       type: ActionType.SET_FAVORITE_STATUS,
-      payload: movie,
+      payload: {
+        movieId,
+        isFavorite,
+      }
     };
   },
   setIsMoviesLoaded: (value) => {
@@ -70,10 +73,10 @@ const Operation = {
       });
   },
   setFavoriteStatus: (movieId, status) => (dispatch, getState, api) => {
-    return api.post(`favorite/${movieId}/${status}`)
+    return api.post(`favorite/${movieId}/${+status}`)
       .then(({data}) => {
         const movie = movieAdapter(data);
-        dispatch(ActionCreator.setFavoriteStatus(movie));
+        dispatch(ActionCreator.setFavoriteStatus(movieId, movie.isFavorite));
       });
   }
 };
@@ -89,12 +92,15 @@ const reducer = (state = initialState, action) => {
         promoMovie: action.payload
       });
     case ActionType.SET_FAVORITE_STATUS:
-      const moviesDuplicate = state.movies.slice();
-      const movie = moviesDuplicate.find((movieItem) => movieItem.id === action.payload.id);
-      movie.isFavorite = action.payload.isFavorite;
+      const movies = state.movies.map((movieItem) => {
+        if (movieItem.id === action.payload.movieId) {
+          movieItem.isFavorite = action.payload.isFavorite;
+        }
+        return movieItem;
+      });
 
       return extend(state, {
-        movies: moviesDuplicate,
+        movies,
       });
     case ActionType.SET_IS_MOVIES_LOADED:
       return extend(state, {

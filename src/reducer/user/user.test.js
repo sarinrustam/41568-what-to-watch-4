@@ -20,7 +20,7 @@ describe(`Operation for user auth working correctly`, () => {
 
     return checkAuth(dispatch, getState, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(3);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.SET_AUTHORIZATION,
           payload: AuthorizationStatus.AUTH,
@@ -28,6 +28,10 @@ describe(`Operation for user auth working correctly`, () => {
         expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.ADD_AVATAR,
           payload: response[`avatar_url`],
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(3, {
+          type: ActionType.SET_CHECK_AUTH_IS_LOADED,
+          payload: true,
         });
       });
   });

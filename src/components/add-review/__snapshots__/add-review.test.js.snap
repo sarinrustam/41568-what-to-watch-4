@@ -11,8 +11,8 @@ exports[`AddReview snapshot test  1`] = `
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="Avatar"
+        src="https://m.media-amazon.com/images/M/MV5BMTUxMDI1MDI5MV5BMl5BanBnXkFtZTcwOTY3MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg"
       />
     </div>
     <h1
@@ -58,9 +58,10 @@ exports[`AddReview snapshot test  1`] = `
           >
             <a
               className="breadcrumbs__link"
-              href="movie-page.html"
+              href="/films/2"
+              onClick={[Function]}
             >
-              The Grand Budapest Hotel
+              Avatar
             </a>
           </li>
           <li
@@ -90,9 +91,9 @@ exports[`AddReview snapshot test  1`] = `
       className="movie-card__poster movie-card__poster--small"
     >
       <img
-        alt="The Grand Budapest Hotel poster"
+        alt="Avatar"
         height="327"
-        src="img/the-grand-budapest-hotel-poster.jpg"
+        src="https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_.jpg"
         width="218"
       />
     </div>
@@ -119,7 +120,6 @@ exports[`AddReview snapshot test  1`] = `
         >
           <input
             className="rating__input"
-            disabled={true}
             id="star-1"
             name="rating"
             type="radio"
@@ -133,7 +133,6 @@ exports[`AddReview snapshot test  1`] = `
           </label>
           <input
             className="rating__input"
-            disabled={true}
             id="star-2"
             name="rating"
             type="radio"
@@ -147,7 +146,6 @@ exports[`AddReview snapshot test  1`] = `
           </label>
           <input
             className="rating__input"
-            disabled={true}
             id="star-3"
             name="rating"
             type="radio"
@@ -161,7 +159,6 @@ exports[`AddReview snapshot test  1`] = `
           </label>
           <input
             className="rating__input"
-            disabled={true}
             id="star-4"
             name="rating"
             type="radio"
@@ -175,7 +172,6 @@ exports[`AddReview snapshot test  1`] = `
           </label>
           <input
             className="rating__input"
-            disabled={true}
             id="star-5"
             name="rating"
             type="radio"
@@ -198,14 +194,12 @@ exports[`AddReview snapshot test  1`] = `
           name="review-text"
           onInput={[Function]}
           placeholder="Review text"
-          readOnly={true}
         />
         <div
           className="add-review__submit"
         >
           <button
             className="add-review__btn"
-            disabled={true}
             type="submit"
           >
             Post

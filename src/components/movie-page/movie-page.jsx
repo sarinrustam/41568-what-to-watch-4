@@ -30,7 +30,7 @@ class MoviePage extends PureComponent {
 
   handleToggleIsFavorite(isFavorite) {
     const {onSetFavoriteStatus, movie: {id}} = this.props;
-    onSetFavoriteStatus(id, Number(isFavorite));
+    onSetFavoriteStatus(id, isFavorite);
   }
 
   render() {

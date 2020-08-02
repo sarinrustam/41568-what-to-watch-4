@@ -58,6 +58,7 @@ const Operation = {
         dispatch(ActionCreator.setCheckAuthIsLoaded(true));
       })
       .catch((error) => {
+        dispatch(ActionCreator.setCheckAuthIsLoaded(true));
         throw error;
       });
   },

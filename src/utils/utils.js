@@ -18,8 +18,9 @@ export const extend = (a, b) => {
 };
 
 export const AppRoute = {
-  LOGIN: `/login`,
   ROOT: `/`,
+  LOGIN: `/login`,
   MY_LIST: `/mylist`,
   FILMS: `/films`,
+  PLAYER: `/player`,
 };

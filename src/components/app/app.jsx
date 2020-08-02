@@ -11,6 +11,7 @@ import SignIn from "../../components/sign-in/sign-in.jsx";
 import {getCheckAuthIsLoaded} from "../../reducer/user/selectors.js";
 import {getIsMoviesLoaded, getIsPromoMovieLoaded} from "../../reducer/data/selectors.js";
 import PropTypes from "prop-types";
+import {AppRoute} from "../../utils/utils.js";
 
 import history from "../../history.js";
 import PrivateRoute from "../private-route/private-route.jsx";
@@ -62,17 +63,17 @@ class App extends PureComponent {
         history={history}
       >
         <Switch>
-          <Route exact path="/">
+          <Route exact path={AppRoute.ROOT}>
             {this.renderApp()}
           </Route>
-          <Route exact path="/2">
+          <Route exact path={`${AppRoute.FILMS}/:id`}>
             <MoviePage
               onMovieClick={this.handlerMovieClick}
             />
           </Route>
-          <Route exact path="/player/:id" component={VideoPlayerFullWrapped}/>
-          <Route exact path="/login" component={SignIn}/>
-          <PrivateRoute exact path="/films/:id/review" component={AddReviewWrapped}/>
+          <Route exact path={`${AppRoute.PLAYER}/:id`} component={VideoPlayerFullWrapped}/>
+          <Route exact path={AppRoute.LOGIN} component={SignIn}/>
+          <PrivateRoute exact path={`${AppRoute.FILMS}/:id/review`} component={AddReviewWrapped}/>
         </Switch>
       </Router>
     );

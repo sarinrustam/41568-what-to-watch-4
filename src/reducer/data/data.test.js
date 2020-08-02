@@ -40,10 +40,14 @@ describe(`Operation of data loading work correctly`, () => {
 
     return moviesLoader(dispatch, getState, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_MOVIES,
           payload: moviesAdapter(movies),
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.SET_IS_MOVIES_LOADED,
+          payload: true,
         });
       });
   });
@@ -60,10 +64,14 @@ describe(`Operation of data loading work correctly`, () => {
 
     return moviesLoader(dispatch, getState, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_PROMO,
           payload: movieAdapter(movies[0]),
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.SET_IS_PROMO_MOVIE_LOADED,
+          payload: true,
         });
       });
   });
