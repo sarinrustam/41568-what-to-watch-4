@@ -38,7 +38,7 @@ const MyListButton = (props) => {
 
 MyListButton.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
-  onToggleButton: PropTypes.bool.isRequired,
+  onToggleButton: PropTypes.func.isRequired,
 };
 
 export default MyListButton;

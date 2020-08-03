@@ -1,15 +1,18 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
+import {withRouter, Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import {PAGE_FILTERS} from "../../utils/utils.js";
+import {PAGE_FILTERS, AppRoute} from "../../utils/utils.js";
 
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import MovieCardDescription from "../movie-card-description/movie-card-description.jsx";
-import {getMovies} from "../../reducer/data/selectors.js";
+import {getMovies, getMovieById} from "../../reducer/data/selectors.js";
 import MyListButton from "../my-list-button/my-list-button.jsx";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
+import UserBlock from "../user-block/user-block.jsx";
+import {Operation as CommentsOperation} from "../../reducer/comments/comments.js";
+import {getComments} from "../../reducer/comments/selectors.js";
 
 const SHOWING_MOVIES_COUNT = 4;
 
@@ -22,6 +25,11 @@ class MoviePage extends PureComponent {
 
     this.handlePlay = this.handlePlay.bind(this);
     this.handleToggleIsFavorite = this.handleToggleIsFavorite.bind(this);
+    this.handleMovieClick = this.handleMovieClick.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.onLoadComments(this.props.movie.id);
   }
 
   handlePlay() {
@@ -33,9 +41,13 @@ class MoviePage extends PureComponent {
     onSetFavoriteStatus(id, isFavorite);
   }
 
+  handleMovieClick(movie) {
+    this.props.history.push(`${AppRoute.FILMS}/${movie.id}`);
+  }
+
   render() {
-    const {movie, relativeMovies, onMovieClick} = this.props;
-    const {title, genre, coverBackground, poster, release, isFavorite} = movie;
+    const {movie, relativeMovies, comments} = this.props;
+    const {title, genre, coverBackground, poster, release, isFavorite, id} = movie;
 
     return (
       <React.Fragment>
@@ -56,11 +68,7 @@ class MoviePage extends PureComponent {
                 </a>
               </div>
 
-              <div className="user-block">
-                <div className="user-block__avatar">
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-                </div>
-              </div>
+              <UserBlock/>
             </header>
 
             <div className="movie-card__wrap">
@@ -86,7 +94,12 @@ class MoviePage extends PureComponent {
                     onToggleButton={this.handleToggleIsFavorite}
                     isFavorite={isFavorite}
                   />
-                  <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                  <Link
+                    className="btn movie-card__button"
+                    to={`${AppRoute.FILMS}/${id}/review`}
+                  >
+                    Add review
+                  </Link>
                 </div>
               </div>
             </div>
@@ -99,6 +112,7 @@ class MoviePage extends PureComponent {
               </div>
               <MovieCardDescriptionWrapped
                 movie={movie}
+                comments={comments}
               />
             </div>
           </div>
@@ -110,7 +124,7 @@ class MoviePage extends PureComponent {
 
             <SmallMovieCardListWrapped
               movies={relativeMovies}
-              changeActiveItem={onMovieClick}
+              changeActiveItem={this.handleMovieClick}
             />
           </section>
 
@@ -149,28 +163,33 @@ MoviePage.propTypes = {
     }).isRequired,
     crew: PropTypes.shape({
       director: PropTypes.string.isRequired,
-      actors: PropTypes.string.isRequired
+      actors: PropTypes.array.isRequired
     }).isRequired,
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired,
   relativeMovies: PropTypes.array.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
   onSetFavoriteStatus: PropTypes.func.isRequired,
+  onLoadComments: PropTypes.func.isRequired,
+  comments: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state, props) => {
   const movies = getMovies(state);
+  const movie = getMovieById(state, props.match.params.id);
+  const comments = getComments(state);
 
   return {
     relativeMovies: movies.slice(0, SHOWING_MOVIES_COUNT),
-    movie: props.movie
+    movie,
+    comments,
   };
 };
 
 const mapDispatchToProps = {
   onSetFavoriteStatus: DataOperation.setFavoriteStatus,
+  onLoadComments: CommentsOperation.getComments,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MoviePage));

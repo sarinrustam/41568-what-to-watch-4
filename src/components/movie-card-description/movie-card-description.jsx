@@ -21,6 +21,7 @@ class MovieCardDescription extends PureComponent {
       case `Reviews`:
         return <MoviePageReviews
           movie={this.props.movie}
+          comments={this.props.comments}
         />;
       default:
         return <MoviePageOverview
@@ -67,11 +68,12 @@ MovieCardDescription.propTypes = {
     }).isRequired,
     crew: PropTypes.shape({
       director: PropTypes.string.isRequired,
-      actors: PropTypes.string.isRequired
+      actors: PropTypes.array.isRequired
     }).isRequired,
   }).isRequired,
   activeItem: PropTypes.string,
   setActiveItem: PropTypes.func.isRequired,
+  comments: PropTypes.array.isRequired
 };
 
 export default MovieCardDescription;

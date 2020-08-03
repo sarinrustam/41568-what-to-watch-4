@@ -7,6 +7,14 @@ export const getMovies = (state) => {
   return state[NameSpace.DATA].movies;
 };
 
+export const getFavoriteMovies = (state) => {
+  return state[NameSpace.DATA].favoriteMovies;
+};
+
+export const getFavoriteLoadedStatus = (state) => {
+  return state[NameSpace.DATA].isFavoriteMoviesLoaded;
+};
+
 export const getMovieId = (state, filmId) => {
   return +filmId;
 };

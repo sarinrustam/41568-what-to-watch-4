@@ -2,6 +2,7 @@ import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/app/app.js";
 import {withRouter} from "react-router-dom";
+import {AppRoute} from "../../utils/utils.js";
 
 import PropTypes from "prop-types";
 
@@ -12,6 +13,8 @@ import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {getPromoMovie, getMoviesByGenre, uniqueGenres} from "../../reducer/data/selectors.js";
 import {getCurrentGenre, getCountMoviesShow} from "../../reducer/app/selectors.js";
 import UserBlock from "../user-block/user-block.jsx";
+import MyListButton from "../my-list-button/my-list-button.jsx";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 
 const SmallMovieCardListWrapped = withActiveItem(SmallMovieCardList);
 
@@ -23,10 +26,11 @@ class Main extends PureComponent {
     this.handlerShowMoreButtonClick = this.handlerShowMoreButtonClick.bind(this);
     this.handlerSetCurrentGenre = this.handlerSetCurrentGenre.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
+    this.handleToggleIsFavorite = this.handleToggleIsFavorite.bind(this);
   }
 
   handlerMovieClick(movie) {
-    this.props.onMovieClick(movie);
+    this.props.history.push(`${AppRoute.FILMS}/${movie.id}`);
   }
 
   handlerShowMoreButtonClick() {
@@ -38,6 +42,11 @@ class Main extends PureComponent {
 
     onSetCurrentGenre(genre);
     onresetCountMoviesShow();
+  }
+
+  handleToggleIsFavorite(isFavorite) {
+    const {onSetFavoriteStatus, promoMovie: {id}} = this.props;
+    onSetFavoriteStatus(id, isFavorite);
   }
 
   handlePlay() {
@@ -92,12 +101,10 @@ class Main extends PureComponent {
                     </svg>
                     <span>Play</span>
                   </button>
-                  <button className="btn btn--list movie-card__button" type="button">
-                    <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"></use>
-                    </svg>
-                    <span>My list</span>
-                  </button>
+                  <MyListButton
+                    onToggleButton={this.handleToggleIsFavorite}
+                    isFavorite={promoMovie.isFavorite}
+                  />
                 </div>
               </div>
             </div>
@@ -151,8 +158,8 @@ Main.propTypes = {
     release: PropTypes.number.isRequired,
     coverBackground: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired,
   currentGenre: PropTypes.string.isRequired,
   onSetCurrentGenre: PropTypes.func.isRequired,
   genres: PropTypes.arrayOf(
@@ -165,6 +172,7 @@ Main.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  onSetFavoriteStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -188,7 +196,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   onSetCurrentGenre: ActionCreator.setCurrentGenre,
   onresetCountMoviesShow: ActionCreator.resetCountMoviesShow,
-  onIncrementCountMoviesShow: ActionCreator.incrementCountMoviesShow
+  onIncrementCountMoviesShow: ActionCreator.incrementCountMoviesShow,
+  onSetFavoriteStatus: DataOperation.setFavoriteStatus,
 };
 
 export {Main};

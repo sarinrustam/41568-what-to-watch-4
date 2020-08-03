@@ -2,7 +2,7 @@ import React, {createRef} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Buttons} from "../../utils/utils.js";
-
+import {getMovieById} from "../../reducer/data/selectors.js";
 
 const withFullVideoPlayer = (Component) => {
   class WithFullVideoPlayer extends React.PureComponent {
@@ -115,8 +115,10 @@ const withFullVideoPlayer = (Component) => {
   };
 
   const mapStateToProps = (state, props) => {
+    const movie = getMovieById(state, props.match.params.id);
+
     return {
-      movie: state.movies.find((item) => item.id === Number(props.match.params.id))
+      movie
     };
   };
 

@@ -75,7 +75,7 @@ VideoPlayerFull.propTypes = {
     }).isRequired,
     crew: PropTypes.shape({
       director: PropTypes.string.isRequired,
-      actors: PropTypes.string.isRequired
+      actors: PropTypes.array.isRequired
     }).isRequired,
   }).isRequired,
   onExitVideo: PropTypes.func.isRequired,

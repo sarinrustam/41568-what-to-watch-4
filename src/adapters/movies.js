@@ -17,7 +17,7 @@ export const movieAdapter = (movieData) => {
       director: movieData[`director`],
       actors: movieData[`starring`]
     },
-    preview: movieData[`previw_video_link`],
+    preview: movieData[`preview_video_link`],
     videoLink: movieData[`video_link`],
     duration: movieData[`run_time`],
   };

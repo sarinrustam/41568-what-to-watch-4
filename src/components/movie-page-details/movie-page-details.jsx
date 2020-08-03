@@ -43,9 +43,9 @@ MoviePageDetails.propTypes = {
   movie: PropTypes.shape({
     crew: PropTypes.shape({
       director: PropTypes.string.isRequired,
-      actors: PropTypes.string.isRequired,
+      actors: PropTypes.array.isRequired,
     }).isRequired,
-    duration: PropTypes.string.isRequired,
+    duration: PropTypes.number.isRequired,
     genre: PropTypes.string.isRequired,
     release: PropTypes.number.isRequired
   }).isRequired
