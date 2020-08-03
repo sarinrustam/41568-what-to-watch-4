@@ -101,7 +101,7 @@ const Operation = {
       });
   },
   setFavoriteStatus: (movieId, status) => (dispatch, getState, api) => {
-    return api.post(`favorite/${movieId}/${+status}`)
+    return api.post(`favorite/${movieId}/${status ? 1 : 0}`)
       .then(({data}) => {
         const movie = movieAdapter(data);
         dispatch(ActionCreator.setFavoriteStatus(movieId, movie.isFavorite));

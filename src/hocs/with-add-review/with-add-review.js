@@ -4,7 +4,6 @@ import {Operation as CommentOperation} from "../../reducer/comments/comments.js"
 import PropTypes from "prop-types";
 import {getErrorText, getIsLoading} from "../../reducer/comments/selectors.js";
 import {getMovieById} from "../../reducer/data/selectors.js";
-import {AppRoute} from "../../utils/utils.js";
 
 const withAddReview = (Component) => {
   class WithAddReview extends React.PureComponent {
@@ -29,22 +28,18 @@ const withAddReview = (Component) => {
 
     handleChangeRating(event) {
       this.setState({
-        rating: +event.target.value,
+        rating: parseInt(event.target.value, 10),
       });
     }
 
     handleSendComment(event) {
       event.preventDefault();
 
-      const onSuccess = () => {
-        this.props.history.push(`${AppRoute.FILMS}/${this.props.match.params.id}`);
-      };
-
       this.props.onSendComment({
         movieId: this.props.match.params.id,
         comment: this.state.comment,
         rating: this.state.rating,
-      }, onSuccess);
+      });
     }
 
     render() {

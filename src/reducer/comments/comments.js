@@ -1,4 +1,5 @@
-import {extend} from "../../utils/utils.js";
+import {extend, AppRoute} from "../../utils/utils.js";
+import history from "../../history.js";
 
 const initialState = {
   errorText: ``,
@@ -42,10 +43,10 @@ const ActionCreator = {
 };
 
 const Operation = {
-  sendComment: ({movieId, rating, comment}, onSuccess) => (dispatch, getState, api) => {
+  sendComment: ({movieId, rating, comment}) => (dispatch, getState, api) => {
     return api.post(`/comments/${movieId}`, {rating, comment})
       .then(() => {
-        onSuccess();
+        history.push(`${AppRoute.FILMS}/${movieId}`);
       })
       .catch(({response}) => {
         dispatch(ActionCreator.setErrorText(response.data.error));
