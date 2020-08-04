@@ -16,7 +16,7 @@ exports[`render MoviePageReviews should MPR render correctly 1`] = `
         <p
           className="review__text"
         >
-          The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.
+          Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
         </p>
         <footer
           className="review__details"
@@ -24,20 +24,20 @@ exports[`render MoviePageReviews should MPR render correctly 1`] = `
           <cite
             className="review__author"
           >
-            Kate Moss
+            Kate Muir
           </cite>
           <time
             className="review__date"
-            dateTime="2016-12-24"
+            dateTime="2019-05-08T14:13:56.569Z"
           >
-            Pulp Fuction
+            2019-05-08T14:13:56.569Z
           </time>
         </footer>
       </blockquote>
       <div
         className="review__rating"
       >
-        2.2
+        8.9
       </div>
     </div>
   </div>

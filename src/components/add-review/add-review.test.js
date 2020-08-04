@@ -53,6 +53,7 @@ describe(`AddReview snapshot test`, () => {
               rating={3}
               comment={`Hello world`}
               errorText={`Error`}
+              isLoading={true}
             />
           </MemoryRouter>
         </Provider>

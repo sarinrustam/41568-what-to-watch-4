@@ -51,7 +51,7 @@ exports[`MovieCardDescription render MovieCardDescription render 1`] = `
     <div
       className="movie-rating__score"
     >
-      2.5
+      7.1
     </div>
     <p
       className="movie-rating__meta"
@@ -59,12 +59,12 @@ exports[`MovieCardDescription render MovieCardDescription render 1`] = `
       <span
         className="movie-rating__level"
       >
-        Very good
+        Very awesome
       </span>
       <span
         className="movie-rating__count"
       >
-        2323
+        4333
          ratings
       </span>
     </p>
@@ -73,14 +73,14 @@ exports[`MovieCardDescription render MovieCardDescription render 1`] = `
     className="movie-card__text"
   >
     <p>
-      The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.
+      After Queen Elizabeth I commands him not to grow old, a young nobleman struggles with love and his place in the world.
     </p>
     <p
       className="movie-card__director"
     >
       <strong>
         Director: 
-        Quentin Tarantino
+        Sally Potter
       </strong>
     </p>
     <p
@@ -88,7 +88,9 @@ exports[`MovieCardDescription render MovieCardDescription render 1`] = `
     >
       <strong>
         Starring: 
-        Tim Roth, Amanda Plummer, Laura Lovelace, John Travolta, Samuel L. Jackson
+        Tilda Swinton
+        Quentin Crisps
+        John Bott
          and other
       </strong>
     </p>

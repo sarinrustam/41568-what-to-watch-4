@@ -120,6 +120,7 @@ exports[`AddReview snapshot test  1`] = `
         >
           <input
             className="rating__input"
+            disabled={true}
             id="star-1"
             name="rating"
             type="radio"
@@ -133,6 +134,7 @@ exports[`AddReview snapshot test  1`] = `
           </label>
           <input
             className="rating__input"
+            disabled={true}
             id="star-2"
             name="rating"
             type="radio"
@@ -146,6 +148,7 @@ exports[`AddReview snapshot test  1`] = `
           </label>
           <input
             className="rating__input"
+            disabled={true}
             id="star-3"
             name="rating"
             type="radio"
@@ -159,6 +162,7 @@ exports[`AddReview snapshot test  1`] = `
           </label>
           <input
             className="rating__input"
+            disabled={true}
             id="star-4"
             name="rating"
             type="radio"
@@ -172,6 +176,7 @@ exports[`AddReview snapshot test  1`] = `
           </label>
           <input
             className="rating__input"
+            disabled={true}
             id="star-5"
             name="rating"
             type="radio"
@@ -194,12 +199,14 @@ exports[`AddReview snapshot test  1`] = `
           name="review-text"
           onInput={[Function]}
           placeholder="Review text"
+          readOnly={true}
         />
         <div
           className="add-review__submit"
         >
           <button
             className="add-review__btn"
+            disabled={true}
             type="submit"
           >
             Post

@@ -9,7 +9,7 @@ const movie = {
   img: `img/macbeth.jpg`,
   release: 2015,
   genre: `Action`,
-  duration: `1h 2m`,
+  duration: 22,
   poster: `https://m.media-amazon.com/images/M/MV5BNzgyNDczMjU4NV5BMl5BanBnXkFtZTgwMTUwMDI3NjE@._V1_SY1000_SX675_AL_.jpg`,
   coverBackground: `https://m.media-amazon.com/images/M/MV5BMTkwOTA2YTQtNDNkNi00YWZiLTg2ZGEtODAwOGFjMmZlYTUyXkEyXkFqcGdeQXVyNDAxOTExNTM@._V1_.jpg`,
   rating: {
@@ -20,7 +20,7 @@ const movie = {
   description: `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.`,
   crew: {
     director: `Justin Kurzel`,
-    actors: `Michael Fassbender, Marion Cotillard, Jack Madigan`
+    actors: [`Michael Fassbender, Marion Cotillard, Jack Madigan`]
   },
   preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   review: {

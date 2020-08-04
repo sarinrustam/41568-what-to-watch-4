@@ -104,8 +104,11 @@ const Operation = {
     return api.post(`favorite/${movieId}/${status ? 1 : 0}`)
       .then(({data}) => {
         const movie = movieAdapter(data);
+        const promoMovieId = getState()[NameSpace.DATA].promoMovie.id;
+
         dispatch(ActionCreator.setFavoriteStatus(movieId, movie.isFavorite));
-        if (movie.id === getState()[NameSpace.DATA].promoMovie.id) {
+
+        if (movie.id === promoMovieId) {
           dispatch(ActionCreator.loadPromo(movie));
         }
       });

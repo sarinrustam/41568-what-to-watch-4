@@ -177,7 +177,8 @@ MoviePage.propTypes = {
 
 const mapStateToProps = (state, props) => {
   const movies = getMovies(state);
-  const movie = getMovieById(state, props.match.params.id);
+  const movieId = props.match.params.id;
+  const movie = getMovieById(state, movieId);
   const comments = getComments(state);
 
   return {

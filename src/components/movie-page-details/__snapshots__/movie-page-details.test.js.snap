@@ -50,7 +50,7 @@ exports[`MPD render should MPD render correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        1h 2m
+        22
       </span>
     </p>
     <p

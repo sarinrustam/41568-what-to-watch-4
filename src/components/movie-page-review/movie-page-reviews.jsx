@@ -34,7 +34,7 @@ const MoviePageReviews = (props) => {
 };
 
 MoviePageReviews.propTypes = {
-  comments: PropTypes.arrayOf({
+  comments: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     comment: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
@@ -42,7 +42,7 @@ MoviePageReviews.propTypes = {
     user: PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired
-  }).isRequired,
+  })).isRequired,
 };
 
 export default MoviePageReviews;
