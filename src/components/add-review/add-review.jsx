@@ -20,7 +20,7 @@ class AddReview extends React.PureComponent {
 
   render() {
     const {movie, onInputComment, onChangeRating, onSendComment, isLoading, errorText, comment, rating} = this.props;
-    const isButtonDisabled = isLoading || (comment.length < CommentLength.MIN && comment.length >= CommentLength.MAX) || rating === 0;
+    const isButtonDisabled = isLoading || (comment.length < CommentLength.MIN || comment.length >= CommentLength.MAX || rating === 0);
 
     return (
       <section className="movie-card movie-card--full">

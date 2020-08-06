@@ -1,7 +1,7 @@
 import {createSelector} from "reselect";
 import NameSpace from "../name-space.js";
 import {getCurrentGenre} from "./../app/selectors.js";
-import {FILTER_ALL_GENRES} from "../../utils/utils.js";
+import {FILTER_ALL_GENRES, MAX_GENRES_SHOW} from "../../utils/utils.js";
 
 export const getMovies = (state) => {
   return state[NameSpace.DATA].movies;
@@ -50,7 +50,7 @@ export const getGenres = createSelector(
 export const uniqueGenres = createSelector(
     getGenres,
     (resultOne) => {
-      return [FILTER_ALL_GENRES].concat(Array.from(new Set(resultOne)));
+      return [FILTER_ALL_GENRES].concat(Array.from(new Set(resultOne)).slice(0, MAX_GENRES_SHOW));
     }
 );
 

@@ -57,9 +57,8 @@ const Operation = {
         dispatch(ActionCreator.addAvatar(userAdapter(data).avatarUrl));
         dispatch(ActionCreator.setCheckAuthIsLoaded(true));
       })
-      .catch((error) => {
+      .catch(() => {
         dispatch(ActionCreator.setCheckAuthIsLoaded(true));
-        throw error;
       });
   },
   login: ({email, password}) => (dispatch, getState, api) => {

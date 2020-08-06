@@ -60,7 +60,7 @@ class Main extends PureComponent {
       <React.Fragment>
         <section className="movie-card">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={promoMovie.coverBackground} alt={promoMovie.title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -80,7 +80,7 @@ class Main extends PureComponent {
           <div className="movie-card__wrap">
             <div className="movie-card__info">
               <div className="movie-card__poster">
-                <img src={promoMovie.coverBackground} alt={promoMovie.title} width="218" height="327" />
+                <img src={promoMovie.poster} alt={promoMovie.title} width="218" height="327" />
               </div>
 
               <div className="movie-card__desc">
@@ -155,6 +155,7 @@ Main.propTypes = {
   promoMovie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
     release: PropTypes.number.isRequired,
     coverBackground: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,

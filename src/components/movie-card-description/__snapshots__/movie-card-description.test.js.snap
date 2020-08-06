@@ -59,7 +59,7 @@ exports[`MovieCardDescription render MovieCardDescription render 1`] = `
       <span
         className="movie-rating__level"
       >
-        Very awesome
+        Good
       </span>
       <span
         className="movie-rating__count"

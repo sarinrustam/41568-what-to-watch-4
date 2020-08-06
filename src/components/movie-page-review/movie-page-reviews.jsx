@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import {formatDateForReviews} from "../../utils/utils.js";
+
 const MoviePageReviews = (props) => {
   const {comments} = props;
 
@@ -9,6 +11,7 @@ const MoviePageReviews = (props) => {
       <div className="movie-card__reviews movie-card__row">
         <div className="movie-card__reviews-col">
           {comments.map((comment) => {
+            const formatDate = formatDateForReviews(comment.date);
             return (
               <div
                 key={comment.id}
@@ -19,7 +22,7 @@ const MoviePageReviews = (props) => {
 
                   <footer className="review__details">
                     <cite className="review__author">{comment.user.name}</cite>
-                    <time className="review__date" dateTime={comment.date}>{comment.date}</time>
+                    <time className="review__date" dateTime={comment.date}>{formatDate}</time>
                   </footer>
                 </blockquote>
 

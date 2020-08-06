@@ -5,14 +5,12 @@ const initialState = {
   errorText: ``,
   isLoading: false,
   comments: [],
-  isCommentsLoaded: false,
 };
 
 const ActionType = {
   SET_ERROR_TEXT: `SET_ERROR_TEXT`,
   SET_IS_LOADING: `SET_IS_LOADING`,
   SET_COMMENTS: `SET_COMMENTS`,
-  SET_COMMENTS_IS_LOADED: `SET_COMMENTS_IS_LOADED`,
 };
 
 const ActionCreator = {
@@ -34,12 +32,6 @@ const ActionCreator = {
       payload: comments
     };
   },
-  setCommentsIsLoaded: (value) => {
-    return {
-      type: ActionType.SET_COMMENTS_IS_LOADED,
-      payload: value,
-    };
-  },
 };
 
 const Operation = {
@@ -47,6 +39,7 @@ const Operation = {
     return api.post(`/comments/${movieId}`, {rating, comment})
       .then(() => {
         history.push(`${AppRoute.FILMS}/${movieId}`);
+        dispatch(ActionCreator.setErrorText(``));
       })
       .catch(({response}) => {
         dispatch(ActionCreator.setErrorText(response.data.error));
@@ -57,11 +50,8 @@ const Operation = {
       .then((response) => {
         const comments = response.data;
         dispatch(ActionCreator.setComments(comments));
-        dispatch(ActionCreator.setCommentsIsLoaded(true));
       })
-      .catch((error) => {
-        throw error;
-      });
+      .catch(() => {});
   },
 };
 
@@ -78,10 +68,6 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_COMMENTS:
       return extend(state, {
         comments: action.payload,
-      });
-    case ActionType.SET_COMMENTS_IS_LOADED:
-      return extend(state, {
-        isCommentsLoaded: action.payload,
       });
     default:
       return state;

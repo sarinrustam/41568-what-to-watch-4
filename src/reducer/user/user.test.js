@@ -1,11 +1,18 @@
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api/api.js";
-import {ActionType, Operation, AuthorizationStatus} from "./user.js";
+import {reducer, ActionCreator, ActionType, Operation, AuthorizationStatus} from "./user.js";
 
 const api = createAPI(() => {});
 
+const initialState = {
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  avatar: ``,
+  authorizationError: ``,
+  checkAuthIsLoaded: false
+};
+
 describe(`Operation for user auth working correctly`, () => {
-  it(`Will the AuthStatus change`, () => {
+  it(`Should make a correct API get call to /login`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
     const getState = () => {};
@@ -36,7 +43,7 @@ describe(`Operation for user auth working correctly`, () => {
       });
   });
 
-  it(`Will the login operation work`, () => {
+  it(`Should make a correct API post call to /login`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
     const getState = () => {};
@@ -64,7 +71,7 @@ describe(`Operation for user auth working correctly`, () => {
       });
   });
 
-  it(`Will the login throw error`, () => {
+  it(`Should make a correct API post call to /login throw error`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
     const getState = () => {};
@@ -85,5 +92,52 @@ describe(`Operation for user auth working correctly`, () => {
           payload: errorMessage,
         });
       });
+  });
+
+  it(`Action setAuthorization working correctly`, () => {
+    const newInitialState = {
+      authorizationStatus: AuthorizationStatus.AUTH,
+      avatar: ``,
+      authorizationError: ``,
+      checkAuthIsLoaded: false
+    };
+
+    expect(reducer(initialState, ActionCreator.setAuthorization(AuthorizationStatus.AUTH))).toEqual(newInitialState);
+  });
+
+  it(`Action addAvatar working correctly`, () => {
+    const avatar = `img/avatar.jpg`;
+
+    const newInitialState = {
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+      avatar,
+      authorizationError: ``,
+      checkAuthIsLoaded: false
+    };
+
+    expect(reducer(initialState, ActionCreator.addAvatar(avatar))).toEqual(newInitialState);
+  });
+
+  it(`Action addAuthError working correctly`, () => {
+    const errorMessage = `Ошибка`;
+    const newInitialState = {
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+      avatar: ``,
+      authorizationError: errorMessage,
+      checkAuthIsLoaded: false
+    };
+
+    expect(reducer(initialState, ActionCreator.addAuthError(errorMessage))).toEqual(newInitialState);
+  });
+
+  it(`Action setCheckAuthIsLoaded working correctly`, () => {
+    const newInitialState = {
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+      avatar: ``,
+      authorizationError: ``,
+      checkAuthIsLoaded: true
+    };
+
+    expect(reducer(initialState, ActionCreator.setCheckAuthIsLoaded(true))).toEqual(newInitialState);
   });
 });

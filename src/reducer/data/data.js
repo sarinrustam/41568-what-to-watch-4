@@ -77,9 +77,7 @@ const Operation = {
         dispatch(ActionCreator.loadMovies(movies));
         dispatch(ActionCreator.setIsMoviesLoaded(true));
       })
-      .catch((error) => {
-        throw error;
-      });
+      .catch(() => {});
   },
   loadFavoriteMovies: () => (dispatch, getState, api) => {
     return api.get(`/favorite`)
@@ -88,9 +86,7 @@ const Operation = {
         dispatch(ActionCreator.loadFavoriteMovies(movies));
         dispatch(ActionCreator.setIsFavoriteMoviesLoaded(true));
       })
-      .catch((error) => {
-        throw error;
-      });
+      .catch(() => {});
   },
   loadPromo: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`)
@@ -98,7 +94,8 @@ const Operation = {
         const promoMovie = movieAdapter(response.data);
         dispatch(ActionCreator.loadPromo(promoMovie));
         dispatch(ActionCreator.setIsPromoMovieLoaded(true));
-      });
+      })
+      .catch(() => {});
   },
   setFavoriteStatus: (movieId, status) => (dispatch, getState, api) => {
     return api.post(`favorite/${movieId}/${status ? 1 : 0}`)
@@ -111,7 +108,8 @@ const Operation = {
         if (movie.id === promoMovieId) {
           dispatch(ActionCreator.loadPromo(movie));
         }
-      });
+      })
+      .catch(() => {});
   }
 };
 

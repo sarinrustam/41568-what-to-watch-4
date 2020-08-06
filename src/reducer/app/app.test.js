@@ -64,7 +64,7 @@ const movies = [
 ];
 
 describe(`App reducer tests`, () => {
-  it(`Action working correctly`, () => {
+  it(`Action setCurrentGenre working correctly`, () => {
     const newInitialState = {
       currentGenre: movies[1].genre,
       countMoviesShow: COUNT_LIMIT_MOVIES
@@ -73,7 +73,7 @@ describe(`App reducer tests`, () => {
     expect(reducer(initialState, ActionCreator.setCurrentGenre(movies[1].genre))).toEqual(newInitialState);
   });
 
-  it(`incrementCountMoviesRender working correctly`, () => {
+  it(`Action incrementCountMoviesRender working correctly`, () => {
     const newInitialState = {
       currentGenre: FILTER_ALL_GENRES,
       countMoviesShow: COUNT_LIMIT_MOVIES + 8
@@ -81,7 +81,7 @@ describe(`App reducer tests`, () => {
     expect(reducer(initialState, ActionCreator.incrementCountMoviesShow())).toEqual(newInitialState);
   });
 
-  it(`resetCountMoviesRender`, () => {
+  it(`Action resetCountMoviesRender working correctly`, () => {
     const newInitialState = {
       currentGenre: FILTER_ALL_GENRES,
       countMoviesShow: COUNT_LIMIT_MOVIES + COUNT_LIMIT_MOVIES,
