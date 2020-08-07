@@ -1,4 +1,5 @@
 import axios from "axios";
+import {API_URL} from "../utils/utils.js";
 
 const TIMEOUT_DURATION = 5000;
 
@@ -8,7 +9,7 @@ const ErrorCodes = {
 
 export const createAPI = (onUnauthorized) => {
   const api = axios.create({
-    baseURL: `https://4.react.pages.academy/wtw`,
+    baseURL: `${API_URL}/wtw`,
     timeout: TIMEOUT_DURATION,
     withCredentials: true
   });

@@ -2,9 +2,9 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
-import withSmallMovieCard from "../../hocs/with-video-play/with-video-play.js";
+import withVideoPlay from "../../hocs/with-video-play/with-video-play.js";
 
-const SmallMovieCardWrapped = withSmallMovieCard(SmallMovieCard);
+const SmallMovieCardWrapped = withVideoPlay(SmallMovieCard);
 
 class SmallMovieCardList extends PureComponent {
   render() {

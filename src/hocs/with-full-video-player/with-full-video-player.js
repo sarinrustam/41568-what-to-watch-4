@@ -16,7 +16,6 @@ const withFullVideoPlayer = (Component) => {
         progress: 0,
       };
 
-
       this.handleTogglePlay = this.handleTogglePlay.bind(this);
       this.handleEnterFullScreen = this.handleEnterFullScreen.bind(this);
       this.handleExitVideo = this.handleExitVideo.bind(this);
@@ -26,13 +25,12 @@ const withFullVideoPlayer = (Component) => {
       const {videoLink, poster} = this.props.movie;
       const video = this.videoRef.current;
 
-
       video.src = videoLink;
       video.poster = poster;
 
       video.ontimeupdate = () => {
         this.setState({
-          progress: video.currentTime
+          progress: Math.trunc(video.currentTime)
         });
       };
 
@@ -40,9 +38,10 @@ const withFullVideoPlayer = (Component) => {
     }
 
     componentDidUpdate() {
+      const {isPlaying} = this.state;
       const video = this.videoRef.current;
 
-      if (this.state.isPlaying) {
+      if (isPlaying) {
         video.play();
       } else {
         video.pause();
@@ -96,6 +95,7 @@ const withFullVideoPlayer = (Component) => {
             ref={this.videoRef}
             className="player__video"
             crossOrigin="anonymous"
+            autoPlay={true}
           />
         </Component>
       );

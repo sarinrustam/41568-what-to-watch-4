@@ -8,6 +8,10 @@ export const COUNT_LIMIT_MOVIES = 8;
 
 export const MAX_GENRES_SHOW = 9;
 
+export const SHOWING_MOVIES_COUNT = 4;
+
+export const API_URL = `https://4.react.pages.academy`;
+
 const MINUTES = 60;
 
 const RATING_DESCRIPTION = {

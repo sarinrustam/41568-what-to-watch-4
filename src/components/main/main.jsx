@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
-import GenreList from "../genres-list/genres-list.jsx";
+import GenresList from "../genres-list/genres-list.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {getPromoMovie, getMoviesByGenre, uniqueGenres} from "../../reducer/data/selectors.js";
 import {getCurrentGenre, getCountMoviesShow} from "../../reducer/app/selectors.js";
@@ -115,7 +115,7 @@ class Main extends PureComponent {
           <section className="catalog">
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-            <GenreList
+            <GenresList
               genresList={genres}
               currentGenre={currentGenre}
               setCurrentGenre={this.handlerSetCurrentGenre}

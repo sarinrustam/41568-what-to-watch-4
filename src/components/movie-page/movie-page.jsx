@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 import {withRouter, Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import {PAGE_FILTERS, AppRoute} from "../../utils/utils.js";
+import {PAGE_FILTERS, AppRoute, SHOWING_MOVIES_COUNT} from "../../utils/utils.js";
 
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
@@ -13,8 +13,6 @@ import {Operation as DataOperation} from "../../reducer/data/data.js";
 import UserBlock from "../user-block/user-block.jsx";
 import {Operation as CommentsOperation} from "../../reducer/comments/comments.js";
 import {getComments} from "../../reducer/comments/selectors.js";
-
-const SHOWING_MOVIES_COUNT = 4;
 
 const SmallMovieCardListWrapped = withActiveItem(SmallMovieCardList);
 const MovieCardDescriptionWrapped = withActiveItem(MovieCardDescription, PAGE_FILTERS[0]);
@@ -33,7 +31,7 @@ class MoviePage extends PureComponent {
   }
 
   handlePlay() {
-    this.props.history.push(`/player/${this.props.movie.id}`);
+    this.props.history.push(`${AppRoute.PLAYER}/${this.props.movie.id}`);
   }
 
   handleToggleIsFavorite(isFavorite) {

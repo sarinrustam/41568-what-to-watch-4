@@ -1,7 +1,7 @@
 import React from "react";
 
-const withSmallMovieCard = (Component) => {
-  class WithSmallMovieCard extends React.PureComponent {
+const withVideoPlay = (Component) => {
+  class WithVideoPlay extends React.PureComponent {
     constructor(props) {
       super(props);
 
@@ -48,9 +48,9 @@ const withSmallMovieCard = (Component) => {
     }
   }
 
-  WithSmallMovieCard.propTypes = {};
+  WithVideoPlay.propTypes = {};
 
-  return WithSmallMovieCard;
+  return WithVideoPlay;
 };
 
-export default withSmallMovieCard;
+export default withVideoPlay;

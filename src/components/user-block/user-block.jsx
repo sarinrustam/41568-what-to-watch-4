@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {getAuthStatus, getAvatar} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../utils/utils.js";
+import {AppRoute, API_URL} from "../../utils/utils.js";
 
 class UserBlock extends React.PureComponent {
   constructor(props) {
@@ -19,7 +19,7 @@ class UserBlock extends React.PureComponent {
         <Link
           to={AppRoute.MY_LIST}
         >
-          <img src={`https://4.react.pages.academy${avatar}`} alt="User avatar" width="63" height="63" />
+          <img src={`${API_URL}${avatar}`} alt="User avatar" width="63" height="63" />
         </Link>
       </div>
     );

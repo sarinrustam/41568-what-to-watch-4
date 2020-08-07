@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const GenreList = (props) => {
+const GenresList = (props) => {
   const {genresList, currentGenre, setCurrentGenre} = props;
 
   return (
@@ -27,10 +27,10 @@ const GenreList = (props) => {
   );
 };
 
-GenreList.propTypes = {
+GenresList.propTypes = {
   genresList: PropTypes.array.isRequired,
   currentGenre: PropTypes.string.isRequired,
   setCurrentGenre: PropTypes.func.isRequired,
 };
 
-export default GenreList;
+export default GenresList;
