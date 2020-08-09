@@ -20,6 +20,10 @@ const initialState = {
   comments: [],
 };
 
+it(`Reducer without additional parameters should return initial state`, () => {
+  expect(reducer(void 0, {})).toEqual(initialState);
+});
+
 describe(`Operation of data loading work correctly`, () => {
   it(`Should make a correct API post call to /comments/:movieId`, () => {
     const apiMock = new MockAdapter(api);
@@ -64,7 +68,9 @@ describe(`Operation of data loading work correctly`, () => {
         });
       });
   });
+});
 
+describe(`Actions work correctly`, () => {
   it(`Action setComments working correctly`, () => {
     const newInitialState = {
       errorText: ``,

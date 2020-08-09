@@ -9,17 +9,17 @@ configure({adapter: new Adapter()});
 jest.useFakeTimers();
 
 const MockComponent = (props) => {
-  const {handlerMouseEnter} = props;
+  const {onMouseEnter} = props;
 
   return (
     <div>
-      <button onMouseEnter={handlerMouseEnter} />
+      <button onMouseEnter={onMouseEnter} />
     </div>
   );
 };
 
 MockComponent.propTypes = {
-  handlerMouseEnter: PropTypes.func.isRequired,
+  onMouseEnter: PropTypes.func.isRequired,
 };
 
 describe(`withVideoPlay tests`, () => {
@@ -29,7 +29,7 @@ describe(`withVideoPlay tests`, () => {
 
     const wrapper = mount(
         <MockComponentWrapped
-          handlerMouseEnter={onaHandlerMouseEnter}
+          onMouseEnter={onaHandlerMouseEnter}
         />
     );
 

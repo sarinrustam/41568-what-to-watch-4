@@ -38,8 +38,8 @@ describe(`SMC hover and click`, () => {
         <SmallMovieCard
           movie={movie}
           onMovieClick={() => {}}
-          handlerMouseEnter={hoverHandler}
-          handlerMouseLeave={() => {}}
+          onMouseEnter={hoverHandler}
+          onMouseLeave={() => {}}
           isPlaying={true}
         />
     );
@@ -56,8 +56,8 @@ describe(`SMC hover and click`, () => {
         <SmallMovieCard
           movie={movie}
           onMovieClick={clickHandler}
-          handlerMouseEnter={() => {}}
-          handlerMouseLeave={() => {}}
+          onMouseEnter={() => {}}
+          onMouseLeave={() => {}}
           isPlaying={true}
         />
     );

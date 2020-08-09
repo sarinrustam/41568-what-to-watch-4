@@ -38,7 +38,7 @@ describe(`MovieCardDescription render`, () => {
         <MovieCardDescription
           movie={movie}
           activeItem={`Overview`}
-          setActiveItem={handlerSetActive}
+          onSetActiveItem={handlerSetActive}
           comments={[]}
         />
     ).toJSON();

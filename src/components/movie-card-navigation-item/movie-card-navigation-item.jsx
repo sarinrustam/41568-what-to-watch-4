@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const MovieCardNavigationItem = (props) => {
-  const {setActiveFilter, filter, isActive} = props;
+  const {onSetActiveFilter, filter, isActive} = props;
 
   const handlerSetActiveFilter = (event) => {
     event.preventDefault();
-    setActiveFilter(filter);
+    onSetActiveFilter(filter);
   };
 
   return (
@@ -22,7 +22,7 @@ const MovieCardNavigationItem = (props) => {
 
 MovieCardNavigationItem.propTypes = {
   filter: PropTypes.string.isRequired,
-  setActiveFilter: PropTypes.func.isRequired,
+  onSetActiveFilter: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
 };
 

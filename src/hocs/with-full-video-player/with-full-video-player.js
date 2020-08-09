@@ -94,7 +94,6 @@ const withFullVideoPlayer = (Component) => {
           <video
             ref={this.videoRef}
             className="player__video"
-            crossOrigin="anonymous"
             autoPlay={true}
           />
         </Component>

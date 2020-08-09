@@ -11,7 +11,7 @@ describe(`Render correctly`, () => {
         <GenresList
           genresList={GENRES}
           currentGenre={GENRES[0]}
-          setCurrentGenre={handlerSetCurrentGenre}
+          onSetCurrentGenre={handlerSetCurrentGenre}
         />
     ).toJSON();
 

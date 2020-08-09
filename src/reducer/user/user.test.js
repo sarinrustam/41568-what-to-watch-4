@@ -4,14 +4,20 @@ import {reducer, ActionCreator, ActionType, Operation, AuthorizationStatus} from
 
 const api = createAPI(() => {});
 
+const defaultAvatar = `img/avatar.jpg`;
+
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  avatar: ``,
+  avatar: defaultAvatar,
   authorizationError: ``,
   checkAuthIsLoaded: false
 };
 
-describe(`Operation for user auth working correctly`, () => {
+it(`Reducer without additional parameters should return initial state`, () => {
+  expect(reducer(void 0, {})).toEqual(initialState);
+});
+
+describe(`Operation working correctly`, () => {
   it(`Should make a correct API get call to /login`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
@@ -93,11 +99,13 @@ describe(`Operation for user auth working correctly`, () => {
         });
       });
   });
+});
 
+describe(`Actions working correctly`, () => {
   it(`Action setAuthorization working correctly`, () => {
     const newInitialState = {
       authorizationStatus: AuthorizationStatus.AUTH,
-      avatar: ``,
+      avatar: defaultAvatar,
       authorizationError: ``,
       checkAuthIsLoaded: false
     };
@@ -122,7 +130,7 @@ describe(`Operation for user auth working correctly`, () => {
     const errorMessage = `Ошибка`;
     const newInitialState = {
       authorizationStatus: AuthorizationStatus.NO_AUTH,
-      avatar: ``,
+      avatar: defaultAvatar,
       authorizationError: errorMessage,
       checkAuthIsLoaded: false
     };
@@ -133,7 +141,7 @@ describe(`Operation for user auth working correctly`, () => {
   it(`Action setCheckAuthIsLoaded working correctly`, () => {
     const newInitialState = {
       authorizationStatus: AuthorizationStatus.NO_AUTH,
-      avatar: ``,
+      avatar: defaultAvatar,
       authorizationError: ``,
       checkAuthIsLoaded: true
     };

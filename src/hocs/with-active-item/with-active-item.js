@@ -18,8 +18,8 @@ const withActiveItem = (Component, defaultValue = null) => {
         activeItem: item,
       });
 
-      if (this.props.changeActiveItem) {
-        this.props.changeActiveItem(item);
+      if (this.props.onChangeActiveItem) {
+        this.props.onChangeActiveItem(item);
       }
     }
 
@@ -28,14 +28,14 @@ const withActiveItem = (Component, defaultValue = null) => {
         <Component
           {...this.props}
           activeItem={this.state.activeItem}
-          setActiveItem={this.setActiveItem}
+          onSetActiveItem={this.setActiveItem}
         />
       );
     }
   }
 
   WithActiveItem.propTypes = {
-    changeActiveItem: PropTypes.func,
+    onChangeActiveItem: PropTypes.func,
   };
 
   return WithActiveItem;

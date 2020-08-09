@@ -135,7 +135,7 @@ describe(`Render component`, () => {
                 onSetFavoriteStatus={() => {}}
                 history={{push: () => {}}}
                 showMoreButton={false}
-                onresetCountMoviesShow={() => {}}
+                onResetCountMoviesShow={() => {}}
                 onIncrementCountMoviesShow={() => {}}
                 onSetCurrentGenre={() => {}}
               />

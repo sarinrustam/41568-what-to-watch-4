@@ -11,7 +11,7 @@ describe(`MovieCardDescriptionItem render`, () => {
         <MovieCardNavigationItem
           filter={`Default`}
           isActive={true}
-          setActiveFilter={handlerSetActive}
+          onSetActiveFilter={handlerSetActive}
         />
     ).toJSON();
 

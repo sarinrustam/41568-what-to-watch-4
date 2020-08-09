@@ -9,7 +9,7 @@ import {PAGE_FILTERS} from "../../utils/utils.js";
 configure({adapter: new Adapter()});
 
 const MockComponent = (props) => {
-  const {setActiveItem} = props;
+  const {onSetActiveItem} = props;
 
   return (
     <div>
@@ -18,7 +18,7 @@ const MockComponent = (props) => {
           <li
             key={item}
             onClick={() => {
-              setActiveItem(item);
+              onSetActiveItem(item);
             }}
           >
             {item}
@@ -30,7 +30,7 @@ const MockComponent = (props) => {
 };
 
 MockComponent.propTypes = {
-  setActiveItem: PropTypes.func.isRequired,
+  onSetActiveItem: PropTypes.func.isRequired,
   activeFilter: PropTypes.string.isRequired,
 };
 
@@ -42,7 +42,7 @@ describe(`withActiveItem tests`, () => {
     const wrapper = mount(
         <MockComponentWrapped
           activeFilter={PAGE_FILTERS[0]}
-          changeActiveItem={changeActiveFilter}
+          onChangeActiveItem={changeActiveFilter}
         />
     );
 

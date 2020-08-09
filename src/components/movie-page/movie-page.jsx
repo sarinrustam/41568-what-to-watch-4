@@ -97,7 +97,7 @@ class MoviePage extends PureComponent {
                   />
                   <Link
                     className="btn movie-card__button"
-                    to={`${AppRoute.FILMS}/${id}/review`}
+                    to={`${AppRoute.FILMS}/${id}${AppRoute.REVIEW}`}
                   >
                     Add review
                   </Link>
@@ -125,7 +125,7 @@ class MoviePage extends PureComponent {
 
             <SmallMovieCardListWrapped
               movies={relativeMovies}
-              changeActiveItem={this.handleMovieClick}
+              onChangeActiveItem={this.handleMovieClick}
             />
           </section>
 

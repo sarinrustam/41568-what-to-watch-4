@@ -30,8 +30,8 @@ describe(`Render SMC`, () => {
     .create(<SmallMovieCard
       movie={movie}
       onMovieClick={() => {}}
-      handlerMouseEnter={() => {}}
-      handlerMouseLeave={() => {}}
+      onMouseEnter={() => {}}
+      onMouseLeave={() => {}}
       isPlaying={true}
     />, {
       createNodeMock: () => {

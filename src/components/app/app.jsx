@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import {Router, Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import AddReview from "../add-review/add-review.jsx";
@@ -20,32 +20,26 @@ import PrivateRoute from "../private-route/private-route.jsx";
 const VideoPlayerFullWrapped = withFullVideoPlayer(VideoPlayerFull);
 const AddReviewWrapped = withAddReview(AddReview);
 
-class App extends PureComponent {
-  constructor(props) {
-    super(props);
+const App = (props) => {
+  if (!props.isLoaded) {
+    return <div>...Loading. Wait a few seconds</div>;
   }
 
-  render() {
-    if (!this.props.isLoaded) {
-      return <div>...Loading. Wait a few seconds</div>;
-    }
-
-    return (
-      <Router
-        history={history}
-      >
-        <Switch>
-          <Route exact path={AppRoute.ROOT} component={Main}/>
-          <Route exact path={`${AppRoute.FILMS}/:id`} component={MoviePage}/>
-          <Route exact path={`${AppRoute.PLAYER}/:id`} component={VideoPlayerFullWrapped}/>
-          <Route exact path={AppRoute.LOGIN} component={SignIn}/>
-          <PrivateRoute exact path={`${AppRoute.FILMS}/:id/review`} component={AddReviewWrapped}/>
-          <PrivateRoute exact path={AppRoute.MY_LIST} component={MyList}/>
-        </Switch>
-      </Router>
-    );
-  }
-}
+  return (
+    <Router
+      history={history}
+    >
+      <Switch>
+        <Route exact path={AppRoute.ROOT} component={Main}/>
+        <Route exact path={`${AppRoute.FILMS}/:id`} component={MoviePage}/>
+        <Route exact path={`${AppRoute.PLAYER}/:id`} component={VideoPlayerFullWrapped}/>
+        <Route exact path={AppRoute.LOGIN} component={SignIn}/>
+        <PrivateRoute exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`} component={AddReviewWrapped}/>
+        <PrivateRoute exact path={AppRoute.MY_LIST} component={MyList}/>
+      </Switch>
+    </Router>
+  );
+};
 
 const mapStateToProps = (state) => {
   return {

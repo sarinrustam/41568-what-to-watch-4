@@ -37,7 +37,11 @@ const initialState = {
   isPromoMovieLoaded: false
 };
 
-describe(`Operation of data loading work correctly`, () => {
+it(`Reducer without additional parameters should return initial state`, () => {
+  expect(reducer(void 0, {})).toEqual(initialState);
+});
+
+describe(`Operation work correctly`, () => {
   it(`Should make a correct API call to /films`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
@@ -142,7 +146,9 @@ describe(`Operation of data loading work correctly`, () => {
         });
       });
   });
+});
 
+describe(`Actions work correctly`, () => {
   it(`Action loadMovies working correctly`, () => {
     const newInitialState = {
       movies: moviesAdapter(movies),

@@ -41,8 +41,8 @@ const withVideoPlay = (Component) => {
         <Component
           {...this.props}
           isPlaying={this.state.isPlaying}
-          handlerMouseEnter={this.handlerMouseEnter}
-          handlerMouseLeave={this.handlerMouseLeave}
+          onMouseEnter={this.handlerMouseEnter}
+          onMouseLeave={this.handlerMouseLeave}
         />
       );
     }

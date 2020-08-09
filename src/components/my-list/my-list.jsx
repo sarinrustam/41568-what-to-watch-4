@@ -50,7 +50,7 @@ class MyList extends React.PureComponent {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <SmallMovieCardList
             movies={favoriteMovies}
-            setActiveItem={this.handleActiveMovie}
+            onSetActiveItem={this.handleActiveMovie}
           />
         </section>
 

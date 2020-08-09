@@ -37,6 +37,7 @@ export const AppRoute = {
   MY_LIST: `/mylist`,
   FILMS: `/films`,
   PLAYER: `/player`,
+  REVIEW: `/review`,
 };
 
 export const setRatingDesc = (rating) => {

@@ -38,10 +38,10 @@ class Main extends PureComponent {
   }
 
   handlerSetCurrentGenre(genre) {
-    const {onSetCurrentGenre, onresetCountMoviesShow} = this.props;
+    const {onSetCurrentGenre, onResetCountMoviesShow} = this.props;
 
     onSetCurrentGenre(genre);
-    onresetCountMoviesShow();
+    onResetCountMoviesShow();
   }
 
   handleToggleIsFavorite(isFavorite) {
@@ -50,7 +50,7 @@ class Main extends PureComponent {
   }
 
   handlePlay() {
-    this.props.history.push(`/player/${this.props.promoMovie.id}`);
+    this.props.history.push(`${AppRoute.PLAYER}/${this.props.promoMovie.id}`);
   }
 
   render() {
@@ -118,12 +118,12 @@ class Main extends PureComponent {
             <GenresList
               genresList={genres}
               currentGenre={currentGenre}
-              setCurrentGenre={this.handlerSetCurrentGenre}
+              onSetCurrentGenre={this.handlerSetCurrentGenre}
             />
 
             <SmallMovieCardListWrapped
               movies={slicedMoviesByGenre}
-              changeActiveItem={this.handlerMovieClick}>
+              onChangeActiveItem={this.handlerMovieClick}>
             </SmallMovieCardListWrapped>
 
             {showMoreButton ?
@@ -167,7 +167,7 @@ Main.propTypes = {
       PropTypes.string.isRequired
   ).isRequired,
   onIncrementCountMoviesShow: PropTypes.func.isRequired,
-  onresetCountMoviesShow: PropTypes.func.isRequired,
+  onResetCountMoviesShow: PropTypes.func.isRequired,
   slicedMoviesByGenre: PropTypes.array.isRequired,
   showMoreButton: PropTypes.bool.isRequired,
   history: PropTypes.shape({
@@ -196,7 +196,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   onSetCurrentGenre: ActionCreator.setCurrentGenre,
-  onresetCountMoviesShow: ActionCreator.resetCountMoviesShow,
+  onResetCountMoviesShow: ActionCreator.resetCountMoviesShow,
   onIncrementCountMoviesShow: ActionCreator.incrementCountMoviesShow,
   onSetFavoriteStatus: DataOperation.setFavoriteStatus,
 };

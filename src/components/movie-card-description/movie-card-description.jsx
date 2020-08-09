@@ -14,11 +14,11 @@ class MovieCardDescription extends PureComponent {
 
   renderActiveMovieSection() {
     switch (this.props.activeItem) {
-      case `Details`:
+      case PAGE_FILTERS[1]:
         return <MoviePageDetails
           movie={this.props.movie}
         />;
-      case `Reviews`:
+      case PAGE_FILTERS[2]:
         return <MoviePageReviews
           movie={this.props.movie}
           comments={this.props.comments}
@@ -31,7 +31,7 @@ class MovieCardDescription extends PureComponent {
   }
 
   render() {
-    const {activeItem, setActiveItem} = this.props;
+    const {activeItem, onSetActiveItem} = this.props;
 
     return (
       <div className="movie-card__desc">
@@ -42,7 +42,7 @@ class MovieCardDescription extends PureComponent {
                 key={filter}
                 filter={filter}
                 isActive={activeItem === filter}
-                setActiveFilter={setActiveItem}
+                onSetActiveFilter={onSetActiveItem}
               />
             ))}
           </ul>
@@ -72,7 +72,7 @@ MovieCardDescription.propTypes = {
     }).isRequired,
   }).isRequired,
   activeItem: PropTypes.string,
-  setActiveItem: PropTypes.func.isRequired,
+  onSetActiveItem: PropTypes.func.isRequired,
   comments: PropTypes.array.isRequired
 };
 
