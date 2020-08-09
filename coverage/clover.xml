@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1596917647853" clover="3.2.0">
-  <project timestamp="1596917647853" name="All files">
-    <metrics statements="504" coveredstatements="374" conditionals="107" coveredconditionals="58" methods="182" coveredmethods="121" elements="793" coveredelements="553" complexity="0" loc="504" ncloc="504" packages="34" files="39" classes="39"/>
+<coverage generated="1596998955385" clover="3.2.0">
+  <project timestamp="1596998955386" name="All files">
+    <metrics statements="509" coveredstatements="390" conditionals="107" coveredconditionals="59" methods="183" coveredmethods="128" elements="799" coveredelements="577" complexity="0" loc="509" ncloc="509" packages="35" files="40" classes="40"/>
     <package name="src">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="history.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/history.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="3" count="3" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
       </file>
     </package>
     <package name="src.adapters">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="movies.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/adapters/movies.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="1" count="6" type="stmt"/>
+        <line num="1" count="7" type="stmt"/>
         <line num="2" count="18" type="stmt"/>
-        <line num="26" count="6" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
         <line num="27" count="10" type="stmt"/>
       </file>
       <file name="user.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/adapters/user.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="9" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
       </file>
     </package>
@@ -44,16 +44,16 @@
       </file>
     </package>
     <package name="src.components.add-review">
-      <metrics statements="7" coveredstatements="7" conditionals="6" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <metrics statements="7" coveredstatements="7" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="3"/>
       <file name="add-review.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/add-review/add-review.jsx">
-        <metrics statements="7" coveredstatements="7" conditionals="6" coveredconditionals="2" methods="3" coveredmethods="3"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="23" count="1" type="cond" truecount="1" falsecount="3"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="153" count="2" type="stmt"/>
+        <metrics statements="7" coveredstatements="7" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="4" type="cond" truecount="2" falsecount="2"/>
+        <line num="25" count="4" type="stmt"/>
+        <line num="153" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.components.app">
@@ -72,29 +72,40 @@
       </file>
     </package>
     <package name="src.components.genres-list">
-      <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="genres-list.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/genres-list/genres-list.jsx">
-        <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
-        <line num="4" count="4" type="stmt"/>
-        <line num="5" count="3" type="stmt"/>
-        <line num="7" count="3" type="stmt"/>
-        <line num="10" count="9" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="30" count="4" type="stmt"/>
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="11" count="9" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.genres-list-item">
+      <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="genres-list-item.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/genres-list-item/genres-list-item.jsx">
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="5" count="11" type="stmt"/>
+        <line num="7" count="11" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="11" type="stmt"/>
+        <line num="28" count="6" type="stmt"/>
       </file>
     </package>
     <package name="src.components.main">
-      <metrics statements="28" coveredstatements="20" conditionals="2" coveredconditionals="1" methods="8" coveredmethods="3"/>
+      <metrics statements="28" coveredstatements="21" conditionals="2" coveredconditionals="1" methods="8" coveredmethods="4"/>
       <file name="main.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/main/main.jsx">
-        <metrics statements="28" coveredstatements="20" conditionals="2" coveredconditionals="1" methods="8" coveredmethods="3"/>
+        <metrics statements="28" coveredstatements="21" conditionals="2" coveredconditionals="1" methods="8" coveredmethods="4"/>
         <line num="19" count="3" type="stmt"/>
-        <line num="23" count="2" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
-        <line num="27" count="2" type="stmt"/>
-        <line num="28" count="2" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
@@ -102,9 +113,9 @@
         <line num="44" count="0" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="57" count="2" type="stmt"/>
-        <line num="59" count="2" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="57" count="3" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
         <line num="154" count="3" type="stmt"/>
         <line num="179" count="3" type="stmt"/>
         <line num="180" count="1" type="stmt"/>
@@ -130,42 +141,42 @@
         <line num="34" count="2" type="stmt"/>
         <line num="36" count="2" type="stmt"/>
         <line num="41" count="6" type="stmt"/>
-        <line num="56" count="3" type="stmt"/>
+        <line num="56" count="4" type="stmt"/>
       </file>
     </package>
     <package name="src.components.movie-card-navigation-item">
-      <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="1"/>
+      <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="movie-card-navigation-item.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/movie-card-navigation-item/movie-card-navigation-item.jsx">
-        <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="1"/>
-        <line num="4" count="4" type="stmt"/>
-        <line num="5" count="7" type="stmt"/>
-        <line num="7" count="7" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="12" count="7" type="stmt"/>
-        <line num="23" count="4" type="stmt"/>
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="8" type="stmt"/>
+        <line num="23" count="6" type="stmt"/>
       </file>
     </package>
     <package name="src.components.movie-page">
-      <metrics statements="26" coveredstatements="13" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="3"/>
+      <metrics statements="26" coveredstatements="14" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="4"/>
       <file name="movie-page.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/movie-page/movie-page.jsx">
-        <metrics statements="26" coveredstatements="13" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="3"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <metrics statements="26" coveredstatements="14" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="4"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
-        <line num="151" count="2" type="stmt"/>
-        <line num="179" count="2" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="151" count="3" type="stmt"/>
+        <line num="179" count="3" type="stmt"/>
         <line num="180" count="0" type="stmt"/>
         <line num="181" count="0" type="stmt"/>
         <line num="182" count="0" type="stmt"/>
@@ -175,83 +186,83 @@
         <line num="187" count="0" type="stmt"/>
         <line num="190" count="0" type="stmt"/>
         <line num="193" count="0" type="stmt"/>
-        <line num="200" count="2" type="stmt"/>
+        <line num="200" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.components.movie-page-details">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="movie-page-details.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/movie-page-details/movie-page-details.jsx">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="6" count="4" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="46" count="4" type="stmt"/>
+        <line num="46" count="5" type="stmt"/>
       </file>
     </package>
     <package name="src.components.movie-page-overview">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="movie-page-overview.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/movie-page-overview/movie-page-overview.jsx">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="5" count="4" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
         <line num="6" count="3" type="stmt"/>
         <line num="7" count="3" type="stmt"/>
         <line num="8" count="3" type="stmt"/>
         <line num="9" count="3" type="stmt"/>
         <line num="11" count="3" type="stmt"/>
         <line num="13" count="3" type="stmt"/>
-        <line num="34" count="4" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
       </file>
     </package>
     <package name="src.components.movie-page-review">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="movie-page-reviews.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/movie-page-review/movie-page-reviews.jsx">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="6" count="4" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="39" count="4" type="stmt"/>
+        <line num="39" count="5" type="stmt"/>
       </file>
     </package>
     <package name="src.components.my-list">
       <metrics statements="15" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="3"/>
       <file name="my-list.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/my-list/my-list.jsx">
         <metrics statements="15" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="3"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="30" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-        <line num="75" count="2" type="stmt"/>
-        <line num="84" count="2" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="31" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="78" count="2" type="stmt"/>
+        <line num="87" count="2" type="stmt"/>
         <line num="88" count="0" type="stmt"/>
-        <line num="94" count="2" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="97" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.components.my-list-button">
-      <metrics statements="10" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="3"/>
+      <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
       <file name="my-list-button.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/my-list-button/my-list-button.jsx">
-        <metrics statements="10" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="3"/>
-        <line num="4" count="5" type="stmt"/>
-        <line num="5" count="4" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
+        <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="4" count="7" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
         <line num="8" count="3" type="stmt"/>
-        <line num="15" count="4" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="23" count="4" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="27" count="4" type="stmt"/>
-        <line num="39" count="5" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="39" count="7" type="stmt"/>
       </file>
     </package>
     <package name="src.components.private-route">
@@ -276,54 +287,54 @@
       </file>
     </package>
     <package name="src.components.sign-in">
-      <metrics statements="20" coveredstatements="13" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="3"/>
+      <metrics statements="20" coveredstatements="17" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="4"/>
       <file name="sign-in.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/sign-in/sign-in.jsx">
-        <metrics statements="20" coveredstatements="13" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="3"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
+        <metrics statements="20" coveredstatements="17" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="4"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="43" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="116" count="2" type="stmt"/>
-        <line num="122" count="2" type="stmt"/>
-        <line num="123" count="1" type="stmt"/>
-        <line num="124" count="1" type="stmt"/>
-        <line num="126" count="1" type="stmt"/>
-        <line num="132" count="2" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="45" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="120" count="3" type="stmt"/>
+        <line num="126" count="3" type="stmt"/>
+        <line num="127" count="1" type="stmt"/>
+        <line num="128" count="1" type="stmt"/>
+        <line num="130" count="1" type="stmt"/>
+        <line num="136" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.components.small-movie-card">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="small-movie-card.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/small-movie-card/small-movie-card.jsx">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="6" count="8" type="stmt"/>
+        <line num="6" count="9" type="stmt"/>
         <line num="7" count="11" type="stmt"/>
         <line num="9" count="11" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="14" count="11" type="stmt"/>
-        <line num="43" count="8" type="stmt"/>
+        <line num="43" count="9" type="stmt"/>
       </file>
     </package>
     <package name="src.components.small-movie-card-list">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="small-movie-card-list.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/small-movie-card-list/small-movie-card-list.jsx">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="7" count="6" type="stmt"/>
-        <line num="9" count="6" type="stmt"/>
+        <line num="7" count="7" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
         <line num="10" count="5" type="stmt"/>
         <line num="12" count="5" type="stmt"/>
         <line num="16" count="8" type="stmt"/>
-        <line num="26" count="6" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
       </file>
     </package>
     <package name="src.components.user-block">
@@ -336,8 +347,8 @@
         <line num="29" count="6" type="stmt"/>
         <line num="40" count="6" type="stmt"/>
         <line num="42" count="6" type="stmt"/>
-        <line num="50" count="7" type="stmt"/>
-        <line num="55" count="7" type="stmt"/>
+        <line num="50" count="9" type="stmt"/>
+        <line num="55" count="9" type="stmt"/>
         <line num="56" count="6" type="stmt"/>
         <line num="57" count="6" type="stmt"/>
         <line num="59" count="6" type="stmt"/>
@@ -364,24 +375,24 @@
         <line num="37" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
         <line num="42" count="14" type="stmt"/>
-        <line num="53" count="10" type="stmt"/>
+        <line num="53" count="11" type="stmt"/>
       </file>
     </package>
     <package name="src.components.video-player-full">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="video-player-full.jsx" path="/Users/a1/Desktop/41568-what-to-watch-4/src/components/video-player-full/video-player-full.jsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="62" count="2" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="62" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.hocs.with-active-item">
       <metrics statements="10" coveredstatements="10" conditionals="3" coveredconditionals="2" methods="4" coveredmethods="4"/>
       <file name="with-active-item.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/hocs/with-active-item/with-active-item.js">
         <metrics statements="10" coveredstatements="10" conditionals="3" coveredconditionals="2" methods="4" coveredmethods="4"/>
-        <line num="4" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="6" type="cond" truecount="1" falsecount="0"/>
         <line num="7" count="5" type="stmt"/>
         <line num="9" count="5" type="stmt"/>
         <line num="13" count="5" type="stmt"/>
@@ -389,8 +400,8 @@
         <line num="21" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="22" count="1" type="stmt"/>
         <line num="27" count="6" type="stmt"/>
-        <line num="37" count="8" type="stmt"/>
-        <line num="41" count="8" type="stmt"/>
+        <line num="37" count="10" type="stmt"/>
+        <line num="41" count="10" type="stmt"/>
       </file>
     </package>
     <package name="src.hocs.with-add-review">
@@ -469,7 +480,7 @@
       <metrics statements="15" coveredstatements="11" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="5"/>
       <file name="with-video-play.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/hocs/with-video-play/with-video-play.js">
         <metrics statements="15" coveredstatements="11" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="5"/>
-        <line num="3" count="7" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
         <line num="6" count="9" type="stmt"/>
         <line num="8" count="9" type="stmt"/>
         <line num="10" count="9" type="stmt"/>
@@ -482,8 +493,8 @@
         <line num="32" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="40" count="10" type="stmt"/>
-        <line num="51" count="7" type="stmt"/>
-        <line num="53" count="7" type="stmt"/>
+        <line num="51" count="8" type="stmt"/>
+        <line num="53" count="8" type="stmt"/>
       </file>
     </package>
     <package name="src.mocks">
@@ -497,7 +508,7 @@
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="name-space.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/reducer/name-space.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="9" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
       </file>
     </package>
     <package name="src.reducer.app">
@@ -521,9 +532,9 @@
       </file>
       <file name="selectors.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/reducer/app/selectors.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="3" count="5" type="stmt"/>
+        <line num="3" count="6" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
-        <line num="7" count="5" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
       </file>
     </package>
@@ -531,13 +542,13 @@
       <metrics statements="28" coveredstatements="24" conditionals="5" coveredconditionals="5" methods="15" coveredmethods="10"/>
       <file name="comments.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/reducer/comments/comments.js">
         <metrics statements="22" coveredstatements="21" conditionals="5" coveredconditionals="5" methods="12" coveredmethods="10"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="10" count="3" type="stmt"/>
-        <line num="16" count="3" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
         <line num="18" count="2" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
         <line num="30" count="2" type="stmt"/>
-        <line num="37" count="3" type="stmt"/>
+        <line num="37" count="4" type="stmt"/>
         <line num="38" count="1" type="stmt"/>
         <line num="39" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
@@ -547,7 +558,7 @@
         <line num="49" count="1" type="stmt"/>
         <line num="51" count="1" type="stmt"/>
         <line num="52" count="1" type="stmt"/>
-        <line num="58" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="58" count="4" type="cond" truecount="1" falsecount="0"/>
         <line num="59" count="4" type="cond" truecount="4" falsecount="0"/>
         <line num="61" count="1" type="stmt"/>
         <line num="65" count="1" type="stmt"/>
@@ -556,11 +567,11 @@
       </file>
       <file name="selectors.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/reducer/comments/selectors.js">
         <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="3" count="2" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
       </file>
     </package>
@@ -568,9 +579,9 @@
       <metrics statements="71" coveredstatements="62" conditionals="17" coveredconditionals="12" methods="39" coveredmethods="26"/>
       <file name="data.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/reducer/data/data.js">
         <metrics statements="47" coveredstatements="47" conditionals="15" coveredconditionals="12" methods="25" coveredmethods="21"/>
-        <line num="5" count="6" type="stmt"/>
-        <line num="14" count="6" type="stmt"/>
-        <line num="24" count="6" type="stmt"/>
+        <line num="5" count="7" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="24" count="7" type="stmt"/>
         <line num="26" count="2" type="stmt"/>
         <line num="32" count="2" type="stmt"/>
         <line num="38" count="3" type="stmt"/>
@@ -578,7 +589,7 @@
         <line num="53" count="2" type="stmt"/>
         <line num="59" count="2" type="stmt"/>
         <line num="65" count="2" type="stmt"/>
-        <line num="72" count="6" type="stmt"/>
+        <line num="72" count="7" type="stmt"/>
         <line num="73" count="1" type="stmt"/>
         <line num="74" count="1" type="stmt"/>
         <line num="76" count="1" type="stmt"/>
@@ -601,7 +612,7 @@
         <line num="106" count="1" type="stmt"/>
         <line num="108" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="109" count="1" type="stmt"/>
-        <line num="116" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="116" count="7" type="cond" truecount="1" falsecount="0"/>
         <line num="117" count="8" type="cond" truecount="8" falsecount="0"/>
         <line num="119" count="1" type="stmt"/>
         <line num="123" count="1" type="stmt"/>
@@ -618,29 +629,29 @@
       </file>
       <file name="selectors.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/reducer/data/selectors.js">
         <metrics statements="24" coveredstatements="15" conditionals="2" coveredconditionals="0" methods="14" coveredmethods="5"/>
-        <line num="6" count="5" type="stmt"/>
+        <line num="6" count="6" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
-        <line num="10" count="5" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
-        <line num="14" count="5" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="18" count="5" type="stmt"/>
+        <line num="18" count="6" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
-        <line num="26" count="5" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
-        <line num="30" count="5" type="stmt"/>
+        <line num="30" count="6" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="36" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
-        <line num="43" count="5" type="stmt"/>
+        <line num="43" count="6" type="stmt"/>
         <line num="46" count="1" type="stmt"/>
-        <line num="50" count="5" type="stmt"/>
+        <line num="50" count="6" type="stmt"/>
         <line num="53" count="1" type="stmt"/>
-        <line num="57" count="5" type="stmt"/>
+        <line num="57" count="6" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
-        <line num="61" count="5" type="stmt"/>
+        <line num="61" count="6" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
       </file>
     </package>
@@ -648,27 +659,27 @@
       <metrics statements="36" coveredstatements="34" conditionals="6" coveredconditionals="6" methods="17" coveredmethods="15"/>
       <file name="selectors.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/reducer/user/selectors.js">
         <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
-        <line num="3" count="8" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
         <line num="4" count="7" type="stmt"/>
-        <line num="7" count="8" type="stmt"/>
+        <line num="7" count="11" type="stmt"/>
         <line num="8" count="6" type="stmt"/>
-        <line num="11" count="8" type="stmt"/>
+        <line num="11" count="11" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="15" count="8" type="stmt"/>
+        <line num="15" count="11" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
       </file>
       <file name="user.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/reducer/user/user.js">
         <metrics statements="28" coveredstatements="27" conditionals="6" coveredconditionals="6" methods="13" coveredmethods="12"/>
-        <line num="4" count="9" type="stmt"/>
-        <line num="9" count="9" type="stmt"/>
-        <line num="11" count="9" type="stmt"/>
-        <line num="18" count="9" type="stmt"/>
-        <line num="25" count="9" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="18" count="12" type="stmt"/>
+        <line num="25" count="12" type="stmt"/>
         <line num="27" count="3" type="stmt"/>
         <line num="33" count="3" type="stmt"/>
         <line num="39" count="2" type="stmt"/>
         <line num="45" count="2" type="stmt"/>
-        <line num="52" count="9" type="stmt"/>
+        <line num="52" count="12" type="stmt"/>
         <line num="53" count="1" type="stmt"/>
         <line num="54" count="1" type="stmt"/>
         <line num="56" count="1" type="stmt"/>
@@ -680,7 +691,7 @@
         <line num="70" count="1" type="stmt"/>
         <line num="71" count="1" type="stmt"/>
         <line num="74" count="1" type="stmt"/>
-        <line num="79" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="79" count="12" type="cond" truecount="1" falsecount="0"/>
         <line num="80" count="5" type="cond" truecount="5" falsecount="0"/>
         <line num="82" count="1" type="stmt"/>
         <line num="86" count="1" type="stmt"/>
@@ -693,18 +704,18 @@
       <metrics statements="30" coveredstatements="27" conditionals="14" coveredconditionals="11" methods="4" coveredmethods="4"/>
       <file name="utils.js" path="/Users/a1/Desktop/41568-what-to-watch-4/src/utils/utils.js">
         <metrics statements="30" coveredstatements="27" conditionals="14" coveredconditionals="11" methods="4" coveredmethods="4"/>
-        <line num="3" count="17" type="stmt"/>
-        <line num="5" count="17" type="stmt"/>
-        <line num="7" count="17" type="stmt"/>
-        <line num="9" count="17" type="stmt"/>
-        <line num="11" count="17" type="stmt"/>
-        <line num="13" count="17" type="stmt"/>
-        <line num="15" count="17" type="stmt"/>
-        <line num="17" count="17" type="stmt"/>
-        <line num="25" count="17" type="stmt"/>
-        <line num="30" count="17" type="stmt"/>
-        <line num="34" count="17" type="stmt"/>
-        <line num="43" count="17" type="stmt"/>
+        <line num="3" count="21" type="stmt"/>
+        <line num="5" count="21" type="stmt"/>
+        <line num="7" count="21" type="stmt"/>
+        <line num="9" count="21" type="stmt"/>
+        <line num="11" count="21" type="stmt"/>
+        <line num="13" count="21" type="stmt"/>
+        <line num="15" count="21" type="stmt"/>
+        <line num="17" count="21" type="stmt"/>
+        <line num="25" count="21" type="stmt"/>
+        <line num="30" count="21" type="stmt"/>
+        <line num="34" count="21" type="stmt"/>
+        <line num="43" count="21" type="stmt"/>
         <line num="44" count="3" type="cond" truecount="1" falsecount="1"/>
         <line num="45" count="0" type="stmt"/>
         <line num="47" count="3" type="cond" truecount="3" falsecount="1"/>
@@ -714,14 +725,14 @@
         <line num="53" count="1" type="cond" truecount="3" falsecount="1"/>
         <line num="54" count="1" type="stmt"/>
         <line num="57" count="0" type="stmt"/>
-        <line num="60" count="17" type="stmt"/>
+        <line num="60" count="21" type="stmt"/>
         <line num="61" count="1" type="stmt"/>
         <line num="62" count="1" type="stmt"/>
         <line num="63" count="1" type="stmt"/>
         <line num="65" count="1" type="stmt"/>
-        <line num="68" count="17" type="stmt"/>
+        <line num="68" count="21" type="stmt"/>
         <line num="69" count="18" type="stmt"/>
-        <line num="72" count="17" type="stmt"/>
+        <line num="72" count="21" type="stmt"/>
         <line num="73" count="1" type="stmt"/>
       </file>
     </package>

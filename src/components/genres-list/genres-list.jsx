@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import GenresListItem from "../genres-list-item/genres-list-item.jsx";
 
 const GenresList = (props) => {
   const {genresList, currentGenre, onSetCurrentGenre} = props;
@@ -7,21 +8,12 @@ const GenresList = (props) => {
   return (
     <ul className="catalog__genres-list">
       {genresList.map((genre) => (
-        <li
+        <GenresListItem
           key={genre}
-          className={currentGenre === genre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`}
-        >
-          <a
-            href="#"
-            className="catalog__genres-link"
-            onClick={(event) => {
-              event.preventDefault();
-              onSetCurrentGenre(genre);
-            }}
-          >
-            {genre}
-          </a>
-        </li>
+          genre={genre}
+          isActive={genre === currentGenre}
+          onSetCurrentGenre={onSetCurrentGenre}
+        />
       ))}
     </ul>
   );

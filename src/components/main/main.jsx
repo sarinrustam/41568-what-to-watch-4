@@ -23,7 +23,7 @@ class Main extends PureComponent {
     super(props);
 
     this.handlerMovieClick = this.handlerMovieClick.bind(this);
-    this.handlerShowMoreButtonClick = this.handlerShowMoreButtonClick.bind(this);
+    this.handleShowMoreButtonClick = this.handleShowMoreButtonClick.bind(this);
     this.handlerSetCurrentGenre = this.handlerSetCurrentGenre.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
     this.handleToggleIsFavorite = this.handleToggleIsFavorite.bind(this);
@@ -33,7 +33,7 @@ class Main extends PureComponent {
     this.props.history.push(`${AppRoute.FILMS}/${movie.id}`);
   }
 
-  handlerShowMoreButtonClick() {
+  handleShowMoreButtonClick() {
     this.props.onIncrementCountMoviesShow();
   }
 
@@ -128,7 +128,7 @@ class Main extends PureComponent {
 
             {showMoreButton ?
               <ShowMoreButton
-                onButtonClick={this.handlerShowMoreButtonClick}
+                onButtonClick={this.handleShowMoreButtonClick}
               /> : ``}
           </section>
 

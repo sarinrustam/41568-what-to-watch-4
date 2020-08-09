@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {getFavoriteMovies, getFavoriteLoadedStatus} from "../../reducer/data/selectors.js";
 import {AppRoute} from "../../utils/utils.js";
+import {Link} from "react-router-dom";
 
 class MyList extends React.PureComponent {
   constructor(props) {
@@ -35,11 +36,13 @@ class MyList extends React.PureComponent {
       <div className="user-page">
         <header className="page-header user-page__head">
           <div className="logo">
-            <a href="main.html" className="logo__link">
+            <Link
+              to={AppRoute.ROOT}
+              className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <h1 className="page-title user-page__title">My list</h1>

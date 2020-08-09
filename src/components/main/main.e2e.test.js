@@ -1,24 +1,14 @@
 import React from "react";
-import {Provider} from "react-redux";
-import configureStore from "redux-mock-store";
 
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme, {shallow} from "enzyme";
-import {FILTER_ALL_GENRES} from '../../utils/utils.js';
 
-import Main from "./main.jsx";
-
-const mockStore = configureStore([]);
+import {Main} from "./main.jsx";
 
 Enzyme.configure({
   adapter: new Adapter()
 });
 
-const HeaderMovieData = {
-  title: `TENET`,
-  genre: `Drama`,
-  year: 2020
-};
 
 const movies = [
   {
@@ -27,6 +17,7 @@ const movies = [
     img: `img/pulp-fiction.jpg`,
     release: 1994,
     genre: `Action`,
+    isFavorite: false,
     poster: `https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,686,1000_AL_.jpg`,
     coverBackground: `https://m.media-amazon.com/images/M/MV5BNTY1MzgzOTYxNV5BMl5BanBnXkFtZTgwMDI4OTEwMjE@._V1_SY1000_CR0,0,1463,1000_AL_.jpg`,
     rating: {
@@ -47,6 +38,7 @@ const movies = [
     img: `img/pulp-fiction.jpg`,
     release: 1994,
     genre: `Action`,
+    isFavorite: false,
     poster: `https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,686,1000_AL_.jpg`,
     coverBackground: `https://m.media-amazon.com/images/M/MV5BNTY1MzgzOTYxNV5BMl5BanBnXkFtZTgwMDI4OTEwMjE@._V1_SY1000_CR0,0,1463,1000_AL_.jpg`,
     rating: {
@@ -65,31 +57,28 @@ const movies = [
 
 
 describe(`Click button`, () => {
-  it(`Should title link be pressed`, () => {
-    const onMovieClick = jest.fn();
-    const store = mockStore({
-      currentGenre: FILTER_ALL_GENRES,
-      movies,
-    });
+  it(`Should button Play will be press correctly`, () => {
+    const handle = jest.fn();
 
-    const main = shallow(
-        <Provider store={store}>
-          <Main
-            headerMovieTitle={HeaderMovieData.title}
-            headerMovieGenre={HeaderMovieData.genre}
-            headerMovieYear={HeaderMovieData.year}
-            movies={movies}
-            onMovieClick={onMovieClick}
-          />
-        </Provider>
+    const wrapper = shallow(
+        <Main
+          onMovieClick={() => {}}
+          promoMovie={movies[0]}
+          currentGenre={``}
+          onSetCurrentGenre={() => {}}
+          genres={[]}
+          onIncrementCountMoviesShow={() => {}}
+          onResetCountMoviesShow={() => {}}
+          slicedMoviesByGenre={movies}
+          showMoreButton={false}
+          onSetFavoriteStatus={() => {}}
+          history={{push: handle}}
+        />
     );
 
-    const movieTitleLinks = main.find(`a.small-movie-card__link`);
+    const button = wrapper.find(`.btn--play`);
+    button.simulate(`click`);
 
-    movieTitleLinks.forEach((titleLink) => {
-      titleLink.props().onClick();
-    });
-
-    expect(onMovieClick.mock.calls.length).toBe(movieTitleLinks.length);
+    expect(handle).toHaveBeenCalledTimes(1);
   });
 });

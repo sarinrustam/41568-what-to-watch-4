@@ -2,6 +2,7 @@ import React from "react";
 import rerender from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
+import {MemoryRouter} from 'react-router';
 import NameSpace from "../../reducer/name-space.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 
@@ -20,8 +21,10 @@ describe(`SignIn test`, () => {
     });
     const tree = rerender.create(
         <Provider store={store}>
-          <SignIn
-          />
+          <MemoryRouter>
+            <SignIn
+            />
+          </MemoryRouter>
         </Provider>
     ).toJSON();
 

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.43% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/28</span>
+                <span class='fraction'>21/28</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>4/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.43% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/28</span>
+                <span class='fraction'>21/28</span>
             </div>
         
             
@@ -284,17 +284,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -304,6 +300,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -314,13 +314,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -492,7 +492,7 @@ class Main extends PureComponent {
     super(props);
 &nbsp;
     this.handlerMovieClick = this.handlerMovieClick.bind(this);
-    this.handlerShowMoreButtonClick = this.handlerShowMoreButtonClick.bind(this);
+    this.handleShowMoreButtonClick = this.handleShowMoreButtonClick.bind(this);
     this.handlerSetCurrentGenre = this.handlerSetCurrentGenre.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
     this.handleToggleIsFavorite = this.handleToggleIsFavorite.bind(this);
@@ -502,7 +502,7 @@ class Main extends PureComponent {
 <span class="cstat-no" title="statement not covered" >    this.props.history.push(`${AppRoute.FILMS}/${movie.id}`);</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  ha</span>ndlerShowMoreButtonClick() {
+<span class="fstat-no" title="function not covered" >  ha</span>ndleShowMoreButtonClick() {
 <span class="cstat-no" title="statement not covered" >    this.props.onIncrementCountMoviesShow();</span>
   }
 &nbsp;
@@ -518,8 +518,8 @@ class Main extends PureComponent {
 <span class="cstat-no" title="statement not covered" >    onSetFavoriteStatus(id, isFavorite);</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  ha</span>ndlePlay() {
-<span class="cstat-no" title="statement not covered" >    this.props.history.push(`${AppRoute.PLAYER}/${this.props.promoMovie.id}`);</span>
+  handlePlay() {
+    this.props.history.push(`${AppRoute.PLAYER}/${this.props.promoMovie.id}`);
   }
 &nbsp;
   render() {
@@ -597,7 +597,7 @@ class Main extends PureComponent {
 &nbsp;
             {showMoreButton ?
 <span class="branch-0 cbranch-no" title="branch not covered" >              &lt;ShowMoreButton</span>
-                onButtonClick={this.handlerShowMoreButtonClick}
+                onButtonClick={this.handleShowMoreButtonClick}
               /&gt; : ``}
           &lt;/section&gt;
 &nbsp;
@@ -679,7 +679,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Main));
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Aug 08 2020 23:14:07 GMT+0300 (GMT+03:00)
+                at Sun Aug 09 2020 21:49:15 GMT+0300 (GMT+03:00)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
