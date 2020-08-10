@@ -15,14 +15,6 @@ export const getFavoriteLoadedStatus = (state) => {
   return state[NameSpace.DATA].isFavoriteMoviesLoaded;
 };
 
-export const getMovieById = createSelector(
-    (state, filmId) => parseInt(filmId, 10),
-    getMovies,
-    (movieId, movies) => {
-      return movies.find((movie) => movie.id === movieId);
-    }
-);
-
 export const getPromoMovie = (state) => {
   return state[NameSpace.DATA].promoMovie;
 };

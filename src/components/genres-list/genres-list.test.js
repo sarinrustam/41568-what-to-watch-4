@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import renderer from "react-test-renderer";
 import {GENRES} from "../../mocks/films.js";
 
-import GenresList from "./genres-list.jsx";
+import GenresList from "./genres-list";
 
 describe(`Render correctly`, () => {
   it(`should GenreList render correctly`, () => {

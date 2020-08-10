@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import rerender from "react-test-renderer";
 
-import SmallMovieCard from "./small-movie-card.jsx";
+import SmallMovieCard from "./small-movie-card";
 
 const movie = {
   id: 0,

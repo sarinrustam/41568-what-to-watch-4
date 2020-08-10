@@ -1,23 +1,36 @@
-import React, {PureComponent} from "react";
+import * as React from "react";
 import {connect} from "react-redux";
 import {withRouter, Link} from "react-router-dom";
-import PropTypes from "prop-types";
 import {PAGE_FILTERS, AppRoute, SHOWING_MOVIES_COUNT} from "../../utils/utils.js";
-
-import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
+import history from "../../history";
+import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
-import MovieCardDescription from "../movie-card-description/movie-card-description.jsx";
-import {getMovies, getMovieById} from "../../reducer/data/selectors.js";
-import MyListButton from "../my-list-button/my-list-button.jsx";
+import MovieCardDescription from "../movie-card-description/movie-card-description";
+import {getMovies} from "../../reducer/data/selectors.js";
+import MyListButton from "../my-list-button/my-list-button";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
-import UserBlock from "../user-block/user-block.jsx";
+import UserBlock from "../user-block/user-block";
 import {Operation as CommentsOperation} from "../../reducer/comments/comments.js";
 import {getComments} from "../../reducer/comments/selectors.js";
+import {Movie as MovieType} from "../../types/types";
+
+interface Props {
+  movie: MovieType,
+  relativeMovies: [MovieType],
+  onSetFavoriteStatus: (id: number, isFavorite: boolean) => void,
+  onLoadComments: (id: number) => void,
+  comments: [object],
+  match: {
+    params: {
+      id: string
+    }
+  }
+};
 
 const SmallMovieCardListWrapped = withActiveItem(SmallMovieCardList);
 const MovieCardDescriptionWrapped = withActiveItem(MovieCardDescription, PAGE_FILTERS[0]);
 
-class MoviePage extends PureComponent {
+class MoviePage extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
 
@@ -31,7 +44,7 @@ class MoviePage extends PureComponent {
   }
 
   handlePlay() {
-    this.props.history.push(`${AppRoute.PLAYER}/${this.props.movie.id}`);
+    history.push(`${AppRoute.PLAYER}/${this.props.movie.id}`);
   }
 
   handleToggleIsFavorite(isFavorite) {
@@ -40,7 +53,7 @@ class MoviePage extends PureComponent {
   }
 
   handleMovieClick(movie) {
-    this.props.history.push(`${AppRoute.FILMS}/${movie.id}`);
+    history.push(`${AppRoute.FILMS}/${movie.id}`);
   }
 
   render() {
@@ -148,38 +161,10 @@ class MoviePage extends PureComponent {
   }
 }
 
-MoviePage.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    coverBackground: PropTypes.string.isRequired,
-    release: PropTypes.number.isRequired,
-    poster: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    rating: PropTypes.shape({
-      score: PropTypes.number.isRequired,
-      scoreDesc: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
-    }).isRequired,
-    crew: PropTypes.shape({
-      director: PropTypes.string.isRequired,
-      actors: PropTypes.array.isRequired
-    }).isRequired,
-  }).isRequired,
-  relativeMovies: PropTypes.array.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
-  onSetFavoriteStatus: PropTypes.func.isRequired,
-  onLoadComments: PropTypes.func.isRequired,
-  comments: PropTypes.array.isRequired,
-};
-
 const mapStateToProps = (state, props) => {
   const movies = getMovies(state);
   const movieId = props.match.params.id;
-  const movie = getMovieById(state, movieId);
+  const movie = movies.find((movie) => movie.id === movieId);
   const comments = getComments(state);
 
   const moviesByGenre = movies.filter((movieItem) => {

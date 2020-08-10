@@ -1,8 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import {setRatingDesc} from "../../utils/utils.js";
+import {Movie as MovieType} from "../../types/types";
 
-const MoviePageOverview = (props) => {
+interface Props {
+  movie: MovieType,
+};
+
+const MoviePageOverview = (props: Props): React.ReactElement => {
   const {movie} = props;
   const {description, crew, rating} = movie;
   const {director, actors} = crew;
@@ -29,20 +33,6 @@ const MoviePageOverview = (props) => {
       </div>
     </>
   );
-};
-
-MoviePageOverview.propTypes = {
-  movie: PropTypes.shape({
-    description: PropTypes.string.isRequired,
-    rating: PropTypes.shape({
-      score: PropTypes.number.isRequired,
-      amount: PropTypes.number.isRequired
-    }).isRequired,
-    crew: PropTypes.shape({
-      director: PropTypes.string.isRequired,
-      actors: PropTypes.array.isRequired
-    }).isRequired
-  }).isRequired
 };
 
 export default MoviePageOverview;

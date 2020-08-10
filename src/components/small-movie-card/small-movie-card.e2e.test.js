@@ -1,9 +1,9 @@
-import React from "react";
+import * as React from "react";
 
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme, {mount} from "enzyme";
 
-import SmallMovieCard from "./small-movie-card.jsx";
+import SmallMovieCard from "./small-movie-card";
 
 Enzyme.configure({
   adapter: new Adapter(),

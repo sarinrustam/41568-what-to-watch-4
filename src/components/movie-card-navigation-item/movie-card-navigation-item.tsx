@@ -1,7 +1,13 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 
-const MovieCardNavigationItem = (props) => {
+interface Props {
+  filter: string,
+  onSetActiveFilter: (filter: string) => void,
+  isActive: boolean,
+};
+
+const MovieCardNavigationItem = (props: Props): React.ReactElement => {
   const {onSetActiveFilter, filter, isActive} = props;
 
   const handlerSetActiveFilter = (event) => {
@@ -18,12 +24,6 @@ const MovieCardNavigationItem = (props) => {
       <a href="#" className="movie-nav__link">{filter}</a>
     </li>
   );
-};
-
-MovieCardNavigationItem.propTypes = {
-  filter: PropTypes.string.isRequired,
-  onSetActiveFilter: PropTypes.func.isRequired,
-  isActive: PropTypes.bool.isRequired,
 };
 
 export default MovieCardNavigationItem;

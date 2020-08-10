@@ -4,7 +4,7 @@ const port = portFinderSync.getPort(1338);
 const MomentLocalesPlugin = require(`moment-locales-webpack-plugin`);
 
 module.exports = {
-  entry: `./src/index.js`,
+  entry: `./src/index.tsx`,
   output: {
     filename: `bundle.js`,
     path: path.join(__dirname, `public`)
@@ -21,7 +21,8 @@ module.exports = {
     alias: {
       '@components': path.resolve(__dirname, `src/components/`),
       '@src': path.resolve(__dirname, `src/`),
-    }
+    },
+    extensions: [`.ts`, `.tsx`, `.js`, `json`]
   },
   module: {
     rules: [
@@ -31,6 +32,10 @@ module.exports = {
         use: {
           loader: `babel-loader`,
         },
+      },
+      {
+        test: /\.(tsx|ts)?$/,
+        loader: `ts-loader`
       }
     ],
   },

@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import renderer from "react-test-renderer";
 import {PAGE_FILTERS} from "../../utils/utils.js";
 
-import GenresListItem from "./genres-list-item.jsx";
+import GenresListItem from "./genres-list-item";
 
 describe(`Render GLI`, () => {
   it(`should GenresListItem render correctly`, () => {

@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import renderer from "react-test-renderer";
 
-import MoviePageReviews from "./movie-page-reviews.jsx";
+import MoviePageReviews from "./movie-page-reviews";
 
 const comments = [{
   "id": 1,

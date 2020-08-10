@@ -1,7 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
+import {Movie as MovieType} from "../../types/types";
 
-const VideoPlayerFull = (props) => {
+interface Props {
+  movie: MovieType,
+  onExitVideo: (event: React.FormEvent<HTMLButtonElement>) => void,
+  onTogglePlay: () => {},
+  onFullScreen: () => {},
+  children: React.ReactNode,
+  percentProgress: number,
+  timeLeft: number,
+};
+
+const VideoPlayerFull = (props: Props): React.ReactElement => {
   const {movie, onExitVideo, onTogglePlay, onFullScreen, children, percentProgress, timeLeft} = props;
 
   return (
@@ -57,33 +67,6 @@ const VideoPlayerFull = (props) => {
       </div>
     </div>
   );
-};
-
-VideoPlayerFull.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    coverBackground: PropTypes.string.isRequired,
-    release: PropTypes.number.isRequired,
-    poster: PropTypes.string.isRequired,
-    videoLink: PropTypes.string.isRequired,
-    rating: PropTypes.shape({
-      score: PropTypes.number.isRequired,
-      scoreDesc: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
-    }).isRequired,
-    crew: PropTypes.shape({
-      director: PropTypes.string.isRequired,
-      actors: PropTypes.array.isRequired
-    }).isRequired,
-  }).isRequired,
-  onExitVideo: PropTypes.func.isRequired,
-  onTogglePlay: PropTypes.func.isRequired,
-  onFullScreen: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
-  percentProgress: PropTypes.number.isRequired,
-  timeLeft: PropTypes.number.isRequired,
 };
 
 export default VideoPlayerFull;

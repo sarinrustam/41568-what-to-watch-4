@@ -1,14 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types";
-import UserBlock from "../user-block/user-block.jsx";
-import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
+import * as React from "react";
+import UserBlock from "../user-block/user-block";
+import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list";
 import {connect} from "react-redux";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {getFavoriteMovies, getFavoriteLoadedStatus} from "../../reducer/data/selectors.js";
 import {AppRoute} from "../../utils/utils.js";
 import {Link} from "react-router-dom";
+import history from "../../history";
+import {Movie as MovieType} from "../../types/types";
 
-class MyList extends React.PureComponent {
+interface Props {
+  onLoadFavoriteMovies: () => void,
+  favoriteMovies: [MovieType],
+  favoriteLoadedStatus: boolean,
+};
+
+class MyList extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
 
@@ -22,7 +29,7 @@ class MyList extends React.PureComponent {
   }
 
   handleActiveMovie(movie) {
-    this.props.history.push(`${AppRoute.FILMS}/${movie.id}`);
+    history.push(`${AppRoute.FILMS}/${movie.id}`);
   }
 
   render() {
@@ -74,15 +81,6 @@ class MyList extends React.PureComponent {
     );
   }
 }
-
-MyList.propTypes = {
-  onLoadFavoriteMovies: PropTypes.func.isRequired,
-  favoriteMovies: PropTypes.array.isRequired,
-  favoriteLoadedStatus: PropTypes.bool.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
-};
 
 const mapStateToProps = (state) => {
   const favoriteMovies = getFavoriteMovies(state);

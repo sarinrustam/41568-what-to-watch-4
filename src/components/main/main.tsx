@@ -1,24 +1,36 @@
-import React, {PureComponent} from "react";
+import * as React from "react";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/app/app.js";
 import {withRouter} from "react-router-dom";
 import {AppRoute} from "../../utils/utils.js";
+import history from "../../history";
 
-import PropTypes from "prop-types";
-
-import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list.jsx";
-import ShowMoreButton from "../show-more-button/show-more-button.jsx";
-import GenresList from "../genres-list/genres-list.jsx";
+import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list";
+import ShowMoreButton from "../show-more-button/show-more-button";
+import GenresList from "../genres-list/genres-list";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {getPromoMovie, getMoviesByGenre, uniqueGenres} from "../../reducer/data/selectors.js";
 import {getCurrentGenre, getCountMoviesShow} from "../../reducer/app/selectors.js";
-import UserBlock from "../user-block/user-block.jsx";
-import MyListButton from "../my-list-button/my-list-button.jsx";
+import UserBlock from "../user-block/user-block";
+import MyListButton from "../my-list-button/my-list-button";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
+import {Movie as MovieType} from "../../types/types";
+
+interface Props {
+  promoMovie: MovieType,
+  currentGenre: string,
+  onSetCurrentGenre: (genre: string) => void,
+  genres: [string],
+  onIncrementCountMoviesShow: () => void,
+  onResetCountMoviesShow: () => void,
+  slicedMoviesByGenre: [MovieType],
+  showMoreButton: boolean,
+  onSetFavoriteStatus: (id: number, isFavorite: boolean) => void,
+};
 
 const SmallMovieCardListWrapped = withActiveItem(SmallMovieCardList);
 
-class Main extends PureComponent {
+class Main extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
 
@@ -30,7 +42,7 @@ class Main extends PureComponent {
   }
 
   handlerMovieClick(movie) {
-    this.props.history.push(`${AppRoute.FILMS}/${movie.id}`);
+    history.push(`${AppRoute.FILMS}/${movie.id}`);
   }
 
   handleShowMoreButtonClick() {
@@ -50,7 +62,7 @@ class Main extends PureComponent {
   }
 
   handlePlay() {
-    this.props.history.push(`${AppRoute.PLAYER}/${this.props.promoMovie.id}`);
+    history.push(`${AppRoute.PLAYER}/${this.props.promoMovie.id}`);
   }
 
   render() {
@@ -150,31 +162,6 @@ class Main extends PureComponent {
     );
   }
 }
-
-Main.propTypes = {
-  promoMovie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    release: PropTypes.number.isRequired,
-    coverBackground: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-  }).isRequired,
-  currentGenre: PropTypes.string.isRequired,
-  onSetCurrentGenre: PropTypes.func.isRequired,
-  genres: PropTypes.arrayOf(
-      PropTypes.string.isRequired
-  ).isRequired,
-  onIncrementCountMoviesShow: PropTypes.func.isRequired,
-  onResetCountMoviesShow: PropTypes.func.isRequired,
-  slicedMoviesByGenre: PropTypes.array.isRequired,
-  showMoreButton: PropTypes.bool.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
-  onSetFavoriteStatus: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = (state) => {
   const currentGenre = getCurrentGenre(state);

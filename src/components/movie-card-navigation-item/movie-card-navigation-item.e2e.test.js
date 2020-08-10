@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme, {mount} from "enzyme";
 
-import MovieCardNavigationItem from "./movie-card-navigation-item.jsx";
+import MovieCardNavigationItem from "./movie-card-navigation-item";
 
 
 Enzyme.configure({

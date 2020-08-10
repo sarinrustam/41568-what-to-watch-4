@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import withVideoPlay from "./with-video-play.js";
+import withVideoPlay from "./with-video-play";
 
 configure({adapter: new Adapter()});
 

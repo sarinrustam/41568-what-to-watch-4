@@ -1,9 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
+import {Movie as MovieType} from "../../types/types";
 
-import VideoPlayer from "../video-player/video-player.jsx";
+import VideoPlayer from "../video-player/video-player";
 
-const SmallMovieCard = (props) => {
+interface Props {
+  movie: MovieType,
+  onMovieClick: (movie: MovieType) => void,
+  onMouseEnter: () => void,
+  onMouseLeave: () => void,
+  isPlaying: boolean,
+};
+
+const SmallMovieCard = (props: Props): React.ReactElement => {
   const {movie, onMovieClick, onMouseEnter, onMouseLeave, isPlaying} = props;
 
   const handleMovieClick = (event) => {
@@ -38,19 +46,6 @@ const SmallMovieCard = (props) => {
       </h3>
     </article>
   );
-};
-
-SmallMovieCard.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired
-  }).isRequired,
-  onMovieClick: PropTypes.func.isRequired,
-  onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired,
-  isPlaying: PropTypes.bool.isRequired
 };
 
 export default SmallMovieCard;

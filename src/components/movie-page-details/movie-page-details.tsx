@@ -1,9 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-
+import * as React from "react";
 import {setTime} from "../../utils/utils.js";
+import {Movie as MovieType} from "../../types/types";
 
-const MoviePageDetails = (props) => {
+interface Props {
+  movie: MovieType,
+};
+
+const MoviePageDetails = (props: Props): React.ReactElement => {
   const {movie} = props;
   const {crew, duration, genre, release} = movie;
   const {director, actors} = crew;
@@ -41,18 +44,6 @@ const MoviePageDetails = (props) => {
       </div>
     </>
   );
-};
-
-MoviePageDetails.propTypes = {
-  movie: PropTypes.shape({
-    crew: PropTypes.shape({
-      director: PropTypes.string.isRequired,
-      actors: PropTypes.array.isRequired,
-    }).isRequired,
-    duration: PropTypes.number.isRequired,
-    genre: PropTypes.string.isRequired,
-    release: PropTypes.number.isRequired
-  }).isRequired
 };
 
 export default MoviePageDetails;

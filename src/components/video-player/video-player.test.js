@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import rerender from "react-test-renderer";
 
-import VideoPlayer from "./video-player.jsx";
+import VideoPlayer from "./video-player";
 
 const movie = {
   id: 2,

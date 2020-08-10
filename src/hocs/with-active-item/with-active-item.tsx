@@ -1,8 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
+import {Subtract} from "utility-types";
+import {Movie as MovieType} from "../../types/types";
+
+interface Props {
+  onChangeActiveItem: (item: MovieType | string) => void,
+};
+
+interface State {
+  activeItem: MovieType | string;
+};
 
 const withActiveItem = (Component, defaultValue = null) => {
-  class WithActiveItem extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, Props>;
+
+  class WithActiveItem extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -33,10 +45,6 @@ const withActiveItem = (Component, defaultValue = null) => {
       );
     }
   }
-
-  WithActiveItem.propTypes = {
-    onChangeActiveItem: PropTypes.func,
-  };
 
   return WithActiveItem;
 };

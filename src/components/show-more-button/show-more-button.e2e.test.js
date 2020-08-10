@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme, {mount} from "enzyme";
 
-import ShowMoreButton from "./show-more-button.jsx";
+import ShowMoreButton from "./show-more-button";
 
 Enzyme.configure({
   adapter: new Adapter(),

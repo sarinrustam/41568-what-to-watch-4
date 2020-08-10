@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme, {mount} from "enzyme";
 
-import GenresListItem from "./genres-list-item.jsx";
+import GenresListItem from "./genres-list-item";
 
 
 Enzyme.configure({

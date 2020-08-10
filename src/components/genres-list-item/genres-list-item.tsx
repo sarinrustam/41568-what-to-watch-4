@@ -1,7 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 
-const GenresListItem = (props) => {
+interface Props {
+  genre: string,
+  isActive: boolean,
+  onSetCurrentGenre: (genre: string) => void,
+};
+
+const GenresListItem = (props: Props): React.ReactElement => {
   const {genre, isActive, onSetCurrentGenre} = props;
 
   const handleClick = (event) => {
@@ -23,12 +28,6 @@ const GenresListItem = (props) => {
       </a>
     </li>
   );
-};
-
-GenresListItem.propTypes = {
-  genre: PropTypes.string.isRequired,
-  isActive: PropTypes.bool.isRequired,
-  onSetCurrentGenre: PropTypes.func.isRequired,
 };
 
 export default GenresListItem;

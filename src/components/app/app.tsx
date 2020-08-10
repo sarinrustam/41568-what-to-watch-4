@@ -1,26 +1,29 @@
-import React from "react";
+import * as React from "react";
 import {Router, Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
-import AddReview from "../add-review/add-review.jsx";
+import AddReview from "../add-review/add-review";
 import withAddReview from "../../hocs/with-add-review/with-add-review.js";
-import Main from "@components/main/main.jsx";
-import MoviePage from "../movie-page/movie-page.jsx";
-import MyList from "../my-list/my-list.jsx";
-import VideoPlayerFull from "../video-player-full/video-player-full.jsx";
+import Main from "../main/main";
+import MoviePage from "../movie-page/movie-page";
+import MyList from "../my-list/my-list";
+import VideoPlayerFull from "../video-player-full/video-player-full";
 import withFullVideoPlayer from "../../hocs/with-full-video-player/with-full-video-player.js";
-import SignIn from "../../components/sign-in/sign-in.jsx";
+import SignIn from "../sign-in/sign-in";
 import {getCheckAuthIsLoaded} from "../../reducer/user/selectors.js";
 import {getIsMoviesLoaded, getIsPromoMovieLoaded} from "../../reducer/data/selectors.js";
-import PropTypes from "prop-types";
 import {AppRoute} from "../../utils/utils.js";
 
 import history from "../../history.js";
-import PrivateRoute from "../private-route/private-route.jsx";
+import PrivateRoute from "../private-route/private-route";
 
 const VideoPlayerFullWrapped = withFullVideoPlayer(VideoPlayerFull);
 const AddReviewWrapped = withAddReview(AddReview);
 
-const App = (props) => {
+interface Props {
+  isLoaded: boolean,
+};
+
+const App = (props: Props): React.ReactElement => {
   if (!props.isLoaded) {
     return <div>...Loading. Wait a few seconds</div>;
   }
@@ -45,10 +48,6 @@ const mapStateToProps = (state) => {
   return {
     isLoaded: getIsPromoMovieLoaded(state) && getIsMoviesLoaded(state) && getCheckAuthIsLoaded(state)
   };
-};
-
-App.propTypes = {
-  isLoaded: PropTypes.bool.isRequired,
 };
 
 export {App};

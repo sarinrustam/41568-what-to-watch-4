@@ -1,9 +1,9 @@
-import React from "react";
+import * as React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme, {mount} from "enzyme";
 import {MemoryRouter} from 'react-router';
 
-import {SignIn} from "./sign-in.jsx";
+import {SignIn} from "./sign-in";
 
 Enzyme.configure({
   adapter: new Adapter(),

@@ -1,11 +1,29 @@
-import React, {createRef} from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
+import {createRef} from "react";
 import {connect} from "react-redux";
-import {Buttons} from "../../utils/utils.js";
-import {getMovieById} from "../../reducer/data/selectors.js";
+import {Buttons} from "../../utils/utils";
+import {getMovies} from "../../reducer/data/selectors";
+import {Movie as MovieType} from "../../types/types";
+import history from "../../history";
+
+interface Props {
+  match: {
+    params: {
+      id: string
+    }
+  }
+  movie: MovieType,
+};
+
+interface State {
+  isPlaying: boolean,
+  progress: number,
+};
 
 const withFullVideoPlayer = (Component) => {
-  class WithFullVideoPlayer extends React.PureComponent {
+  class WithFullVideoPlayer extends React.PureComponent<Props, State> {
+    private videoRef: React.RefObject<HTMLVideoElement>;
+
     constructor(props) {
       super(props);
 
@@ -72,7 +90,7 @@ const withFullVideoPlayer = (Component) => {
 
     handleExitVideo(event) {
       if (event.type === `keydown` && event.key === Buttons.ESC || event.type === `click`) {
-        this.props.history.goBack();
+        history.goBack();
       }
     }
 
@@ -101,20 +119,9 @@ const withFullVideoPlayer = (Component) => {
     }
   }
 
-  WithFullVideoPlayer.propTypes = {
-    history: PropTypes.shape({
-      goBack: PropTypes.func.isRequired,
-    }).isRequired,
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-      }).isRequired
-    }).isRequired,
-    movie: PropTypes.object.isRequired,
-  };
-
   const mapStateToProps = (state, props) => {
-    const movie = getMovieById(state, props.match.params.id);
+    const movies = getMovies(state);
+    const movie = movies.find((movieItem) => movieItem.id === props.match.params.id);
 
     return {
       movie

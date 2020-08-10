@@ -1,5 +1,5 @@
-import React, {createRef} from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
+import {createRef} from "react";
 import {connect} from "react-redux";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
@@ -8,7 +8,16 @@ import {Redirect} from "react-router-dom";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/utils.js";
 
-class SignIn extends React.PureComponent {
+interface Props {
+  onLogin: ({email, password}: {email: string, password: string}) => void,
+  statusAuth: string,
+  errorMessage: string,
+};
+
+class SignIn extends React.PureComponent<Props, {}> {
+  private emailRef: React.RefObject<HTMLInputElement>;
+  private passwordRef: React.RefObject<HTMLInputElement>;
+
   constructor(props) {
     super(props);
 
@@ -116,12 +125,6 @@ class SignIn extends React.PureComponent {
     );
   }
 }
-
-SignIn.propTypes = {
-  onLogin: PropTypes.func.isRequired,
-  statusAuth: PropTypes.string.isRequired,
-  errorMessage: PropTypes.string.isRequired,
-};
 
 const mapStateToProps = (state) => {
   const statusAuth = getAuthStatus(state);

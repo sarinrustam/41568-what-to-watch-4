@@ -1,12 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 
-import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
+import SmallMovieCard from "../small-movie-card/small-movie-card";
 import withVideoPlay from "../../hocs/with-video-play/with-video-play.js";
+import {Movie as MovieType} from "../../types/types";
+
+interface Props {
+  movies: [MovieType]
+  onSetActiveItem: (movie: MovieType) => {},
+};
 
 const SmallMovieCardWrapped = withVideoPlay(SmallMovieCard);
 
-const SmallMovieCardList = (props) => {
+const SmallMovieCardList = (props: Props): React.ReactElement => {
   const {movies, onSetActiveItem} = props;
 
   return (
@@ -21,11 +26,6 @@ const SmallMovieCardList = (props) => {
       ))}
     </div>
   );
-};
-
-SmallMovieCardList.propTypes = {
-  movies: PropTypes.array.isRequired,
-  onSetActiveItem: PropTypes.func.isRequired,
 };
 
 export default SmallMovieCardList;

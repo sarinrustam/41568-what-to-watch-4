@@ -1,11 +1,11 @@
-import React from "react";
+import * as React from "react";
 import rerender from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {MemoryRouter} from "react-router";
 import NameSpace from "../../reducer/name-space.js";
 
-import {MoviePage} from "./movie-page.jsx";
+import {MoviePage} from "./movie-page";
 
 const mockStore = configureStore([]);
 

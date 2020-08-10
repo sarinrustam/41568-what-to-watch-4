@@ -1,12 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import {connect} from "react-redux";
 import {getAuthStatus, getAvatar} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {Link} from "react-router-dom";
 import {AppRoute, API_URL} from "../../utils/utils.js";
 
-class UserBlock extends React.PureComponent {
+interface Props {
+  statusAuth: string,
+  avatar: string,
+};
+
+class UserBlock extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
   }
@@ -46,11 +50,6 @@ class UserBlock extends React.PureComponent {
     );
   }
 }
-
-UserBlock.propTypes = {
-  statusAuth: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
-};
 
 const mapStateToProps = (state) => {
   const statusAuth = getAuthStatus(state);

@@ -1,9 +1,9 @@
-import React from "react";
+import * as React from "react";
 
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme, {shallow} from "enzyme";
 
-import {MoviePage} from "./movie-page.jsx";
+import {MoviePage} from "./movie-page";
 
 Enzyme.configure({
   adapter: new Adapter()

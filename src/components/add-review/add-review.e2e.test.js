@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme, {shallow} from "enzyme";
 
-import AddReview from "./add-review.jsx";
+import AddReview from "./add-review";
 
 Enzyme.configure({
   adapter: new Adapter(),

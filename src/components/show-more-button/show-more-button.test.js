@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import renderer from "react-test-renderer";
 
-import ShowMoreButton from "./show-more-button.jsx";
+import ShowMoreButton from "./show-more-button";
 
 describe(`Render ShowMoreButton`, () => {
   it(`Should ShowMoreButton render correctly`, () => {

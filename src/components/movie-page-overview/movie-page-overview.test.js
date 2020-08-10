@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import renderer from "react-test-renderer";
 
-import MoviePageOverview from "./movie-page-overview.jsx";
+import MoviePageOverview from "./movie-page-overview";
 
 const movie = {
   id: 0,

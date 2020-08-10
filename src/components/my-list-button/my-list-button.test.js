@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import renderer from "react-test-renderer";
 
-import MyListButton from "./my-list-button.jsx";
+import MyListButton from "./my-list-button";
 
 describe(`MLB test`, () => {
   it(`Should MLB render correctly`, () => {

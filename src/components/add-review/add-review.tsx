@@ -1,11 +1,22 @@
-import React from "react";
-import PropTypes from "prop-types";
-import UserBlock from "../user-block/user-block.jsx";
+import * as React from "react";
+import UserBlock from "../user-block/user-block";
 import {CommentLength} from "../../utils/utils.js";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/utils.js";
+import {Movie as MovieType} from "../../types/types";
 
-class AddReview extends React.PureComponent {
+interface Props {
+  movie: MovieType,
+  onSendComment: (event: React.FormEvent<HTMLFormElement>) => void,
+  onInputComment: (event: React.FormEvent<HTMLTextAreaElement>) => void,
+  onChangeRating: (event: React.FormEvent<HTMLDivElement>) => void,
+  rating: number,
+  comment: string,
+  isLoading: boolean,
+  errorText: string,
+}
+
+class AddReview extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
   }
@@ -149,22 +160,6 @@ class AddReview extends React.PureComponent {
     );
   }
 }
-
-AddReview.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    poster: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    coverBackground: PropTypes.string.isRequired,
-  }).isRequired,
-  onSendComment: PropTypes.func.isRequired,
-  onInputComment: PropTypes.func.isRequired,
-  onChangeRating: PropTypes.func.isRequired,
-  rating: PropTypes.number.isRequired,
-  comment: PropTypes.string.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  errorText: PropTypes.string.isRequired,
-};
 
 export default AddReview;
 

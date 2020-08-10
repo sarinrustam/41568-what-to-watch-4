@@ -1,12 +1,27 @@
-import React from "react";
+import * as React from "react";
 import {connect} from "react-redux";
-import {Operation as CommentOperation} from "../../reducer/comments/comments.js";
-import PropTypes from "prop-types";
-import {getErrorText, getIsLoading} from "../../reducer/comments/selectors.js";
-import {getMovieById} from "../../reducer/data/selectors.js";
+import {Operation as CommentOperation} from "../../reducer/comments/comments";
+import {getErrorText, getIsLoading} from "../../reducer/comments/selectors";
+import {getMovies} from "../../reducer/data/selectors";
+
+interface Props {
+  errorText: string,
+    isLoading: boolean,
+    onSendComment: (obj: {movieId: string, rating: number, comment: string}) => void,
+    match: {
+      params: {
+        id: string
+      }
+    }
+};
+
+interface State {
+  rating: number,
+  comment: string,
+};
 
 const withAddReview = (Component) => {
-  class WithAddReview extends React.PureComponent {
+  class WithAddReview extends React.PureComponent<Props, State> {
     constructor(props) {
       super(props);
 
@@ -55,25 +70,11 @@ const withAddReview = (Component) => {
     }
   }
 
-  WithAddReview.propTypes = {
-    errorText: PropTypes.string.isRequired,
-    isLoading: PropTypes.bool.isRequired,
-    onSendComment: PropTypes.func.isRequired,
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-      }).isRequired
-    }).isRequired,
-    history: PropTypes.shape({
-      push: PropTypes.func.isRequired,
-    }).isRequired,
-  };
-
-
   const mapStateToProps = (state, props) => {
     const errorText = getErrorText(state);
     const isLoading = getIsLoading(state);
-    const movie = getMovieById(state, props.match.params.id);
+    const movies = getMovies(state);
+    const movie = movies.find((movieItem) => movieItem.id === props.match.params.id);
 
     return {
       errorText,

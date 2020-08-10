@@ -1,5 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
+
+interface Props {
+  isFavorite: boolean,
+  onToggleButton: (isFavorite: boolean) => void,
+};
 
 const MyListButton = (props) => {
   const {isFavorite, onToggleButton} = props;
@@ -34,11 +38,6 @@ const MyListButton = (props) => {
       <span>My list</span>
     </button>
   );
-};
-
-MyListButton.propTypes = {
-  isFavorite: PropTypes.bool.isRequired,
-  onToggleButton: PropTypes.func.isRequired,
 };
 
 export default MyListButton;

@@ -1,7 +1,13 @@
-import React from "react";
+import * as React from "react";
+
+interface State {
+  isPlaying: boolean,
+};
 
 const withVideoPlay = (Component) => {
-  class WithVideoPlay extends React.PureComponent {
+  class WithVideoPlay extends React.PureComponent<{}, State> {
+    private timerId: NodeJS.Timeout;
+    
     constructor(props) {
       super(props);
 
@@ -47,8 +53,6 @@ const withVideoPlay = (Component) => {
       );
     }
   }
-
-  WithVideoPlay.propTypes = {};
 
   return WithVideoPlay;
 };

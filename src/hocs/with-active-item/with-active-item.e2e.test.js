@@ -1,10 +1,10 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import withActiveItem from "./with-active-item.js";
+import withActiveItem from "./with-active-item";
 
-import {PAGE_FILTERS} from "../../utils/utils.js";
+import {PAGE_FILTERS} from "../../utils/utils";
 
 configure({adapter: new Adapter()});
 

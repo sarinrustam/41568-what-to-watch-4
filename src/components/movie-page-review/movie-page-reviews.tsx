@@ -1,9 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-
+import * as React from "react";
 import {formatDateForReviews} from "../../utils/utils.js";
+import {Comment as CommentType} from "../../types/types";
 
-const MoviePageReviews = (props) => {
+interface Props {
+  comments: [CommentType],
+};
+
+const MoviePageReviews = (props: Props): React.ReactElement => {
   const {comments} = props;
 
   return (
@@ -34,18 +37,6 @@ const MoviePageReviews = (props) => {
       </div>
     </>
   );
-};
-
-MoviePageReviews.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    comment: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    user: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }).isRequired
-  })).isRequired,
 };
 
 export default MoviePageReviews;
