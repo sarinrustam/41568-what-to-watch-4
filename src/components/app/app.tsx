@@ -2,18 +2,18 @@ import * as React from "react";
 import {Router, Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import AddReview from "../add-review/add-review";
-import withAddReview from "../../hocs/with-add-review/with-add-review.js";
+import withAddReview from "../../hocs/with-add-review/with-add-review";
 import Main from "../main/main";
 import MoviePage from "../movie-page/movie-page";
 import MyList from "../my-list/my-list";
 import VideoPlayerFull from "../video-player-full/video-player-full";
-import withFullVideoPlayer from "../../hocs/with-full-video-player/with-full-video-player.js";
+import withFullVideoPlayer from "../../hocs/with-full-video-player/with-full-video-player";
 import SignIn from "../sign-in/sign-in";
-import {getCheckAuthIsLoaded} from "../../reducer/user/selectors.js";
-import {getIsMoviesLoaded, getIsPromoMovieLoaded} from "../../reducer/data/selectors.js";
-import {AppRoute} from "../../utils/utils.js";
+import {getCheckAuthIsLoaded} from "../../reducer/user/selectors";
+import {getIsMoviesLoaded, getIsPromoMovieLoaded} from "../../reducer/data/selectors";
+import {AppRoute} from "../../utils/utils";
 
-import history from "../../history.js";
+import history from "../../history";
 import PrivateRoute from "../private-route/private-route";
 
 const VideoPlayerFullWrapped = withFullVideoPlayer(VideoPlayerFull);

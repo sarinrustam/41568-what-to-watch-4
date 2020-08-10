@@ -2,8 +2,8 @@ import * as React from "react";
 import rerender from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import NameSpace from "../../reducer/name-space.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
+import NameSpace from "../../reducer/name-space";
+import {AuthorizationStatus} from "../../reducer/user/user";
 import {MemoryRouter} from 'react-router';
 
 import UserBlock from "./user-block";

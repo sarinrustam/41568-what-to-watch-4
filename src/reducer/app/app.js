@@ -1,4 +1,4 @@
-import {extend, FILTER_ALL_GENRES, COUNT_LIMIT_MOVIES} from "../../utils/utils.js";
+import {extend, FILTER_ALL_GENRES, COUNT_LIMIT_MOVIES} from "../../utils/utils";
 
 const initialState = {
   currentGenre: FILTER_ALL_GENRES,

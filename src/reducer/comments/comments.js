@@ -1,5 +1,5 @@
-import {extend, AppRoute} from "../../utils/utils.js";
-import history from "../../history.js";
+import {extend, AppRoute} from "../../utils/utils";
+import history from "../../history";
 
 const initialState = {
   errorText: ``,

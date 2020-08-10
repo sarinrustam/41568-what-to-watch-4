@@ -1,17 +1,17 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import {withRouter, Link} from "react-router-dom";
-import {PAGE_FILTERS, AppRoute, SHOWING_MOVIES_COUNT} from "../../utils/utils.js";
+import {PAGE_FILTERS, AppRoute, SHOWING_MOVIES_COUNT} from "../../utils/utils";
 import history from "../../history";
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list";
-import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
+import withActiveItem from "../../hocs/with-active-item/with-active-item";
 import MovieCardDescription from "../movie-card-description/movie-card-description";
-import {getMovies} from "../../reducer/data/selectors.js";
+import {getMovies} from "../../reducer/data/selectors";
 import MyListButton from "../my-list-button/my-list-button";
-import {Operation as DataOperation} from "../../reducer/data/data.js";
+import {Operation as DataOperation} from "../../reducer/data/data";
 import UserBlock from "../user-block/user-block";
-import {Operation as CommentsOperation} from "../../reducer/comments/comments.js";
-import {getComments} from "../../reducer/comments/selectors.js";
+import {Operation as CommentsOperation} from "../../reducer/comments/comments";
+import {getComments} from "../../reducer/comments/selectors";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {

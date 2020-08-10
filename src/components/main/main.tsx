@@ -1,19 +1,19 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/app/app.js";
+import {ActionCreator} from "../../reducer/app/app";
 import {withRouter} from "react-router-dom";
-import {AppRoute} from "../../utils/utils.js";
+import {AppRoute} from "../../utils/utils";
 import history from "../../history";
 
 import SmallMovieCardList from "../small-movie-card-list/small-movie-card-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
 import GenresList from "../genres-list/genres-list";
-import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
-import {getPromoMovie, getMoviesByGenre, uniqueGenres} from "../../reducer/data/selectors.js";
-import {getCurrentGenre, getCountMoviesShow} from "../../reducer/app/selectors.js";
+import withActiveItem from "../../hocs/with-active-item/with-active-item";
+import {getPromoMovie, getMoviesByGenre, uniqueGenres} from "../../reducer/data/selectors";
+import {getCurrentGenre, getCountMoviesShow} from "../../reducer/app/selectors";
 import UserBlock from "../user-block/user-block";
 import MyListButton from "../my-list-button/my-list-button";
-import {Operation as DataOperation} from "../../reducer/data/data.js";
+import {Operation as DataOperation} from "../../reducer/data/data";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {

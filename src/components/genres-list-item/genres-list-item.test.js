@@ -1,6 +1,6 @@
 import * as React from "react";
 import renderer from "react-test-renderer";
-import {PAGE_FILTERS} from "../../utils/utils.js";
+import {PAGE_FILTERS} from "../../utils/utils";
 
 import GenresListItem from "./genres-list-item";
 

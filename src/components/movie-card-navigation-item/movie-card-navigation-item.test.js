@@ -1,7 +1,7 @@
 import * as React from "react";
 import renderer from "react-test-renderer";
 
-import MovieCardNavigationItem from './movie-card-navigation-item.jsx';
+import MovieCardNavigationItem from './movie-card-navigation-itemx';
 
 
 describe(`MovieCardDescriptionItem render`, () => {

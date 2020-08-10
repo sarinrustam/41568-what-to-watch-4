@@ -1,5 +1,5 @@
 import * as React from "react";
-import {formatDateForReviews} from "../../utils/utils.js";
+import {formatDateForReviews} from "../../utils/utils";
 import {Comment as CommentType} from "../../types/types";
 
 interface Props {

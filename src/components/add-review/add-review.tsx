@@ -1,8 +1,8 @@
 import * as React from "react";
 import UserBlock from "../user-block/user-block";
-import {CommentLength} from "../../utils/utils.js";
+import {CommentLength} from "../../utils/utils";
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../utils/utils.js";
+import {AppRoute} from "../../utils/utils";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {

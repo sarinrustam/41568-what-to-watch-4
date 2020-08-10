@@ -1,5 +1,5 @@
 import axios from "axios";
-import {API_URL} from "../utils/utils.js";
+import {API_URL} from "../utils/utils";
 
 const TIMEOUT_DURATION = 5000;
 

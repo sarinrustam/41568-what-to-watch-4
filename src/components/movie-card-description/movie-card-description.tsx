@@ -1,5 +1,5 @@
 import * as React from "react";
-import {PAGE_FILTERS} from "../../utils/utils.js";
+import {PAGE_FILTERS} from "../../utils/utils";
 
 import MoviePageReviews from "../movie-page-review/movie-page-reviews";
 import MoviePageOverview from "../movie-page-overview/movie-page-overview";

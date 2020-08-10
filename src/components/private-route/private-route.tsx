@@ -1,11 +1,11 @@
 import * as React from "react";
-import {Route, Redirect, RouteProps} from "react-router-dom";
+import {Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
-import {AppRoute} from "../../utils/utils.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
-import {getAuthStatus} from "../../reducer/user/selectors.js";
+import {AppRoute} from "../../utils/utils";
+import {AuthorizationStatus} from "../../reducer/user/user";
+import {getAuthStatus} from "../../reducer/user/selectors";
 
-type Props = RouteProps & {
+type Props = {
   authorizationStatus: string;
 }
 

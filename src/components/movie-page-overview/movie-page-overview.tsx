@@ -1,5 +1,5 @@
 import * as React from "react";
-import {setRatingDesc} from "../../utils/utils.js";
+import {setRatingDesc} from "../../utils/utils";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {

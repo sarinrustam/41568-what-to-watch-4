@@ -1,9 +1,9 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {getAuthStatus, getAvatar} from "../../reducer/user/selectors.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {getAuthStatus, getAvatar} from "../../reducer/user/selectors";
+import {AuthorizationStatus} from "../../reducer/user/user";
 import {Link} from "react-router-dom";
-import {AppRoute, API_URL} from "../../utils/utils.js";
+import {AppRoute, API_URL} from "../../utils/utils";
 
 interface Props {
   statusAuth: string,

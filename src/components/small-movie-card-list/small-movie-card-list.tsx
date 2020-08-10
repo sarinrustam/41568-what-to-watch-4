@@ -1,12 +1,12 @@
 import * as React from "react";
 
 import SmallMovieCard from "../small-movie-card/small-movie-card";
-import withVideoPlay from "../../hocs/with-video-play/with-video-play.js";
+import withVideoPlay from "../../hocs/with-video-play/with-video-play";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {
   movies: [MovieType]
-  onSetActiveItem: (movie: MovieType) => {},
+  onSetActiveItem: (movie: MovieType) => void,
 };
 
 const SmallMovieCardWrapped = withVideoPlay(SmallMovieCard);

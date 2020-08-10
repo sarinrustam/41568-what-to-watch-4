@@ -1,5 +1,5 @@
-import {extend} from "../../utils/utils.js";
-import {userAdapter} from "../../adapters/user.js";
+import {extend} from "../../utils/utils";
+import {userAdapter} from "../../adapters/user";
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,

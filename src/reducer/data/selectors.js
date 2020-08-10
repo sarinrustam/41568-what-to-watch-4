@@ -1,7 +1,7 @@
 import {createSelector} from "reselect";
-import NameSpace from "../name-space.js";
-import {getCurrentGenre} from "./../app/selectors.js";
-import {FILTER_ALL_GENRES, MAX_GENRES_SHOW} from "../../utils/utils.js";
+import NameSpace from "../name-space";
+import {getCurrentGenre} from "./../app/selectors";
+import {FILTER_ALL_GENRES, MAX_GENRES_SHOW} from "../../utils/utils";
 
 export const getMovies = (state) => {
   return state[NameSpace.DATA].movies;

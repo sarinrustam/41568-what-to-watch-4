@@ -1,12 +1,12 @@
 import * as React from "react";
 import {createRef} from "react";
 import {connect} from "react-redux";
-import {Operation as UserOperation} from "../../reducer/user/user.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
-import {getAuthStatus, getErrorMessage} from "../../reducer/user/selectors.js";
+import {Operation as UserOperation} from "../../reducer/user/user";
+import {AuthorizationStatus} from "../../reducer/user/user";
+import {getAuthStatus, getErrorMessage} from "../../reducer/user/selectors";
 import {Redirect} from "react-router-dom";
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../utils/utils.js";
+import {AppRoute} from "../../utils/utils";
 
 interface Props {
   onLogin: ({email, password}: {email: string, password: string}) => void,

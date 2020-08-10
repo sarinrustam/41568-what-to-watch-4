@@ -1,5 +1,5 @@
 import * as React from "react";
-import {setTime} from "../../utils/utils.js";
+import {setTime} from "../../utils/utils";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {

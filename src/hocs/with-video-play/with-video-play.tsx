@@ -5,9 +5,11 @@ interface State {
 };
 
 const withVideoPlay = (Component) => {
-  class WithVideoPlay extends React.PureComponent<{}, State> {
+  type P = React.ComponentProps<typeof Component>;
+
+  class WithVideoPlay extends React.PureComponent<P, State> {
     private timerId: NodeJS.Timeout;
-    
+
     constructor(props) {
       super(props);
 

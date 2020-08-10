@@ -1,5 +1,5 @@
-import {reducer, ActionCreator} from "./app.js";
-import {FILTER_ALL_GENRES, COUNT_LIMIT_MOVIES} from "../../utils/utils.js";
+import {reducer, ActionCreator} from "./app";
+import {FILTER_ALL_GENRES, COUNT_LIMIT_MOVIES} from "../../utils/utils";
 
 const initialState = {
   currentGenre: FILTER_ALL_GENRES,

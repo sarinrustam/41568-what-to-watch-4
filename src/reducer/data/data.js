@@ -1,6 +1,6 @@
-import {extend} from "../../utils/utils.js";
-import {moviesAdapter, movieAdapter} from "../../adapters/movies.js";
-import NameSpace from "../name-space.js";
+import {extend} from "../../utils/utils";
+import {moviesAdapter, movieAdapter} from "../../adapters/movies";
+import NameSpace from "../name-space";
 
 const initialState = {
   movies: [],

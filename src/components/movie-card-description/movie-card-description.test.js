@@ -1,7 +1,7 @@
 import * as React from "react";
 import renderer from "react-test-renderer";
 
-import MovieCardDescription from './movie-card-description.jsx';
+import MovieCardDescription from './movie-card-descriptionx';
 
 const movie = {
   id: 1,

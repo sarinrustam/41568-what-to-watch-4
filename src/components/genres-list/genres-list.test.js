@@ -1,6 +1,6 @@
 import * as React from "react";
 import renderer from "react-test-renderer";
-import {GENRES} from "../../mocks/films.js";
+import {GENRES} from "../../mocks/films";
 
 import GenresList from "./genres-list";
 
