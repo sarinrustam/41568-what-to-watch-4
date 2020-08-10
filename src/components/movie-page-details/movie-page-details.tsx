@@ -3,8 +3,8 @@ import {setTime} from "../../utils/utils";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {
-  movie: MovieType,
-};
+  movie: MovieType;
+}
 
 const MoviePageDetails = (props: Props): React.ReactElement => {
   const {movie} = props;

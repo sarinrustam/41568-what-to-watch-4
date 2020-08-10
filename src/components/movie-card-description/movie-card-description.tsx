@@ -8,11 +8,11 @@ import MovieCardNavigationItem from "../movie-card-navigation-item/movie-card-na
 import {Movie as MovieType, Comment as CommentType} from "../../types/types";
 
 interface Props {
-  movie: MovieType,
-  activeItem: string,
-  onSetActiveItem: (filter: string) => void,
-  comments: [CommentType],
-};
+  movie: MovieType;
+  activeItem: string;
+  onSetActiveItem: (filter: string) => void;
+  comments: [CommentType];
+}
 
 class MovieCardDescription extends React.PureComponent<Props, {}> {
   constructor(props) {

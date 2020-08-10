@@ -9,16 +9,16 @@ import history from "../../history";
 interface Props {
   match: {
     params: {
-      id: string
-    }
-  }
-  movie: MovieType,
-};
+      id: string;
+    };
+  };
+  movie: MovieType;
+}
 
 interface State {
-  isPlaying: boolean,
-  progress: number,
-};
+  isPlaying: boolean;
+  progress: number;
+}
 
 const withFullVideoPlayer = (Component) => {
   class WithFullVideoPlayer extends React.PureComponent<Props, State> {

@@ -17,16 +17,16 @@ import {Operation as DataOperation} from "../../reducer/data/data";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {
-  promoMovie: MovieType,
-  currentGenre: string,
-  onSetCurrentGenre: (genre: string) => void,
-  genres: [string],
-  onIncrementCountMoviesShow: () => void,
-  onResetCountMoviesShow: () => void,
-  slicedMoviesByGenre: [MovieType],
-  showMoreButton: boolean,
-  onSetFavoriteStatus: (id: number, isFavorite: boolean) => void,
-};
+  promoMovie: MovieType;
+  currentGenre: string;
+  onSetCurrentGenre: (genre: string) => void;
+  genres: [string];
+  onIncrementCountMoviesShow: () => void;
+  onResetCountMoviesShow: () => void;
+  slicedMoviesByGenre: [MovieType];
+  showMoreButton: boolean;
+  onSetFavoriteStatus: (id: number, isFavorite: boolean) => void;
+}
 
 const SmallMovieCardListWrapped = withActiveItem(SmallMovieCardList);
 

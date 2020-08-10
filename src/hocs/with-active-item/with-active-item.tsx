@@ -3,12 +3,12 @@ import {Subtract} from "utility-types";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {
-  onChangeActiveItem: (item: MovieType | string) => void,
-};
+  onChangeActiveItem: (item: MovieType | string) => void;
+}
 
 interface State {
   activeItem: MovieType | string;
-};
+}
 
 const withActiveItem = (Component, defaultValue = null) => {
   type P = React.ComponentProps<typeof Component>;

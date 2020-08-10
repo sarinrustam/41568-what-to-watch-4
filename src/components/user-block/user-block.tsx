@@ -6,9 +6,9 @@ import {Link} from "react-router-dom";
 import {AppRoute, API_URL} from "../../utils/utils";
 
 interface Props {
-  statusAuth: string,
-  avatar: string,
-};
+  statusAuth: string;
+  avatar: string;
+}
 
 class UserBlock extends React.PureComponent<Props, {}> {
   constructor(props) {

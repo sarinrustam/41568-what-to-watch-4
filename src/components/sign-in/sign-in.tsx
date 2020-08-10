@@ -9,10 +9,10 @@ import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/utils";
 
 interface Props {
-  onLogin: ({email, password}: {email: string, password: string}) => void,
-  statusAuth: string,
-  errorMessage: string,
-};
+  onLogin: ({email, password}: {email: string; password: string}) => void;
+  statusAuth: string;
+  errorMessage: string;
+}
 
 class SignIn extends React.PureComponent<Props, {}> {
   private emailRef: React.RefObject<HTMLInputElement>;

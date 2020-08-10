@@ -2,11 +2,11 @@ import * as React from "react";
 import {PureComponent, createRef} from "react";
 
 interface Props {
-  poster: string,
-  src: string,
-  isMuted: boolean,
-  isPlaying: boolean,
-};
+  poster: string;
+  src: string;
+  isMuted: boolean;
+  isPlaying: boolean;
+}
 
 class VideoPlayer extends PureComponent<Props, {}> {
   private videoRef: React.RefObject<HTMLVideoElement>;

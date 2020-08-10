@@ -1,11 +1,11 @@
 import * as React from "react";
 
 interface Props {
-  isFavorite: boolean,
-  onToggleButton: (isFavorite: boolean) => void,
-};
+  isFavorite: boolean;
+  onToggleButton: (isFavorite: boolean) => void;
+}
 
-const MyListButton = (props) => {
+const MyListButton = (props: Props): React.ReactElement => {
   const {isFavorite, onToggleButton} = props;
 
   const renderButtonIconAdd = () => {

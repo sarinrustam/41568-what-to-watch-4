@@ -5,9 +5,9 @@ import withVideoPlay from "../../hocs/with-video-play/with-video-play";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {
-  movies: [MovieType]
-  onSetActiveItem: (movie: MovieType) => void,
-};
+  movies: [MovieType];
+  onSetActiveItem: (movie: MovieType) => void;
+}
 
 const SmallMovieCardWrapped = withVideoPlay(SmallMovieCard);
 

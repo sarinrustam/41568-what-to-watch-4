@@ -5,20 +5,20 @@ import {getErrorText, getIsLoading} from "../../reducer/comments/selectors";
 import {getMovies} from "../../reducer/data/selectors";
 
 interface Props {
-  errorText: string,
-    isLoading: boolean,
-    onSendComment: (obj: {movieId: string, rating: number, comment: string}) => void,
-    match: {
-      params: {
-        id: string
-      }
-    }
-};
+  errorText: string;
+  isLoading: boolean;
+  onSendComment: (obj: {movieId: string; rating: number; comment: string}) => void;
+  match: {
+    params: {
+      id: string;
+    };
+  };
+}
 
 interface State {
-  rating: number,
-  comment: string,
-};
+  rating: number;
+  comment: string;
+}
 
 const withAddReview = (Component) => {
   class WithAddReview extends React.PureComponent<Props, State> {

@@ -3,8 +3,8 @@ import {setRatingDesc} from "../../utils/utils";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {
-  movie: MovieType,
-};
+  movie: MovieType;
+}
 
 const MoviePageOverview = (props: Props): React.ReactElement => {
   const {movie} = props;

@@ -1,8 +1,8 @@
 import * as React from "react";
 
 interface Props {
-  onButtonClick: () => void,
-};
+  onButtonClick: () => void;
+}
 
 const ShowMoreButton = (props: Props): React.ReactElement => {
   const {onButtonClick} = props;

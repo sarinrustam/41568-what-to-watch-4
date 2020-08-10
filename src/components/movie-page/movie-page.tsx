@@ -15,17 +15,17 @@ import {getComments} from "../../reducer/comments/selectors";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {
-  movie: MovieType,
-  relativeMovies: [MovieType],
-  onSetFavoriteStatus: (id: number, isFavorite: boolean) => void,
-  onLoadComments: (id: number) => void,
-  comments: [object],
+  movie: MovieType;
+  relativeMovies: [MovieType];
+  onSetFavoriteStatus: (id: number, isFavorite: boolean) => void;
+  onLoadComments: (id: number) => void;
+  comments: [object];
   match: {
     params: {
-      id: string
-    }
-  }
-};
+      id: string;
+    };
+  };
+}
 
 const SmallMovieCardListWrapped = withActiveItem(SmallMovieCardList);
 const MovieCardDescriptionWrapped = withActiveItem(MovieCardDescription, PAGE_FILTERS[0]);
@@ -164,7 +164,7 @@ class MoviePage extends React.PureComponent<Props, {}> {
 const mapStateToProps = (state, props) => {
   const movies = getMovies(state);
   const movieId = props.match.params.id;
-  const movie = movies.find((movie) => movie.id === movieId);
+  const movie = movies.find((movieItem) => movieItem.id === movieId);
   const comments = getComments(state);
 
   const moviesByGenre = movies.filter((movieItem) => {

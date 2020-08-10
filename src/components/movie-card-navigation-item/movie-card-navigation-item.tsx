@@ -1,10 +1,10 @@
 import * as React from "react";
 
 interface Props {
-  filter: string,
-  onSetActiveFilter: (filter: string) => void,
-  isActive: boolean,
-};
+  filter: string;
+  onSetActiveFilter: (filter: string) => void;
+  isActive: boolean;
+}
 
 const MovieCardNavigationItem = (props: Props): React.ReactElement => {
   const {onSetActiveFilter, filter, isActive} = props;

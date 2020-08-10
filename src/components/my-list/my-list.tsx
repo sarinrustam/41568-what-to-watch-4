@@ -10,10 +10,10 @@ import history from "../../history";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {
-  onLoadFavoriteMovies: () => void,
-  favoriteMovies: [MovieType],
-  favoriteLoadedStatus: boolean,
-};
+  onLoadFavoriteMovies: () => void;
+  favoriteMovies: [MovieType];
+  favoriteLoadedStatus: boolean;
+}
 
 class MyList extends React.PureComponent<Props, {}> {
   constructor(props) {

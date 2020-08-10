@@ -6,14 +6,14 @@ import {AppRoute} from "../../utils/utils";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {
-  movie: MovieType,
-  onSendComment: (event: React.FormEvent<HTMLFormElement>) => void,
-  onInputComment: (event: React.FormEvent<HTMLTextAreaElement>) => void,
-  onChangeRating: (event: React.FormEvent<HTMLDivElement>) => void,
-  rating: number,
-  comment: string,
-  isLoading: boolean,
-  errorText: string,
+  movie: MovieType;
+  onSendComment: (event: React.FormEvent<HTMLFormElement>) => void;
+  onInputComment: (event: React.FormEvent<HTMLTextAreaElement>) => void;
+  onChangeRating: (event: React.FormEvent<HTMLDivElement>) => void;
+  rating: number;
+  comment: string;
+  isLoading: boolean;
+  errorText: string;
 }
 
 class AddReview extends React.PureComponent<Props, {}> {

@@ -2,14 +2,14 @@ import * as React from "react";
 import {Movie as MovieType} from "../../types/types";
 
 interface Props {
-  movie: MovieType,
-  onExitVideo: (event: React.FormEvent<HTMLButtonElement>) => void,
-  onTogglePlay: () => {},
-  onFullScreen: () => {},
-  children: React.ReactNode,
-  percentProgress: number,
-  timeLeft: number,
-};
+  movie: MovieType;
+  onExitVideo: (event: React.FormEvent<HTMLButtonElement>) => void;
+  onTogglePlay: () => {};
+  onFullScreen: () => {};
+  children: React.ReactNode;
+  percentProgress: number;
+  timeLeft: number;
+}
 
 const VideoPlayerFull = (props: Props): React.ReactElement => {
   const {movie, onExitVideo, onTogglePlay, onFullScreen, children, percentProgress, timeLeft} = props;

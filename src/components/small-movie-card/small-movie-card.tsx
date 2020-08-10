@@ -4,12 +4,12 @@ import {Movie as MovieType} from "../../types/types";
 import VideoPlayer from "../video-player/video-player";
 
 interface Props {
-  movie: MovieType,
-  onMovieClick: (movie: MovieType) => void,
-  onMouseEnter: () => void,
-  onMouseLeave: () => void,
-  isPlaying: boolean,
-};
+  movie: MovieType;
+  onMovieClick: (movie: MovieType) => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+  isPlaying: boolean;
+}
 
 const SmallMovieCard = (props: Props): React.ReactElement => {
   const {movie, onMovieClick, onMouseEnter, onMouseLeave, isPlaying} = props;

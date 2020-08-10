@@ -3,8 +3,8 @@ import {formatDateForReviews} from "../../utils/utils";
 import {Comment as CommentType} from "../../types/types";
 
 interface Props {
-  comments: [CommentType],
-};
+  comments: [CommentType];
+}
 
 const MoviePageReviews = (props: Props): React.ReactElement => {
   const {comments} = props;

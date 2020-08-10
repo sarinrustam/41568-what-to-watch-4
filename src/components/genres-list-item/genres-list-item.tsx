@@ -1,10 +1,10 @@
 import * as React from "react";
 
 interface Props {
-  genre: string,
-  isActive: boolean,
-  onSetCurrentGenre: (genre: string) => void,
-};
+  genre: string;
+  isActive: boolean;
+  onSetCurrentGenre: (genre: string) => void;
+}
 
 const GenresListItem = (props: Props): React.ReactElement => {
   const {genre, isActive, onSetCurrentGenre} = props;

@@ -1,8 +1,8 @@
 import * as React from "react";
 
 interface State {
-  isPlaying: boolean,
-};
+  isPlaying: boolean;
+}
 
 const withVideoPlay = (Component) => {
   type P = React.ComponentProps<typeof Component>;

@@ -20,8 +20,8 @@ const VideoPlayerFullWrapped = withFullVideoPlayer(VideoPlayerFull);
 const AddReviewWrapped = withAddReview(AddReview);
 
 interface Props {
-  isLoaded: boolean,
-};
+  isLoaded: boolean;
+}
 
 const App = (props: Props): React.ReactElement => {
   if (!props.isLoaded) {
