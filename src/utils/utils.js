@@ -72,3 +72,16 @@ export const extend = (a, b) => {
 export const formatDateForReviews = (date) => {
   return moment(date).format(`MMMM DD, YYYY`);
 };
+
+export const noop = () => {};
+
+export const getFormatedTime = (time) => {
+  const date = new Date(0, 0, 0, 0, 0, time);
+  const hours = date.getHours();
+  const munutes = date.getMinutes();
+  const seconds = date.getSeconds();
+
+  return [hours, munutes, seconds].map((x) => {
+    return x < 10 ? `0` + x : x;
+  }).join(`:`);
+};

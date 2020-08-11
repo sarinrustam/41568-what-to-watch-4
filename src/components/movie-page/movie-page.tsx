@@ -163,7 +163,7 @@ class MoviePage extends React.PureComponent<Props, {}> {
 
 const mapStateToProps = (state, props) => {
   const movies = getMovies(state);
-  const movieId = props.match.params.id;
+  const movieId = parseInt(props.match.params.id, 10);
   const movie = movies.find((movieItem) => movieItem.id === movieId);
   const comments = getComments(state);
 

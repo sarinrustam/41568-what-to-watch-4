@@ -5,6 +5,7 @@ import {Buttons} from "../../utils/utils";
 import {getMovies} from "../../reducer/data/selectors";
 import {Movie as MovieType} from "../../types/types";
 import history from "../../history";
+import {getFormatedTime} from "../../utils/utils";
 
 interface Props {
   match: {
@@ -30,7 +31,7 @@ const withFullVideoPlayer = (Component) => {
       this.videoRef = createRef();
 
       this.state = {
-        isPlaying: false,
+        isPlaying: true,
         progress: 0,
       };
 
@@ -61,6 +62,7 @@ const withFullVideoPlayer = (Component) => {
 
       if (isPlaying) {
         video.play();
+        video.muted = false;
       } else {
         video.pause();
       }
@@ -97,7 +99,7 @@ const withFullVideoPlayer = (Component) => {
     render() {
       const video = this.videoRef.current;
       const duration = video ? video.duration : null;
-      const timeLeft = duration ? duration - this.state.progress : 0;
+      const timeLeft = duration ? getFormatedTime(duration - this.state.progress) : 0;
       const percentProgress = timeLeft ? Math.round(this.state.progress / duration * 100) : 0;
 
       return (
@@ -112,7 +114,11 @@ const withFullVideoPlayer = (Component) => {
           <video
             ref={this.videoRef}
             className="player__video"
+            src={this.props.movie.videoLink}
             autoPlay={true}
+            muted={true}
+            loop={true}
+            controls={true}
           />
         </Component>
       );
@@ -121,7 +127,8 @@ const withFullVideoPlayer = (Component) => {
 
   const mapStateToProps = (state, props) => {
     const movies = getMovies(state);
-    const movie = movies.find((movieItem) => movieItem.id === props.match.params.id);
+    const movieId = parseInt(props.match.params.id, 10);
+    const movie = movies.find((movieItem) => movieItem.id === movieId);
 
     return {
       movie
