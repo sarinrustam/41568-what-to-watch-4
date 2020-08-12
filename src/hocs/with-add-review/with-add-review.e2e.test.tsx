@@ -1,38 +1,40 @@
 import * as React from "react";
-import * as renderer from "react-test-renderer";
+import {configure, mount} from "enzyme";
+import * as Adapter from "enzyme-adapter-react-16";
+import withAddReview from "./with-add-review";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "./../../reducer/name-space";
-import {App} from "./app";
-import {noop} from "../../utils/utils";
-import {Movie as MovieType} from "../../types/types";
+
+configure({
+  adapter: new Adapter()
+});
 
 const mockStore = configureStore([]);
 
-const mockMovies: [MovieType] = [{
-  id: 2,
-  title: `Avatar`,
-  isFavorite: true,
-  release: 2009,
-  genre: `SCI-FI`,
-  poster: `https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_.jpg`,
-  coverBackground: `https://m.media-amazon.com/images/M/MV5BMTUxMDI1MDI5MV5BMl5BanBnXkFtZTcwOTY3MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg`,
-  rating: {
-    score: 7.8,
-    amount: 43332
-  },
-  description: `A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.`,
-  crew: {
-    director: `James Cameron`,
-    actors: [`Sam Worthington, Zoe Saldana, Sigourney Weaver`]
-  },
-  preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-  videoLink: ``,
-  duration: 2
-}];
+interface MockComponentProps {
+  onInputComment: (event: React.FormEvent<HTMLTextAreaElement>) => void;
+  onChangeRating: (event: React.FormEvent<HTMLDivElement>) => void;
+  onSendComment: (event: React.FormEvent) => void;
+}
 
-describe(`Render component`, () => {
-  it(`Should App render correctly`, () => {
+const MockComponent = (props: MockComponentProps) => {
+  const {onInputComment, onChangeRating, onSendComment} = props;
+
+  return (
+    <form onSubmit={onSendComment}>
+      <textarea onInput={onInputComment}/>
+      <div onChange={onChangeRating}/>
+      <button type="submit"></button>
+    </form>
+  );
+};
+
+describe(`withAddReview tests`, () => {
+  it(`Checks that HOC's callback`, () => {
+    const MockComponentWrapped = withAddReview(MockComponent);
+    const handleInputComment = jest.fn();
+    const event = {target: {value: `sometext`}};
     const store = mockStore({
       [NameSpace.DATA]: {
         movies: [],
@@ -66,23 +68,29 @@ describe(`Render component`, () => {
         authorizationStatus: ``,
         avatar: `defaultAvatar`,
         authorizationError: ``,
+      },
+      [NameSpace.COMMENTS]: {
+        errorText: ``,
+        isLoading: false,
+        comments: [],
       }
     });
+    const movieId = `1`;
 
-    const tree = renderer
-      .create(
-          <Provider store={store}>
-            <App
-              isLoaded={true}
-              onSendComment={noop}
-              movies={mockMovies}
-            />
-          </Provider>, {
-            createNodeMock: () => {
-              return {};
-            }}
-      ).toJSON();
+    const wrapper = mount(
+        <Provider store={store}>
+          <MockComponentWrapped
+            onSendComment={handleInputComment}
+            movieId={movieId}
+          />
+        </Provider>
+    );
 
-    expect(tree).toMatchSnapshot();
+    const form = wrapper.find(`form`);
+    form.simulate(`submit`, event);
+
+    expect(handleInputComment.mock.calls[0][0].comment).toBe(``);
+    expect(handleInputComment.mock.calls[0][0].movieId).toBe(movieId);
+    expect(handleInputComment.mock.calls[0][0].rating).toBe(0);
   });
 });

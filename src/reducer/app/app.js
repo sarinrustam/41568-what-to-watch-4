@@ -37,12 +37,6 @@ const reducer = (state = initialState, action) => {
           state, {
             currentGenre: action.payload
           });
-    case ActionType.LOAD_MOVIES:
-      return extend(
-          state, {
-            movies: action.payload,
-          }
-      );
     case ActionType.INCREMENT_COUNT_MOVIES_SHOW:
       return extend(
           state, {
@@ -53,12 +47,6 @@ const reducer = (state = initialState, action) => {
       return extend(
           state, {
             countMoviesShow: COUNT_LIMIT_MOVIES
-          }
-      );
-    case ActionType.SET_IS_LOADING:
-      return extend(
-          state, {
-            isLoading: action.payload
           }
       );
     default:

@@ -1,18 +1,11 @@
 import * as React from "react";
 import {createRef} from "react";
-import {connect} from "react-redux";
 import {Buttons} from "../../utils/utils";
-import {getMovies} from "../../reducer/data/selectors";
 import {Movie as MovieType} from "../../types/types";
 import history from "../../history";
 import {getFormatedTime} from "../../utils/utils";
 
 interface Props {
-  match: {
-    params: {
-      id: string;
-    };
-  };
   movie: MovieType;
 }
 
@@ -114,7 +107,6 @@ const withFullVideoPlayer = (Component) => {
           <video
             ref={this.videoRef}
             className="player__video"
-            src={this.props.movie.videoLink}
             autoPlay={true}
             muted={true}
             loop={true}
@@ -125,17 +117,7 @@ const withFullVideoPlayer = (Component) => {
     }
   }
 
-  const mapStateToProps = (state, props) => {
-    const movies = getMovies(state);
-    const movieId = parseInt(props.match.params.id, 10);
-    const movie = movies.find((movieItem) => movieItem.id === movieId);
-
-    return {
-      movie
-    };
-  };
-
-  return connect(mapStateToProps)(WithFullVideoPlayer);
+  return WithFullVideoPlayer;
 };
 
 

@@ -1,6 +1,5 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {Operation as CommentOperation} from "../../reducer/comments/comments";
 import {getErrorText, getIsLoading} from "../../reducer/comments/selectors";
 import {getMovies} from "../../reducer/data/selectors";
 
@@ -8,11 +7,7 @@ interface Props {
   errorText: string;
   isLoading: boolean;
   onSendComment: (obj: {movieId: string; rating: number; comment: string}) => void;
-  match: {
-    params: {
-      id: string;
-    };
-  };
+  movieId: string;
 }
 
 interface State {
@@ -51,7 +46,7 @@ const withAddReview = (Component) => {
       event.preventDefault();
 
       this.props.onSendComment({
-        movieId: this.props.match.params.id,
+        movieId: this.props.movieId,
         comment: this.state.comment,
         rating: this.state.rating,
       });
@@ -74,7 +69,7 @@ const withAddReview = (Component) => {
     const errorText = getErrorText(state);
     const isLoading = getIsLoading(state);
     const movies = getMovies(state);
-    const movie = movies.find((movieItem) => movieItem.id === props.match.params.id);
+    const movie = movies.find((movieItem) => movieItem.id === parseInt(props.movieId, 10));
 
     return {
       errorText,
@@ -83,11 +78,8 @@ const withAddReview = (Component) => {
     };
   };
 
-  const mapDispatchToProps = {
-    onSendComment: CommentOperation.sendComment,
-  };
-
-  return connect(mapStateToProps, mapDispatchToProps)(WithAddReview);
+  return connect(mapStateToProps)(WithAddReview);
 };
+
 
 export default withAddReview;
