@@ -67,8 +67,15 @@ const App = (props: Props): React.ReactElement => {
             );
           }}
         />
-        {/* <PrivateRoute exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`} component={AddReviewWrapped}/> */}
-        <PrivateRoute exact path={AppRoute.MY_LIST} component={MyList}/>
+        <PrivateRoute
+          exact
+          path={AppRoute.MY_LIST}
+          render={() => {
+            return (
+              <MyList />
+            );
+          }}
+        />
       </Switch>
     </Router>
   );
