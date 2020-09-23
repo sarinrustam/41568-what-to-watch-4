@@ -7,10 +7,10 @@ module.exports = {
   entry: `./src/index.tsx`,
   output: {
     filename: `bundle.js`,
-    path: path.join(__dirname, `public`)
+    path: path.join(__dirname, `docs`)
   },
   devServer: {
-    contentBase: path.join(__dirname, `public`),
+    contentBase: path.join(__dirname, `docs`),
     historyApiFallback: true,
     watchContentBase: true,
     open: true,
