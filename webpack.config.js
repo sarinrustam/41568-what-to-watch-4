@@ -2,6 +2,7 @@ const path = require(`path`);
 const portFinderSync = require(`portfinder-sync`);
 const port = portFinderSync.getPort(1338);
 const MomentLocalesPlugin = require(`moment-locales-webpack-plugin`);
+const webpack = require(`webpack`);
 
 module.exports = {
   entry: `./src/index.tsx`,
@@ -43,6 +44,9 @@ module.exports = {
   plugins: [
     new MomentLocalesPlugin({
       localesToKeep: [`es-us`]
+    }),
+    new webpack.DefinePlugin({
+      [`process.env.PUBLIC_URL`]: JSON.stringify(process.env.PUBLIC_URL)
     })
   ]
 };
